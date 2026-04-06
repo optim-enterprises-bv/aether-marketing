@@ -1,0 +1,161 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Aether for Home — Your home, in your pocket" description="Mesh WiFi, home monitoring, NVR cameras, IoT sensors, 3D printer management, and backup — all in one place. $5/home/month.">
+
+<section class="hero" style="min-height:60vh; padding-top:120px; padding-bottom:80px;">
+  <div class="hero-bg" style="background: radial-gradient(ellipse 80% 60% at 60% 30%, rgba(16,185,129,0.12) 0%, transparent 60%), radial-gradient(ellipse 50% 50% at 10% 80%, rgba(14,165,233,0.1) 0%, transparent 50%);"></div>
+  <div class="page hero-content">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
+      <div>
+        <div class="hero-eyebrow">For Home</div>
+        <h1 style="font-size:clamp(2.4rem,5vw,4rem);">
+          Your home.<br>
+          <span class="gradient-text">In your pocket.</span>
+        </h1>
+        <p class="hero-sub" style="margin:24px 0 40px;">
+          One app. Good signal everywhere. Your cameras, sensors, printers, and backups — visible and controllable from anywhere in the world.
+        </p>
+        <div style="display:flex; gap:16px; flex-wrap:wrap;">
+          <a href="/early-access" class="btn btn-primary">Get started — $5/mo →</a>
+          <a href="/pricing" class="btn btn-outline">Compare plans</a>
+        </div>
+      </div>
+
+      <!-- Dashboard mockup -->
+      <div class="card" style="font-family:var(--font-mono); font-size:0.78rem; line-height:2; padding:28px; border-color:rgba(16,185,129,0.25); background:rgba(15,22,35,0.9);">
+        <div style="color:var(--text-muted); margin-bottom:16px; font-size:0.68rem; letter-spacing:0.1em;">◉ YOUR HOME  —  ALL SYSTEMS</div>
+        <div style="display:flex; justify-content:space-between;"><span style="color:#9ca3af;">Network</span><span style="color:#10b981;">████████ 98%</span></div>
+        <div style="color:var(--text-muted); font-size:0.7rem; margin-bottom:12px;">3 APs · 14 devices · mesh optimal</div>
+        <div style="display:flex; justify-content:space-between;"><span style="color:#9ca3af;">Security</span><span style="color:#10b981;">● 4 cameras live</span></div>
+        <div style="color:var(--text-muted); font-size:0.7rem; margin-bottom:12px;">No motion · Arming: 11pm</div>
+        <div style="display:flex; justify-content:space-between;"><span style="color:#9ca3af;">3D Printer</span><span style="color:#f59e0b;">▶ Job 47%</span></div>
+        <div style="color:var(--text-muted); font-size:0.7rem; margin-bottom:12px;">Est. done: 2h 14m · 📷 watching</div>
+        <div style="display:flex; justify-content:space-between;"><span style="color:#9ca3af;">Backup</span><span style="color:#10b981;">✓ Synced 2h ago</span></div>
+        <div style="color:var(--text-muted); font-size:0.7rem; margin-bottom:16px;">142 GB protected · S3 encrypted</div>
+        <div style="border-top:1px solid var(--aether-border); padding-top:12px; color:var(--text-muted); font-size:0.7rem;">
+          IoT: 9 sensors · 2 offline · 1 alert
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pain points → solutions -->
+<section>
+  <div class="page">
+    <div class="tag tag-emerald">How it works</div>
+    <h2>Four problems.<br><span class="gradient-text">One platform.</span></h2>
+
+    <div style="display:flex; flex-direction:column; gap:0; margin-top:56px;">
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; padding:48px 0; border-bottom:1px solid var(--aether-border); align-items:center;">
+        <div>
+          <div class="tag tag-blue" style="margin-bottom:20px;">Signal &amp; Mesh</div>
+          <h3 style="font-size:1.6rem; margin-bottom:16px;">Dead zones.<br>Eliminated.</h3>
+          <p style="color:var(--text-secondary); line-height:1.8;">Meridian manages your mesh network automatically — steering devices to the best band, optimising channel allocation based on your actual RF environment, and detecting backhaul issues before you notice them.</p>
+          <ul style="margin-top:20px; list-style:none; display:flex; flex-direction:column; gap:8px;">
+            <li style="font-size:0.85rem; color:var(--text-secondary); display:flex; gap:10px; align-items:center;"><span style="color:#10b981;">✓</span> Auto band steering (2.4 / 5 / 6 GHz)</li>
+            <li style="font-size:0.85rem; color:var(--text-secondary); display:flex; gap:10px; align-items:center;"><span style="color:#10b981;">✓</span> RF optimisation — learns your home layout</li>
+            <li style="font-size:0.85rem; color:var(--text-secondary); display:flex; gap:10px; align-items:center;"><span style="color:#10b981;">✓</span> Works with any OpenWRT or OpenWiFi hardware</li>
+          </ul>
+        </div>
+        <div class="card" style="padding:24px; border-color:rgba(14,165,233,0.2);">
+          <div style="font-family:var(--font-mono); font-size:0.76rem; line-height:1.9; color:var(--text-secondary);">
+            <div style="color:var(--aether-cyan); margin-bottom:8px;">// Mesh topology</div>
+            <div>Gateway   ██████████  -42 dBm</div>
+            <div>├── Node A ████████    -58 dBm  <span style="color:#10b981;">✓</span></div>
+            <div>│   └── Node B ██████  -71 dBm  <span style="color:#10b981;">✓</span></div>
+            <div>└── Node C █████████   -49 dBm  <span style="color:#10b981;">✓</span></div>
+            <div style="margin-top:12px; color:var(--text-muted);">14 clients · optimal placement</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; padding:48px 0; border-bottom:1px solid var(--aether-border); align-items:center;">
+        <div class="card" style="padding:24px; border-color:rgba(139,92,246,0.2);">
+          <div style="font-family:var(--font-mono); font-size:0.76rem; line-height:1.9; color:var(--text-secondary);">
+            <div style="color:var(--aether-violet); margin-bottom:8px;">// Security overview</div>
+            <div>Front door  ● LIVE  <span style="color:#10b981;">motion: clear</span></div>
+            <div>Back garden ● LIVE  <span style="color:#10b981;">motion: clear</span></div>
+            <div>Garage      ● LIVE  <span style="color:#f59e0b;">person 14:32</span></div>
+            <div>Hallway     ● LIVE  <span style="color:#10b981;">motion: clear</span></div>
+            <div style="margin-top:12px; color:var(--text-muted);">Auto-discovered via ONVIF · no config</div>
+          </div>
+        </div>
+        <div>
+          <div class="tag tag-violet" style="margin-bottom:20px;">Home Monitoring</div>
+          <h3 style="font-size:1.6rem; margin-bottom:16px;">Monitor your home<br>from anywhere.</h3>
+          <p style="color:var(--text-secondary); line-height:1.8;">Cameras auto-discovered via ONVIF — no manual IP config. Motion alerts straight to your phone. Live view from anywhere. Local recording with cloud backup.</p>
+          <ul style="margin-top:20px; list-style:none; display:flex; flex-direction:column; gap:8px;">
+            <li style="font-size:0.85rem; color:var(--text-secondary); display:flex; gap:10px; align-items:center;"><span style="color:#10b981;">✓</span> Zero-config ONVIF camera discovery</li>
+            <li style="font-size:0.85rem; color:var(--text-secondary); display:flex; gap:10px; align-items:center;"><span style="color:#10b981;">✓</span> Motion detection + instant alerts</li>
+            <li style="font-size:0.85rem; color:var(--text-secondary); display:flex; gap:10px; align-items:center;"><span style="color:#10b981;">✓</span> Local + encrypted cloud recording</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; padding:48px 0; border-bottom:1px solid var(--aether-border); align-items:center;">
+        <div>
+          <div class="tag tag-amber" style="margin-bottom:20px;">3D Printing</div>
+          <h3 style="font-size:1.6rem; margin-bottom:16px;">Never miss a<br>failed print again.</h3>
+          <p style="color:var(--text-secondary); line-height:1.8;">Camera on the print bed, live telemetry from the printer, remote job control. Get notified when a print finishes — or when it fails at 3am before you've wasted 8 hours of filament.</p>
+          <ul style="margin-top:20px; list-style:none; display:flex; flex-direction:column; gap:8px;">
+            <li style="font-size:0.85rem; color:var(--text-secondary); display:flex; gap:10px; align-items:center;"><span style="color:#10b981;">✓</span> Live print progress + camera feed</li>
+            <li style="font-size:0.85rem; color:var(--text-secondary); display:flex; gap:10px; align-items:center;"><span style="color:#10b981;">✓</span> Failure detection via AI vision</li>
+            <li style="font-size:0.85rem; color:var(--text-secondary); display:flex; gap:10px; align-items:center;"><span style="color:#10b981;">✓</span> Remote pause / cancel / start</li>
+          </ul>
+        </div>
+        <div class="card" style="padding:24px; border-color:rgba(245,158,11,0.2);">
+          <div style="font-family:var(--font-mono); font-size:0.76rem; line-height:1.9; color:var(--text-secondary);">
+            <div style="color:var(--aether-amber); margin-bottom:8px;">// Print job status</div>
+            <div>Job: voronoi_vase_v2.gcode</div>
+            <div>Progress: ████████░░  47%</div>
+            <div>Elapsed:  2h 08m</div>
+            <div>Remaining: 2h 14m</div>
+            <div>Temp: 215°C / 60°C bed</div>
+            <div style="margin-top:12px; color:#10b981;">✓ layer adhesion nominal</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; padding:48px 0; align-items:center;">
+        <div class="card" style="padding:24px; border-color:rgba(99,102,241,0.2);">
+          <div style="font-family:var(--font-mono); font-size:0.76rem; line-height:1.9; color:var(--text-secondary);">
+            <div style="color:var(--aether-indigo); margin-bottom:8px;">// Backup status</div>
+            <div>Photos:    <span style="color:#10b981;">✓ 34.2 GB synced</span></div>
+            <div>Documents: <span style="color:#10b981;">✓ 8.1 GB synced</span></div>
+            <div>NAS:       <span style="color:#10b981;">✓ 99.7 GB synced</span></div>
+            <div>Last run:  <span style="color:#9ca3af;">2h 14m ago</span></div>
+            <div style="margin-top:12px; color:var(--text-muted);">encrypted · versioned · offsite</div>
+          </div>
+        </div>
+        <div>
+          <div class="tag tag-violet" style="margin-bottom:20px;">Backup</div>
+          <h3 style="font-size:1.6rem; margin-bottom:16px;">Set it once.<br>Never worry again.</h3>
+          <p style="color:var(--text-secondary); line-height:1.8;">Continuous encrypted backup to your own storage — or ours. Photos, documents, NAS drives. Versioned. Offsite. Automatic. You'll only think about backup when you need it — and it'll be there.</p>
+          <ul style="margin-top:20px; list-style:none; display:flex; flex-direction:column; gap:8px;">
+            <li style="font-size:0.85rem; color:var(--text-secondary); display:flex; gap:10px; align-items:center;"><span style="color:#10b981;">✓</span> Continuous encrypted backup</li>
+            <li style="font-size:0.85rem; color:var(--text-secondary); display:flex; gap:10px; align-items:center;"><span style="color:#10b981;">✓</span> Your storage or ours (S3-compatible)</li>
+            <li style="font-size:0.85rem; color:var(--text-secondary); display:flex; gap:10px; align-items:center;"><span style="color:#10b981;">✓</span> Versioned · restore any point in time</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="page">
+    <div class="cta-banner">
+      <div class="tag tag-emerald" style="margin-bottom:28px;">Home tier</div>
+      <h2 style="margin-bottom:16px;"><span class="gradient-text">$5 / home / month.</span><br>Everything included.</h2>
+      <p style="color:var(--text-secondary); max-width:420px; margin:0 auto 36px;">No per-feature upsells. Mesh, cameras, monitoring, printers, backup — one subscription, one app.</p>
+      <a href="/early-access" class="btn btn-primary" style="font-size:1rem; padding:16px 36px;">Get Early Access →</a>
+    </div>
+  </div>
+</section>
+
+</Layout>

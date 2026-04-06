@@ -1,0 +1,174 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Aether for Operators — Carrier-grade wireless at $0.30/device" description="One carrier. 333k devices. $100k/month. Carrier-grade WiFi + NVR + IoT platform with white-label, ZTP, and TMF Open API integration.">
+
+<section class="hero" style="min-height:60vh; padding-top:120px; padding-bottom:80px;">
+  <div class="hero-bg" style="background: radial-gradient(ellipse 80% 60% at 65% 20%, rgba(14,165,233,0.14) 0%, transparent 60%), radial-gradient(ellipse 50% 50% at 5% 85%, rgba(99,102,241,0.1) 0%, transparent 50%);"></div>
+  <div class="page hero-content">
+    <div class="hero-eyebrow">For ISPs &amp; Carriers</div>
+    <h1>
+      $100k/month starts<br>
+      <span class="gradient-text">with one carrier.</span>
+    </h1>
+    <p class="hero-sub">
+      333k devices × $0.30 = $100k/month. Two mid-size carriers doubles that. Your marginal infrastructure cost barely moves.
+    </p>
+    <div class="hero-cta">
+      <a href="/early-access" class="btn btn-primary">Contact Sales →</a>
+      <a href="/pricing" class="btn btn-outline">See pricing</a>
+    </div>
+  </div>
+</section>
+
+<!-- The math -->
+<section>
+  <div class="page">
+    <div class="tag tag-blue">The Economics</div>
+    <h2>The math that makes<br><span class="gradient-text">carriers pay attention.</span></h2>
+
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:56px;">
+      <div class="card" style="text-align:center; border-color:rgba(34,211,238,0.2);">
+        <div style="font-family:var(--font-display); font-size:3rem; font-weight:800; color:var(--aether-cyan); letter-spacing:-0.04em; margin-bottom:8px;">$0.30</div>
+        <div style="font-size:0.82rem; color:var(--text-secondary);">Per device per month.<br>Includes WiFi + NVR + IoT.</div>
+      </div>
+      <div class="card" style="text-align:center; border-color:rgba(99,102,241,0.2);">
+        <div style="font-family:var(--font-display); font-size:3rem; font-weight:800; color:var(--aether-indigo); letter-spacing:-0.04em; margin-bottom:8px;">333k</div>
+        <div style="font-size:0.82rem; color:var(--text-secondary);">Devices needed for<br>$100k/month revenue.</div>
+      </div>
+      <div class="card" style="text-align:center; border-color:rgba(16,185,129,0.2);">
+        <div style="font-family:var(--font-display); font-size:3rem; font-weight:800; color:var(--aether-emerald); letter-spacing:-0.04em; margin-bottom:8px;">$100k</div>
+        <div style="font-size:0.82rem; color:var(--text-secondary);">Monthly revenue target.<br>1 carrier gets you there.</div>
+      </div>
+    </div>
+
+    <!-- Device count table -->
+    <div style="margin-top:40px; background:var(--aether-card); border:1px solid var(--aether-border); border-radius:16px; overflow:hidden;">
+      <div style="padding:20px 28px; border-bottom:1px solid var(--aether-border); background:rgba(14,165,233,0.04);">
+        <h3 style="font-size:0.95rem; color:var(--text-secondary);">Revenue model by carrier scale</h3>
+      </div>
+      <div style="overflow-x:auto;">
+        <table style="min-width:600px;">
+          <thead>
+            <tr>
+              <th style="text-align:left; padding:14px 20px; font-size:0.78rem; border-bottom:1px solid var(--aether-border); color:var(--text-secondary);">Deployment</th>
+              <th style="padding:14px 20px; font-size:0.78rem; border-bottom:1px solid var(--aether-border); color:var(--text-secondary);">Managed devices</th>
+              <th style="padding:14px 20px; font-size:0.78rem; border-bottom:1px solid var(--aether-border); color:var(--text-secondary);">Rate</th>
+              <th style="padding:14px 20px; font-size:0.78rem; border-bottom:1px solid var(--aether-border); color:var(--aether-cyan);">Monthly revenue</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td style="padding:13px 20px; font-size:0.85rem; color:var(--text-secondary);">Regional WISP</td><td style="padding:13px 20px; font-size:0.85rem; text-align:center;">5,000</td><td style="padding:13px 20px; font-size:0.82rem; text-align:center; font-family:var(--font-mono); color:var(--aether-cyan);">$0.50</td><td style="padding:13px 20px; font-size:0.85rem; text-align:center; color:var(--aether-emerald); font-weight:700;">$2,500</td></tr>
+            <tr><td style="padding:13px 20px; font-size:0.85rem; color:var(--text-secondary);">Mid-size ISP</td><td style="padding:13px 20px; font-size:0.85rem; text-align:center;">50,000</td><td style="padding:13px 20px; font-size:0.82rem; text-align:center; font-family:var(--font-mono); color:var(--aether-blue);">$0.30</td><td style="padding:13px 20px; font-size:0.85rem; text-align:center; color:var(--aether-emerald); font-weight:700;">$15,000</td></tr>
+            <tr style="background:rgba(14,165,233,0.04);"><td style="padding:13px 20px; font-size:0.85rem; color:var(--text-primary);">Target carrier</td><td style="padding:13px 20px; font-size:0.85rem; text-align:center; font-weight:700;">333,000</td><td style="padding:13px 20px; font-size:0.82rem; text-align:center; font-family:var(--font-mono); color:var(--aether-blue);">$0.30</td><td style="padding:13px 20px; font-size:0.85rem; text-align:center; color:var(--aether-cyan); font-weight:700;">$100,000</td></tr>
+            <tr><td style="padding:13px 20px; font-size:0.85rem; color:var(--text-secondary);">Two mid-size carriers</td><td style="padding:13px 20px; font-size:0.85rem; text-align:center;">666,000</td><td style="padding:13px 20px; font-size:0.82rem; text-align:center; font-family:var(--font-mono); color:var(--aether-blue);">$0.30</td><td style="padding:13px 20px; font-size:0.85rem; text-align:center; color:var(--aether-emerald); font-weight:700;">$200,000</td></tr>
+            <tr><td style="padding:13px 20px; font-size:0.85rem; color:var(--text-secondary);">Tier 1 carrier</td><td style="padding:13px 20px; font-size:0.85rem; text-align:center;">5,000,000+</td><td style="padding:13px 20px; font-size:0.82rem; text-align:center; font-family:var(--font-mono); color:var(--aether-violet);">Custom</td><td style="padding:13px 20px; font-size:0.85rem; text-align:center; color:var(--aether-violet); font-weight:700;">Custom</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Carrier-grade requirements -->
+<section>
+  <div class="page">
+    <div class="tag tag-violet">Carrier-grade</div>
+    <h2>What carrier-grade<br><span class="gradient-text">actually means.</span></h2>
+    <div class="component-grid" style="margin-top:56px;">
+      <div class="card" style="border-top:2px solid var(--aether-cyan);">
+        <h3 style="color:var(--aether-cyan); font-size:1rem; margin-bottom:12px;">White-label</h3>
+        <p style="font-size:0.84rem; color:var(--text-secondary); line-height:1.7;">Your brand. Your subscriber app. Your portal. Aether is invisible to your customers. The Aether Home app ships as a React Native white-label package — your name, your app store listing.</p>
+      </div>
+      <div class="card" style="border-top:2px solid var(--aether-indigo);">
+        <h3 style="color:var(--aether-indigo); font-size:1rem; margin-bottom:12px;">Zero-touch provisioning</h3>
+        <p style="font-size:0.84rem; color:var(--text-secondary); line-height:1.7;">Truck rolls with no config. The ac-client claim_token links the CPE to the subscriber account on first boot. No technician involvement after hardware install. Scales to millions of CPEs.</p>
+      </div>
+      <div class="card" style="border-top:2px solid var(--aether-violet);">
+        <h3 style="color:var(--aether-violet); font-size:1rem; margin-bottom:12px;">OSS/BSS integration</h3>
+        <p style="font-size:0.84rem; color:var(--text-secondary); line-height:1.7;">TMF Open API (TMF638, TMF632, TMF678, TMF621). Your provisioning systems call our API to activate/deactivate service. Subscriber lifecycle managed from your existing OSS without operator portal access.</p>
+      </div>
+      <div class="card" style="border-top:2px solid var(--aether-blue);">
+        <h3 style="color:var(--aether-blue); font-size:1rem; margin-bottom:12px;">NOC visibility</h3>
+        <p style="font-size:0.84rem; color:var(--text-secondary); line-height:1.7;">Fleet health across millions of devices. SLA tracking, mass operations (push firmware to 50k devices in one call), incident management. Not a consumer dashboard — a network operations view.</p>
+      </div>
+      <div class="card" style="border-top:2px solid var(--aether-emerald);">
+        <h3 style="color:var(--aether-emerald); font-size:1rem; margin-bottom:12px;">Data residency</h3>
+        <p style="font-size:0.84rem; color:var(--text-secondary); line-height:1.7;">EU carriers need EU data. US carriers need US data. Regional Kubernetes deployments with strict data isolation. GDPR-native via Databunker PII vault. Full compliance documentation on request.</p>
+      </div>
+      <div class="card" style="border-top:2px solid var(--aether-amber);">
+        <h3 style="color:var(--aether-amber); font-size:1rem; margin-bottom:12px;">SLA-backed uptime</h3>
+        <p style="font-size:0.84rem; color:var(--text-secondary); line-height:1.7;">99.9% SLA on Pro tier. 99.99% on Enterprise with contractual penalties. HA deployment across 3 availability zones. Hermes is stateless — any node handles any device connection.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Competitive displacement -->
+<section>
+  <div class="page">
+    <div class="tag tag-rose">Competitive displacement</div>
+    <h2>One API. One invoice.<br><span class="gradient-text">Three platforms replaced.</span></h2>
+    <p style="margin-top:20px; color:var(--text-secondary); max-width:620px; font-size:1rem; line-height:1.7;">Carriers currently need Calix or RUCKUS for WiFi, Milestone for cameras, someone else for IoT — three vendors, three contracts, three integrations. Aether replaces all three.</p>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-top:48px;">
+      <div>
+        <h3 style="font-size:1rem; color:var(--aether-rose); margin-bottom:20px; font-family:var(--font-mono); font-weight:600; letter-spacing:0.05em;">BEFORE — 3 vendors</h3>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div class="card" style="padding:18px 20px; border-color:rgba(244,63,94,0.2); background:rgba(244,63,94,0.04);">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:0.88rem;">Calix / RUCKUS (WiFi)</span>
+              <span style="font-family:var(--font-mono); font-size:0.82rem; color:var(--aether-rose);">~$3–6/device/mo</span>
+            </div>
+          </div>
+          <div class="card" style="padding:18px 20px; border-color:rgba(244,63,94,0.2); background:rgba(244,63,94,0.04);">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:0.88rem;">Milestone / Genetec (NVR)</span>
+              <span style="font-family:var(--font-mono); font-size:0.82rem; color:var(--aether-rose);">separate contract</span>
+            </div>
+          </div>
+          <div class="card" style="padding:18px 20px; border-color:rgba(244,63,94,0.2); background:rgba(244,63,94,0.04);">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:0.88rem;">IoT platform (TBD)</span>
+              <span style="font-family:var(--font-mono); font-size:0.82rem; color:var(--aether-rose);">separate contract</span>
+            </div>
+          </div>
+          <div style="padding:14px 16px; background:rgba(244,63,94,0.06); border:1px solid rgba(244,63,94,0.2); border-radius:10px; font-size:0.82rem; color:var(--aether-rose);">3 contracts · 3 integrations · 3 support queues</div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="font-size:1rem; color:var(--aether-emerald); margin-bottom:20px; font-family:var(--font-mono); font-weight:600; letter-spacing:0.05em;">AFTER — Aether</h3>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div class="card" style="padding:18px 20px; border-color:rgba(16,185,129,0.3); background:rgba(16,185,129,0.05);">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:0.88rem;">Aether (WiFi + NVR + IoT)</span>
+              <span style="font-family:var(--font-mono); font-size:0.82rem; color:var(--aether-emerald);">$0.30/device/mo</span>
+            </div>
+          </div>
+          <div style="padding:14px 16px; background:rgba(16,185,129,0.06); border:1px solid rgba(16,185,129,0.2); border-radius:10px; font-size:0.82rem; color:var(--aether-emerald);">1 contract · 1 API · 1 support contact</div>
+          <div class="card" style="padding:24px; border-color:rgba(14,165,233,0.2);">
+            <p style="font-size:0.84rem; color:var(--text-secondary); line-height:1.7;">The margin story: carriers bill subscribers $20–40/month for managed WiFi + security + IoT. Paying $0.30/device is rounding error. Your margin is enormous, which makes Aether sticky.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="page">
+    <div class="cta-banner">
+      <div class="tag tag-blue" style="margin-bottom:28px;">Carrier programme</div>
+      <h2 style="margin-bottom:16px;">Let's model your<br><span class="gradient-text">device count.</span></h2>
+      <p style="color:var(--text-secondary); max-width:480px; margin:0 auto 40px; line-height:1.7;">No sales theatre. Tell us your deployment size and we'll show you exact numbers — infrastructure cost, revenue model, integration timeline. Honest engineering conversation.</p>
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <a href="/early-access" class="btn btn-primary">Start the conversation →</a>
+        <a href="mailto:carriers@optimcloud.com" class="btn btn-outline">Email directly</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</Layout>

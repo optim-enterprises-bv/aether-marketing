@@ -1,0 +1,166 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Pricing — Aether" description="Simple, transparent pricing. No per-device AI tax. From $5/home to carrier-grade at $0.30/device/month.">
+
+<section class="hero" style="min-height:40vh; padding-top:120px; padding-bottom:60px;">
+  <div class="hero-bg"></div>
+  <div class="page hero-content" style="text-align:center;">
+    <div class="hero-eyebrow" style="justify-content:center;">Pricing</div>
+    <h1 style="font-size:clamp(2.2rem,5vw,4rem);">Simple, transparent pricing.<br><span class="gradient-text">No per-device AI tax.</span></h1>
+    <p class="hero-sub" style="margin:24px auto 0; text-align:center; max-width:560px;">
+      From the home user to Tier 1 carriers. One platform, four tiers. Every AI feature included — no upsells.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="page">
+    <!-- Pricing grid -->
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-tier">Home</div>
+        <div class="pricing-name">Aether Residential</div>
+        <div class="pricing-price">$5 <span>/ home / mo</span></div>
+        <div class="pricing-desc">Everything you need to manage, monitor, and protect a modern home network.</div>
+        <ul class="pricing-features">
+          <li><span class="check">✓</span> Up to 5 managed devices</li>
+          <li><span class="check">✓</span> Aether Home cross-platform app</li>
+          <li><span class="check">✓</span> Aegis DNS filtering + parental controls</li>
+          <li><span class="check">✓</span> Argus IoT device identification</li>
+          <li><span class="check">✓</span> Network map &amp; real-time topology</li>
+          <li><span class="check">✓</span> Speed test + signal heatmap</li>
+          <li><span class="check">✓</span> 30 days event history</li>
+          <li><span class="check">✓</span> Email support</li>
+        </ul>
+        <a href="/early-access" class="btn" style="width:100%;justify-content:center;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.4);color:#10b981;">Get Started</a>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-tier">Operator</div>
+        <div class="pricing-name">Aether Open</div>
+        <div class="pricing-price">$0.50 <span>/ device / mo</span></div>
+        <div class="pricing-desc">For operators self-hosting Aether. Full protocol support, mesh, and event delivery. No AI tier lock.</div>
+        <ul class="pricing-features">
+          <li><span class="check">✓</span> All 6 protocols via Hermes</li>
+          <li><span class="check">✓</span> Meridian mesh management (all topologies)</li>
+          <li><span class="check">✓</span> Pheme webhook + SSE event delivery</li>
+          <li><span class="check">✓</span> Post-quantum TLS (X25519 + ML-KEM-768)</li>
+          <li><span class="check">✓</span> Multi-tenant RBAC</li>
+          <li><span class="check">✓</span> REST + GraphQL API</li>
+          <li><span class="check">✓</span> Self-hosted / on-premise deployment</li>
+          <li><span class="check">✓</span> Community support + GitHub issues</li>
+          <li><span class="check">✓</span> 90 days event retention</li>
+        </ul>
+        <a href="/early-access" class="btn" style="width:100%;justify-content:center;background:rgba(34,211,238,0.1);border:1px solid rgba(34,211,238,0.4);color:#22d3ee;">Start Trial</a>
+      </div>
+
+      <div class="pricing-card featured">
+        <div class="pricing-tier">Volume Operator</div>
+        <div class="pricing-name">Aether Pro</div>
+        <div class="pricing-price">$0.30 <span>/ device / mo</span></div>
+        <div class="pricing-desc">For ISPs at scale. Full AI stack, security suite, OpenSync port, and white-label subscriber apps.</div>
+        <ul class="pricing-features">
+          <li><span class="check">✓</span> Everything in Open</li>
+          <li><span class="check">✓</span> Prometheus AI/RF optimizer</li>
+          <li><span class="check">✓</span> Federated reinforcement learning</li>
+          <li><span class="check">✓</span> Argus IoT fingerprinting + ML classifier</li>
+          <li><span class="check">✓</span> Aegis content filtering + threat feeds</li>
+          <li><span class="check">✓</span> OpenSync native port (FFI bridge)</li>
+          <li><span class="check">✓</span> Aether Home white-label app</li>
+          <li><span class="check">✓</span> Aether Ops mobile terminal</li>
+          <li><span class="check">✓</span> Advanced analytics + Grafana dashboards</li>
+          <li><span class="check">✓</span> 99.9% SLA + priority email/Slack support</li>
+          <li><span class="check">✓</span> 1 year event retention</li>
+        </ul>
+        <a href="/early-access" class="btn btn-primary" style="width:100%;justify-content:center;">Start Trial</a>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-tier">Enterprise</div>
+        <div class="pricing-name">Aether Enterprise</div>
+        <div class="pricing-price">Custom <span>/ contact us</span></div>
+        <div class="pricing-desc">For Tier 1 operators, OEMs, and system integrators requiring BSS/OSS integration and 99.99% SLA.</div>
+        <ul class="pricing-features">
+          <li><span class="check">✓</span> Everything in Pro</li>
+          <li><span class="check">✓</span> TMF Open API (TMF638/632/678/621)</li>
+          <li><span class="check">✓</span> BSS/OSS integration (Amdocs, Netcracker)</li>
+          <li><span class="check">✓</span> Fleet-wide federated ML</li>
+          <li><span class="check">✓</span> Custom device platform HALs</li>
+          <li><span class="check">✓</span> Full OEM / white-label branding</li>
+          <li><span class="check">✓</span> Dedicated engineering pod</li>
+          <li><span class="check">✓</span> Data residency (EU / US / APAC)</li>
+          <li><span class="check">✓</span> 99.99% SLA + 24/7 NOC support</li>
+          <li><span class="check">✓</span> Unlimited event retention</li>
+        </ul>
+        <a href="/early-access" class="btn" style="width:100%;justify-content:center;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.4);color:#8b5cf6;">Contact Sales</a>
+      </div>
+    </div>
+
+    <!-- Device counting note -->
+    <div style="margin-top:40px; padding:24px 32px; background:rgba(14,165,233,0.06); border:1px solid rgba(14,165,233,0.2); border-radius:14px; display:flex; gap:20px; align-items:flex-start;">
+      <span style="font-size:1.4rem; flex-shrink:0;">ℹ️</span>
+      <div>
+        <p style="font-size:0.88rem; color:var(--text-secondary); line-height:1.7;"><strong style="color:var(--text-primary);">What counts as a device?</strong> Any managed endpoint registered in Aether — an AP, a router, a mesh node. Cameras and IoT sensors managed via the OptimNVR or OptimIOT integration are counted in those platforms separately and are not double-counted in Aether. Aether Enterprise customers can negotiate flat per-premise pricing for residential ISP deployments.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="page">
+    <div class="tag tag-blue">FAQ</div>
+    <h2 style="margin-bottom:48px;">Common questions.</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+
+      <div class="card">
+        <h3 style="font-size:1rem; margin-bottom:12px; color:var(--text-primary);">Is pricing per radio or per device?</h3>
+        <p style="font-size:0.84rem; color:var(--text-secondary); line-height:1.7;">Per managed device (AP, router, mesh node) — not per radio. A tri-band mesh node with 3 radios counts as 1 device. A 48-port switch managed via Aether counts as 1 device.</p>
+      </div>
+
+      <div class="card">
+        <h3 style="font-size:1rem; margin-bottom:12px; color:var(--text-primary);">Can I white-label the subscriber app?</h3>
+        <p style="font-size:0.84rem; color:var(--text-secondary); line-height:1.7;">Yes, on Pro and Enterprise tiers. The Aether Home app ships as a white-label React Native package. Your branding, your app store listing. We provide the binary build pipeline.</p>
+      </div>
+
+      <div class="card">
+        <h3 style="font-size:1rem; margin-bottom:12px; color:var(--text-primary);">What's included in the AI features?</h3>
+        <p style="font-size:0.84rem; color:var(--text-secondary); line-height:1.7;">Prometheus (RF optimizer + anomaly detection), Argus (IoT fingerprinting + ML classifier), and Aegis (threat feeds + DNS filtering) are included from Pro tier up. No separate AI licence fee. Ever.</p>
+      </div>
+
+      <div class="card">
+        <h3 style="font-size:1rem; margin-bottom:12px; color:var(--text-primary);">On-premise or cloud?</h3>
+        <p style="font-size:0.84rem; color:var(--text-secondary); line-height:1.7;">Both. Aether Open and Pro can be self-hosted on Kubernetes (Helm chart included). Enterprise adds managed cloud hosting with data residency options across EU, US, and APAC regions.</p>
+      </div>
+
+      <div class="card">
+        <h3 style="font-size:1rem; margin-bottom:12px; color:var(--text-primary);">Can I migrate from OpenWiFi?</h3>
+        <p style="font-size:0.84rem; color:var(--text-secondary); line-height:1.7;">Yes. Hermes speaks the full uCentral/TIP protocol natively. Your existing OpenWiFi devices connect to Aether without firmware changes. We provide a migration guide and dedicated onboarding for operators with 1,000+ devices.</p>
+      </div>
+
+      <div class="card">
+        <h3 style="font-size:1rem; margin-bottom:12px; color:var(--text-primary);">Are early access rates permanent?</h3>
+        <p style="font-size:0.84rem; color:var(--text-secondary); line-height:1.7;">Yes. Early access partners lock in their rate for the lifetime of the contract. Founding partner pricing will not be available at GA launch. The $0.30/device/mo Pro rate is for early access only.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section>
+  <div class="page">
+    <div class="cta-banner">
+      <h2 style="margin-bottom:16px;">Questions about pricing?</h2>
+      <p style="color:var(--text-secondary); max-width:440px; margin:0 auto 36px;">We're happy to model out exactly what Aether costs at your device count. No sales theatrics — just honest numbers.</p>
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <a href="/early-access" class="btn btn-primary">Request Early Access →</a>
+        <a href="mailto:hello@optimcloud.com" class="btn btn-outline">Email us directly</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</Layout>

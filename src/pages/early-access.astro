@@ -1,0 +1,164 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Early Access — Aether" description="Join the Aether early access programme. Shape the roadmap and lock in founding partner pricing.">
+
+<section class="hero" style="min-height:50vh; padding-top:120px; padding-bottom:80px;">
+  <div class="hero-bg"></div>
+  <div class="page hero-content" style="text-align:center; max-width:720px; margin:0 auto;">
+    <div class="hero-eyebrow" style="justify-content:center;">Early Access Programme</div>
+    <h1 style="font-size:clamp(2.2rem,5vw,3.8rem);">
+      Shape the platform.<br>
+      <span class="gradient-text">Lock in founding pricing.</span>
+    </h1>
+    <p class="hero-sub" style="margin:24px auto 0; text-align:center;">
+      Aether is in active development. Early access partners get direct influence over the roadmap,
+      priority onboarding, and founding partner rates that lock in permanently.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="page">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;">
+
+      <!-- Form -->
+      <div>
+        <div class="tag tag-cyan">Request Access</div>
+        <h2 style="margin-bottom:40px; font-size:2rem;">Tell us about<br>your deployment.</h2>
+
+        <form id="early-access-form" style="max-width:480px;">
+          <div class="form-group">
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" placeholder="Alex Chen" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Work email</label>
+            <input type="email" id="email" name="email" placeholder="alex@isp.com" required />
+          </div>
+          <div class="form-group">
+            <label for="company">Company / Organisation</label>
+            <input type="text" id="company" name="company" placeholder="Regional ISP Ltd." />
+          </div>
+          <div class="form-group">
+            <label for="role">I am a...</label>
+            <select id="role" name="role">
+              <option value="">Select your role</option>
+              <option value="home">Home user</option>
+              <option value="homelab">Homelab / tinkerer</option>
+              <option value="isp-operator">ISP / Regional operator</option>
+              <option value="carrier">Tier 1 carrier</option>
+              <option value="oem">OEM / Device manufacturer</option>
+              <option value="enterprise">Enterprise IT</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="devices">Estimated device count</label>
+            <select id="devices" name="devices">
+              <option value="">Select range</option>
+              <option value="1-10">1–10 devices (Home)</option>
+              <option value="10-100">10–100 devices (Small operator)</option>
+              <option value="100-10k">100–10,000 devices (Regional ISP)</option>
+              <option value="10k-500k">10k–500k devices (Mid-tier carrier)</option>
+              <option value="500k+">500k+ devices (Tier 1)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">What's your biggest wireless management pain point?</label>
+            <textarea id="message" name="message" placeholder="We're running three separate management stacks for different device vendors and it's costing us 2 engineers full-time..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:16px;">
+            Request Early Access →
+          </button>
+
+          <p style="margin-top:16px; font-size:0.78rem; color:var(--text-muted); text-align:center;">
+            No spam. No sales calls unless you want them. We'll respond within 48 hours.
+          </p>
+        </form>
+
+        <div id="success-msg" style="display:none; padding:32px; background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.3); border-radius:16px; text-align:center; margin-top:24px;">
+          <div style="font-size:2rem; margin-bottom:12px;">✓</div>
+          <h3 style="color:#10b981; margin-bottom:8px;">Request received.</h3>
+          <p style="color:var(--text-secondary); font-size:0.88rem;">We'll be in touch within 48 hours. In the meantime, explore the <a href="/open" style="color:var(--aether-cyan)">open source ac-client</a>.</p>
+        </div>
+      </div>
+
+      <!-- What you get -->
+      <div>
+        <div class="tag tag-violet">Early access includes</div>
+        <div style="display:flex; flex-direction:column; gap:20px; margin-top:8px;">
+          <div class="card" style="border-left:3px solid var(--aether-cyan); padding:24px;">
+            <h3 style="font-size:1rem; margin-bottom:8px; color:var(--aether-cyan);">Direct roadmap influence</h3>
+            <p style="font-size:0.84rem; color:var(--text-secondary);">Monthly calls with the engineering team. Your deployment needs directly inform prioritisation. Early partners have already shaped the protocol support matrix.</p>
+          </div>
+          <div class="card" style="border-left:3px solid var(--aether-violet); padding:24px;">
+            <h3 style="font-size:1rem; margin-bottom:8px; color:var(--aether-violet);">Founding partner pricing</h3>
+            <p style="font-size:0.84rem; color:var(--text-secondary);">Rates locked at early access levels permanently. Carriers joining now lock in at $0.30/device/mo — this rate will not be available at GA launch.</p>
+          </div>
+          <div class="card" style="border-left:3px solid var(--aether-emerald); padding:24px;">
+            <h3 style="font-size:1rem; margin-bottom:8px; color:var(--aether-emerald);">Priority onboarding</h3>
+            <p style="font-size:0.84rem; color:var(--text-secondary);">Dedicated onboarding engineer for operators with 1,000+ devices. We handle the integration work with your existing OSS/BSS systems.</p>
+          </div>
+          <div class="card" style="border-left:3px solid var(--aether-amber); padding:24px;">
+            <h3 style="font-size:1rem; margin-bottom:8px; color:var(--aether-amber);">Early platform access</h3>
+            <p style="font-size:0.84rem; color:var(--text-secondary);">Access to the dev environment, API keys, and the private Slack channel with the core team. No waiting for a GA release date.</p>
+          </div>
+        </div>
+
+        <!-- Tier summary -->
+        <div style="margin-top:40px; padding:28px; background:var(--aether-card); border:1px solid var(--aether-border); border-radius:16px;">
+          <h3 style="font-size:0.9rem; margin-bottom:20px; color:var(--text-secondary);">Early access pricing reference</h3>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--aether-border);">
+              <span style="font-size:0.85rem; color:var(--text-secondary);">Home</span>
+              <span style="font-family:var(--font-mono); font-size:0.9rem; color:var(--aether-emerald);">$5 / home / mo</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--aether-border);">
+              <span style="font-size:0.85rem; color:var(--text-secondary);">Operator (Aether Open)</span>
+              <span style="font-family:var(--font-mono); font-size:0.9rem; color:var(--aether-cyan);">$0.50 / device / mo</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--aether-border);">
+              <span style="font-size:0.85rem; color:var(--text-secondary);">Volume ISP (Aether Pro)</span>
+              <span style="font-family:var(--font-mono); font-size:0.9rem; color:var(--aether-blue);">$0.30 / device / mo</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 0;">
+              <span style="font-size:0.85rem; color:var(--text-secondary);">Enterprise / Tier 1</span>
+              <span style="font-family:var(--font-mono); font-size:0.9rem; color:var(--aether-violet);">Custom</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('early-access-form') as HTMLFormElement;
+  const successMsg = document.getElementById('success-msg');
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const email = data.get('email');
+    const name = data.get('name');
+    const role = data.get('role');
+    const devices = data.get('devices');
+    const company = data.get('company');
+    const message = data.get('message');
+
+    const subject = encodeURIComponent(`Aether Early Access Request — ${company || name}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nRole: ${role}\nDevices: ${devices}\n\nMessage:\n${message}`
+    );
+    window.location.href = `mailto:hello@optimcloud.com?subject=${subject}&body=${body}`;
+
+    form.style.display = 'none';
+    if (successMsg) successMsg.style.display = 'block';
+  });
+</script>
+
+</Layout>

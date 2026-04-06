@@ -1,0 +1,182 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const installCode = `<span class="c-muted"># 1. Install</span>
+opkg update && opkg install ac-client luci-app-aclient
+
+<span class="c-muted"># 2. Configure</span>
+uci set optimacs.&#64;config[0].server_host=<span class="c-cyan">'usp.optimcloud.com'</span>
+uci set optimacs.&#64;config[0].mtp=<span class="c-amber">'mqtt'</span>
+uci set optimacs.&#64;config[0].claim_token=<span class="c-green">'your-token-here'</span>
+uci commit optimacs
+
+<span class="c-muted"># 3. Start</span>
+/etc/init.d/ac-client enable
+/etc/init.d/ac-client start
+
+<span class="c-muted"># Done. Device appears in dashboard.</span>`;
+
+const uciConfig = `<span class="c-muted"># /etc/config/optimacs</span>
+
+config optimacs <span class="c-amber">'config'</span>
+  option server_host    <span class="c-cyan">'usp.optimcloud.com'</span>
+  option server_port    <span class="c-amber">'443'</span>
+  option mtp            <span class="c-amber">'mqtt'</span>   <span class="c-muted"># or ws/stomp/coap</span>
+  option mqtt_host      <span class="c-cyan">'emqx.optimcloud.com'</span>
+  option mqtt_port      <span class="c-amber">'1883'</span>
+  option claim_token    <span class="c-green">'YOUR_TOKEN'</span>
+  option gnss_device    <span class="c-amber">''</span>       <span class="c-muted"># /dev/ttyUSB0 for GPS</span>
+  option log_level      <span class="c-amber">'info'</span>`;
+---
+
+<Layout title="Open Source — ac-client" description="ac-client is the open source Apache-2.0 USP/TR-369 device agent for OpenWRT. Full TR-181:2.16, 4 MTPs, post-quantum TLS, opkg install.">
+
+<section class="hero" style="min-height:50vh; padding-top:120px; padding-bottom:80px;">
+  <div class="hero-bg" style="background: radial-gradient(ellipse 70% 60% at 60% 30%, rgba(16,185,129,0.12) 0%, transparent 60%);"></div>
+  <div class="page hero-content">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
+      <div>
+        <div class="hero-eyebrow">Open Source</div>
+        <h1 style="font-size:clamp(2.4rem,5vw,4rem);">
+          ac-client<br>
+          <span class="gradient-text">Apache-2.0</span>
+        </h1>
+        <p class="hero-sub" style="margin:24px 0 40px;">
+          The USP/TR-369 device agent for OpenWRT. Open sourced because it runs on OpenWRT — and that's the right thing to do.
+        </p>
+        <div style="display:flex; gap:16px; flex-wrap:wrap;">
+          <a href="https://github.com/Telecominfraproject" target="_blank" class="btn btn-primary">View on GitHub →</a>
+          <a href="/for/builders" class="btn btn-outline">Builder docs</a>
+        </div>
+      </div>
+      <div>
+        <div class="card" style="border-color:rgba(16,185,129,0.3); padding:28px;">
+          <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--aether-emerald); margin-bottom:16px; letter-spacing:0.1em;">LICENCE</div>
+          <div style="font-family:var(--font-display); font-size:1.6rem; font-weight:800; margin-bottom:8px;">Apache 2.0</div>
+          <p style="font-size:0.83rem; color:var(--text-secondary); line-height:1.7; margin-bottom:20px;">Use it, modify it, distribute it. Commercial use permitted. No copyleft conditions. Build your own managed WiFi product on top.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <span style="font-family:var(--font-mono); font-size:0.68rem; padding:4px 10px; border-radius:99px; background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.25); color:var(--aether-emerald);">✓ Commercial use</span>
+            <span style="font-family:var(--font-mono); font-size:0.68rem; padding:4px 10px; border-radius:99px; background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.25); color:var(--aether-emerald);">✓ Modification</span>
+            <span style="font-family:var(--font-mono); font-size:0.68rem; padding:4px 10px; border-radius:99px; background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.25); color:var(--aether-emerald);">✓ Distribution</span>
+            <span style="font-family:var(--font-mono); font-size:0.68rem; padding:4px 10px; border-radius:99px; background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.25); color:var(--aether-emerald);">✓ Patent use</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why open source -->
+<section>
+  <div class="page">
+    <div class="tag tag-emerald">Why open source?</div>
+    <h2>GPL compatibility.<br><span class="gradient-text">The honest answer.</span></h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; margin-top:48px; align-items:start;">
+      <div>
+        <p style="font-size:1rem; color:var(--text-secondary); line-height:1.8; margin-bottom:24px;">
+          ac-client runs on OpenWRT. It calls <code style="font-family:var(--font-mono); font-size:0.88em; color:var(--aether-cyan); background:rgba(34,211,238,0.08); padding:2px 6px; border-radius:4px;">uci</code> subprocess, reads dnsmasq lease files, and uses nl80211 — deep integration with OpenWRT's GPL-licensed components.
+        </p>
+        <p style="font-size:1rem; color:var(--text-secondary); line-height:1.8; margin-bottom:24px;">
+          Distributing ac-client as an opkg package on OpenWRT triggers GPL copyleft obligations on linked components. Apache-2.0 resolves this cleanly — no ambiguity, no risk, no legal grey area for operators who include it in their CPE.
+        </p>
+        <p style="font-size:1rem; color:var(--text-secondary); line-height:1.8;">
+          It's also the right call for the community. The OpenWRT ecosystem has 30,000+ router models. An open USP agent that any router can run is a rising tide.
+        </p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div class="card" style="padding:20px; border-color:rgba(34,211,238,0.2);">
+          <h4 style="font-size:0.88rem; color:var(--aether-cyan); margin-bottom:8px; font-family:var(--font-mono);">reads /tmp/dhcp.leases</h4>
+          <p style="font-size:0.8rem; color:var(--text-secondary);">dnsmasq lease file → Device.Hosts.Host.&#123;i&#125;. Every DHCP client visible to Argus with zero configuration. This is how IoT device inventory works.</p>
+        </div>
+        <div class="card" style="padding:20px; border-color:rgba(99,102,241,0.2);">
+          <h4 style="font-size:0.88rem; color:var(--aether-indigo); margin-bottom:8px; font-family:var(--font-mono);">reads /proc/net/arp</h4>
+          <p style="font-size:0.8rem; color:var(--text-secondary);">ARP table → catches devices that skipped DHCP. MAC + IP → OUI lookup → device classification. Argus sees everything.</p>
+        </div>
+        <div class="card" style="padding:20px; border-color:rgba(139,92,246,0.2);">
+          <h4 style="font-size:0.88rem; color:var(--aether-violet); margin-bottom:8px; font-family:var(--font-mono);">calls uci subprocess</h4>
+          <p style="font-size:0.8rem; color:var(--text-secondary);">WiFi config reads/writes via UCI → Device.WiFi.* data model. Radios, SSIDs, clients, channels. Full TR-181 coverage on any OpenWRT device.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- What ac-client does -->
+<section>
+  <div class="page">
+    <div class="tag tag-blue">Capabilities</div>
+    <h2>What ac-client<br><span class="gradient-text">actually does.</span></h2>
+    <div class="tech-grid" style="margin-top:48px;">
+      <div class="tech-card" style="border-top-color:#22d3ee">
+        <div class="tech-label" style="color:#22d3ee">Data model</div>
+        <div class="tech-name">TR-181:2.16</div>
+        <div class="tech-desc">30+ DM modules: WiFi, DHCP, hosts, firewall, QoS, diagnostics, firmware, security, VoIP, bulk data, GNSS. Complete device visibility via standard data model.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#6366f1">
+        <div class="tech-label" style="color:#6366f1">Transports</div>
+        <div class="tech-name">4 MTPs</div>
+        <div class="tech-desc">WebSocket, MQTT, STOMP, CoAP. Default: MQTT to EMQX broker at emqx.optimcloud.com:1883. Switch MTP via UCI config — no recompile needed.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#8b5cf6">
+        <div class="tech-label" style="color:#8b5cf6">Security</div>
+        <div class="tech-name">Post-quantum mTLS</div>
+        <div class="tech-desc">X25519 + ML-KEM-768 hybrid TLS. Certs provisioned via step-ca. Device identity anchored in PKI from first boot — not pre-shared keys.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#f59e0b">
+        <div class="tech-label" style="color:#f59e0b">Provisioning</div>
+        <div class="tech-name">ZTP via claim_token</div>
+        <div class="tech-desc">One UCI field. Device boots, reads token, calls home, links to tenant. No portal login. No per-device registration. Works behind NAT.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#10b981">
+        <div class="tech-label" style="color:#10b981">Discovery</div>
+        <div class="tech-name">IoT inventory</div>
+        <div class="tech-desc">Reads dhcp.leases + /proc/net/arp → Device.Hosts.Host.&#123;i&#125;. IP, MAC, hostname, active state. Every device that touches the network — visible without configuration.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#0ea5e9">
+        <div class="tech-label" style="color:#0ea5e9">Location</div>
+        <div class="tech-name">GNSS / GPS</div>
+        <div class="tech-desc">Serial NMEA-0183 receiver → Device location reported to controller. For outdoor CPEs, mobile deployments, and vehicle tracking. Zero extra config.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#f43f5e">
+        <div class="tech-label" style="color:#f43f5e">UI</div>
+        <div class="tech-name">LuCI app</div>
+        <div class="tech-desc">luci-app-aclient: OpenWRT web UI extension. Overview page + configuration page. Non-technical users can check status and set claim_token without SSH.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#34d399">
+        <div class="tech-label" style="color:#34d399">Packaging</div>
+        <div class="tech-name">opkg package</div>
+        <div class="tech-desc">Native OpenWRT package with init script, UCI config at /etc/config/optimacs. One opkg install. Starts on boot. No dependencies beyond the OpenWRT base system.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Install -->
+<section>
+  <div class="page">
+    <div class="tag tag-emerald">Install</div>
+    <h2>Three commands.<br><span class="gradient-text">Managed router.</span></h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-top:48px; align-items:start;">
+      <div class="code-block" set:html={installCode} />
+      <div>
+        <h3 style="font-size:1rem; margin-bottom:20px; color:var(--text-secondary);">UCI config reference</h3>
+        <div class="code-block" style="font-size:0.75rem;" set:html={uciConfig} />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="page">
+    <div class="cta-banner">
+      <h2 style="margin-bottom:16px;">Contribute or deploy.<br><span class="gradient-text">Both are welcome.</span></h2>
+      <p style="color:var(--text-secondary); max-width:440px; margin:0 auto 36px; line-height:1.7;">File issues, submit PRs, package for your router. Or just run it as-is and connect to Aether. Apache-2.0 — no strings.</p>
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <a href="https://github.com/Telecominfraproject" target="_blank" class="btn btn-primary">GitHub →</a>
+        <a href="/early-access" class="btn btn-outline">Get Aether API access</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</Layout>

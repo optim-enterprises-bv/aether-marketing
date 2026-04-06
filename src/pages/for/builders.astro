@@ -1,0 +1,176 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const installCode = `<span class="c-muted"># Install on OpenWRT</span>
+opkg update
+opkg install ac-client
+
+<span class="c-muted"># Configure</span>
+uci set optimacs.&#64;config[0].server_host=<span class="c-cyan">'usp.optimcloud.com'</span>
+uci set optimacs.&#64;config[0].claim_token=<span class="c-amber">'your-account-token'</span>
+uci commit optimacs
+
+<span class="c-muted"># Start</span>
+/etc/init.d/ac-client enable
+/etc/init.d/ac-client start
+
+<span class="c-green"># Device appears in your Aether dashboard instantly</span>`;
+
+const apiListCode = `curl -H <span class="c-amber">"Authorization: Bearer $TOKEN"</span> \\
+  <span class="c-cyan">https://api.optimcloud.com/v1/devices</span>
+
+<span class="c-muted"># Response</span>
+&#123;
+  <span class="c-green">"devices"</span>: [
+    &#123;
+      <span class="c-green">"id"</span>: <span class="c-amber">"dev_7f3a9b"</span>,
+      <span class="c-green">"serial"</span>: <span class="c-amber">"AP-001-CAFE"</span>,
+      <span class="c-green">"protocol"</span>: <span class="c-amber">"ucentralv2"</span>,
+      <span class="c-green">"status"</span>: <span class="c-green">"connected"</span>,
+      <span class="c-green">"uptime_s"</span>: 432800
+    &#125;
+  ]
+&#125;`;
+
+const apiPushCode = `curl -X POST \\
+  -H <span class="c-amber">"Authorization: Bearer $TOKEN"</span> \\
+  -H <span class="c-amber">"Content-Type: application/json"</span> \\
+  -d <span class="c-cyan">'&#123;"ssid":"MyNet","band":"5g"&#125;'</span> \\
+  <span class="c-cyan">https://api.optimcloud.com/v1/devices/dev_7f3a9b/wifi</span>
+
+<span class="c-muted"># Delta delivered to device in &lt;1ms</span>
+<span class="c-muted"># JSON Patch RFC 6902 — 200 bytes not 50KB</span>`;
+
+const helmCode = `<span class="c-muted"># Add Aether Helm repo</span>
+helm repo add aether <span class="c-cyan">https://charts.optimcloud.com/aether</span>
+helm repo update
+
+<span class="c-muted"># Install with bundled dependencies</span>
+helm install aether aether/aether \\
+  --namespace aether --create-namespace \\
+  --set global.domain=<span class="c-amber">aether.yourdomain.com</span> \\
+  --set global.storageClass=<span class="c-amber">standard</span> \\
+  --values values.yaml
+
+<span class="c-muted"># Port 8080 → operator portal</span>
+<span class="c-muted"># Port 443  → device connections (WebSocket/MQTT)</span>
+<span class="c-muted"># Port 8883 → MQTT broker</span>`;
+---
+
+<Layout title="Aether for Builders — Built by engineers, for engineers" description="ac-client open source Apache-2.0. Full TR-181:2.16, 4 MTPs, post-quantum TLS. OpenWRT opkg install. API-first. $0.50/device operator tier.">
+
+<section class="hero" style="min-height:55vh; padding-top:120px; padding-bottom:80px;">
+  <div class="hero-bg" style="background: radial-gradient(ellipse 70% 60% at 60% 30%, rgba(245,158,11,0.1) 0%, transparent 60%), radial-gradient(ellipse 50% 50% at 10% 80%, rgba(99,102,241,0.1) 0%, transparent 50%);"></div>
+  <div class="page hero-content">
+    <div class="hero-eyebrow">For Builders</div>
+    <h1>
+      Built by engineers.<br>
+      <span class="gradient-text">For engineers.</span>
+    </h1>
+    <p class="hero-sub">
+      API-first. Open source agent. On-premise available on Enterprise. The platform you'd build yourself if you had 3 years and a team of 14.
+    </p>
+    <div class="hero-cta">
+      <a href="/open" class="btn btn-primary">ac-client on GitHub →</a>
+      <a href="/early-access" class="btn btn-outline">Operator tier — $0.50/device</a>
+    </div>
+  </div>
+</section>
+
+<!-- ac-client open source -->
+<section>
+  <div class="page">
+    <div class="tag tag-emerald">Open Source</div>
+    <h2>ac-client is Apache-2.0.<br><span class="gradient-text">Ship it anywhere.</span></h2>
+    <p style="margin-top:16px; color:var(--text-secondary); max-width:600px; font-size:1rem; line-height:1.7;">The USP/TR-369 device agent for OpenWRT. 30k+ router models. Full TR-181:2.16 data model. Post-quantum TLS. One opkg install and your router is managed.</p>
+
+    <div class="grid-2col">
+      <div>
+        <div class="code-block" set:html={installCode} />
+      </div>
+      <div class="flex-col-gap">
+        <div class="card" style="padding:20px; border-left:3px solid var(--aether-emerald);">
+          <h4 style="font-size:0.9rem; color:var(--aether-emerald); margin-bottom:8px;">Full TR-181:2.16 data model</h4>
+          <p style="font-size:0.82rem; color:var(--text-secondary);">30+ DM modules: WiFi, DHCP, hosts, firewall, QoS, diagnostics, firmware, security, VoIP, bulk data, GNSS. Complete device visibility.</p>
+        </div>
+        <div class="card" style="padding:20px; border-left:3px solid var(--aether-cyan);">
+          <h4 style="font-size:0.9rem; color:var(--aether-cyan); margin-bottom:8px;">4 MTPs supported</h4>
+          <p style="font-size:0.82rem; color:var(--text-secondary);">WebSocket, MQTT, STOMP, CoAP. Default: MQTT to EMQX. Choose the transport that fits your network topology.</p>
+        </div>
+        <div class="card" style="padding:20px; border-left:3px solid var(--aether-violet);">
+          <h4 style="font-size:0.9rem; color:var(--aether-violet); margin-bottom:8px;">Post-quantum TLS</h4>
+          <p style="font-size:0.82rem; color:var(--text-secondary);">X25519 + ML-KEM-768 mTLS via step-ca provisioned certs. Future-proof device-to-cloud security from day one.</p>
+        </div>
+        <div class="card" style="padding:20px; border-left:3px solid var(--aether-amber);">
+          <h4 style="font-size:0.9rem; color:var(--aether-amber); margin-bottom:8px;">ZTP via claim_token</h4>
+          <p style="font-size:0.82rem; color:var(--text-secondary);">Set one token in UCI config. Device auto-links to your tenant on first boot. No portal login, no per-device manual registration.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- API first -->
+<section>
+  <div class="page">
+    <div class="tag tag-blue">API-first</div>
+    <h2>The UI is optional.<br><span class="gradient-text">The API is not.</span></h2>
+    <p style="margin-top:16px; color:var(--text-secondary); max-width:600px; font-size:1rem; line-height:1.7;">Every action in Aether is available via REST and GraphQL. If you can imagine a curl command for it, we have an endpoint.</p>
+
+    <div class="grid-2col">
+      <div>
+        <h3 style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:16px; font-family:var(--font-mono);">List all managed devices</h3>
+        <div class="code-block" set:html={apiListCode} />
+      </div>
+      <div>
+        <h3 style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:16px; font-family:var(--font-mono);">Push a config change</h3>
+        <div class="code-block" set:html={apiPushCode} />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Self-host -->
+<section>
+  <div class="page">
+    <div class="tag tag-violet">On-Premise</div>
+    <h2>Need it on your infra?<br><span class="gradient-text">Enterprise has you covered.</span></h2>
+    <p style="margin-top:16px; color:var(--text-secondary); max-width:600px; font-size:1rem; line-height:1.7;">On-premise deployment is available on the Enterprise tier — for carriers with data residency requirements or operators who need full infrastructure control. Kubernetes-based, Helm-deployed, same codebase as cloud.</p>
+
+    <div class="code-block" style="margin-top:32px;" set:html={helmCode} />
+
+    <div class="grid-3col">
+      <div class="card" style="padding:20px; text-align:center;">
+        <div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--aether-cyan); margin-bottom:8px;">RUNTIME</div>
+        <div style="font-size:0.88rem; font-weight:600;">Single Rust binary</div>
+        <div style="font-size:0.78rem; color:var(--text-muted); margin-top:4px;">No JVM, no Node, no Python</div>
+      </div>
+      <div class="card" style="padding:20px; text-align:center;">
+        <div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--aether-violet); margin-bottom:8px;">MEMORY</div>
+        <div style="font-size:0.88rem; font-weight:600;">&lt;512 MB base</div>
+        <div style="font-size:0.78rem; color:var(--text-muted); margin-top:4px;">200k devices on commodity hardware</div>
+      </div>
+      <div class="card" style="padding:20px; text-align:center;">
+        <div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--aether-emerald); margin-bottom:8px;">LATENCY</div>
+        <div style="font-size:0.88rem; font-weight:600;">&lt;1ms config delta</div>
+        <div style="font-size:0.78rem; color:var(--text-muted); margin-top:4px;">JSON Patch, not full config push</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="page">
+    <div class="cta-banner">
+      <div class="tag tag-amber" style="margin-bottom:28px;">Operator tier</div>
+      <h2 style="margin-bottom:16px;"><span class="gradient-text">$0.50/device/month.</span><br>API keys in 24 hours.</h2>
+      <p style="color:var(--text-secondary); max-width:420px; margin:0 auto 40px;">Early access. No enterprise sales process. Just fill out the form and we'll get you API keys within 24 hours.</p>
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <a href="/early-access" class="btn btn-primary">Get API access →</a>
+        <a href="/open" class="btn btn-outline">View ac-client source</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</Layout>
