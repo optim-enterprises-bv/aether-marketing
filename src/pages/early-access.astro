@@ -84,6 +84,7 @@ import Layout from '../layouts/Layout.astro';
           <h3 style="color:#10b981; margin-bottom:8px;">Request received.</h3>
           <p style="color:var(--text-secondary); font-size:0.88rem;">We'll be in touch within 48 hours. In the meantime, explore the <a href="/open" style="color:var(--aether-cyan)">open source ac-client</a>.</p>
         </div>
+        <div id="error-msg" style="display:none; margin-top:16px; padding:14px 18px; background:rgba(244,63,94,0.08); border:1px solid rgba(244,63,94,0.3); border-radius:10px; font-size:0.84rem; color:var(--aether-rose);"></div>
       </div>
 
       <!-- What you get -->
@@ -139,25 +140,44 @@ import Layout from '../layouts/Layout.astro';
 <script>
   const form = document.getElementById('early-access-form') as HTMLFormElement;
   const successMsg = document.getElementById('success-msg');
+  const submitBtn = form?.querySelector('button[type="submit"]') as HTMLButtonElement;
+  const errorMsg = document.getElementById('error-msg');
 
-  form?.addEventListener('submit', (e) => {
+  form?.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+    }
+    if (errorMsg) errorMsg.style.display = 'none';
+
     const data = new FormData(form);
-    const email = data.get('email');
-    const name = data.get('name');
-    const role = data.get('role');
-    const devices = data.get('devices');
-    const company = data.get('company');
-    const message = data.get('message');
 
-    const subject = encodeURIComponent(`Aether Early Access Request — ${company || name}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nRole: ${role}\nDevices: ${devices}\n\nMessage:\n${message}`
-    );
-    window.location.href = `mailto:hello@optimcloud.com?subject=${subject}&body=${body}`;
+    try {
+      const resp = await fetch('https://wifi.aether-io.com/api/v1/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(data)),
+      });
 
-    form.style.display = 'none';
-    if (successMsg) successMsg.style.display = 'block';
+      if (!resp.ok) {
+        const body = await resp.json().catch(() => ({}));
+        throw new Error(body.error || 'Submission failed');
+      }
+
+      form.style.display = 'none';
+      if (successMsg) successMsg.style.display = 'block';
+    } catch (err: any) {
+      if (errorMsg) {
+        errorMsg.textContent = err.message || 'Something went wrong. Please email info@aether-io.com directly.';
+        errorMsg.style.display = 'block';
+      }
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Request Early Access →';
+      }
+    }
   });
 </script>
 
