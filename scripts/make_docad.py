@@ -31,7 +31,7 @@ def bg():
     c.rect(0, 0, W, H, stroke=0, fill=1)
 
 
-def chrome(n, total=6):
+def chrome(n, total=7):
     c.setFont(Mo, 8)
     c.setFillColor(MUT)
     c.drawString(M, 34, "AETHER-IO.COM")
@@ -85,7 +85,7 @@ y = body(y - 14, "Fixed access and mobile access are managed by two disjoint "
                  "Aether puts them behind one.", 15, 24)
 y -= 26
 c.setFont(Mo, 10); c.setFillColor(MUT)
-c.drawString(M, y, "10 PROTOCOLS  ·  ONE BINARY  ·  SELF-HOSTED  ·  OPEN AGENT")
+c.drawString(M, y, "10 PROTOCOLS  ·  ONE BINARY  ·  OPEN AGENT  ·  MANAGED PLATFORM")
 chrome(1); c.showPage()
 
 # ── 2 · the problem ──────────────────────────────────────────────────
@@ -161,38 +161,74 @@ chrome(3); c.showPage()
 
 # ── 4 · what we are / are not ────────────────────────────────────────
 bg()
-y = eyebrow(H - 92, "Precision", VIOLET)
-y = heading(y, ["Aether is not a RIC.", "~Here is what it is."], 34, 42)
-y -= 10
+y = eyebrow(H - 88, "Precision", VIOLET)
+y = heading(y, ["Aether is not a RIC.", "~Here is what it is."], 32, 40)
+y -= 4
 
-blocks = [
-    ("IS", EMER, ["An A1 client — pushes policy toward a Near-RT RIC",
-                  "A VES collector — emits events into ONAP-style OSS",
-                  "One normalized data model across CPE, transport and RAN",
-                  "Self-hosted on your Kubernetes, via Helm"]),
-    ("IS NOT", ROSE, ["An xApp or rApp hosting platform",
-                      "A Near-RT or Non-RT RIC implementation",
-                      "A replacement for your RAN vendor's EMS",
-                      "A SaaS that ingests your subscriber data"]),
+bands = [
+    ("IS", EMER, ["A1 client — deliver, withdraw, fetch and status policy",
+                  "VES collector — events into ONAP-style OSS",
+                  "Device.Cellular — IMEI, IMSI, RSRP, RSRQ, SINR on FWA CPE",
+                  "One data model across CPE, transport and RAN"]),
+    ("ON THE ROADMAP", AMBER, ["O1 interface — the NETCONF/YANG transport is already in place",
+                               "Non-RT RIC / rApp runtime over R1",
+                               "STOMP and CoAP message transports"]),
+    ("IS NOT", ROSE, ["A Near-RT RIC, or E2 termination",
+                      "An xApp hosting platform",
+                      "A replacement for your RAN vendor's EMS"]),
 ]
-for title, col, items in blocks:
-    c.setFont(Mo, 10); c.setFillColor(col)
+for title, col, items in bands:
+    c.setFont(Mo, 9.5); c.setFillColor(col)
     c.drawString(M, y, title)
-    y -= 24
-    c.setFont(R, 12.5); c.setFillColor(SEC)
+    y -= 21
     for it in items:
-        c.setFillColor(col); c.drawString(M, y, "—")
-        c.setFillColor(SEC); c.drawString(M + 20, y, it)
-        y -= 23
-    y -= 18
+        c.setFillColor(col); c.setFont(R, 12)
+        c.drawString(M, y, "—")
+        c.setFillColor(SEC)
+        c.drawString(M + 18, y, it)
+        y -= 20
+    y -= 14
 
-y = rule(y + 4)
+y = rule(y + 6)
 y = body(y, "The hard part was never A1. It was a data model where a TR-181 "
             "parameter from an OpenWrt box and a gNMI subscription from an "
-            "aggregation switch are both first-class.", 12.5, 20, MUT)
+            "aggregation switch are both first-class.", 12, 19, MUT)
 chrome(4); c.showPage()
 
-# ── 5 · how it deploys ───────────────────────────────────────────────
+# ── 5 · the open agent ───────────────────────────────────────────────
+bg()
+y = eyebrow(H - 92, "Open source", CYAN)
+y = heading(y, ["ac-client.", "~Download. Install. Sign up."], 34, 42)
+y = body(y - 6, "The agent is open source under BSD 3-Clause. The platform it "
+                "reports to is a managed service. Three commands and the router "
+                "is under management.", 13, 21)
+y -= 24
+
+c.setFillColor(CARD); c.setStrokeColor(LINE); c.setLineWidth(1)
+c.roundRect(M, y - 78, W - 2 * M, 74, 8, stroke=1, fill=1)
+c.setFont(Mo, 11); c.setFillColor(CYAN)
+c.drawString(M + 20, y - 26, "opkg install ac-client luci-app-aclient")
+c.setFillColor(MUT)
+c.drawString(M + 20, y - 46, "uci set optimacs.@config[0].claim_token='...'")
+c.drawString(M + 20, y - 66, "/etc/init.d/ac-client start")
+y -= 104
+
+feats = [("TR-369 / USP 1.3", "TP-469 conformance tested", CYAN),
+         ("Post-quantum mTLS", "X25519 + ML-KEM-768, always on", VIOLET),
+         ("UCI-backed TR-181", "47 backend operations", EMER),
+         ("WiFi 7 + Cellular", "EHT modes and Device.Cellular", AMBER)]
+for name, desc, col in feats:
+    c.setFillColor(col); c.rect(M, y - 3, 3, 14, stroke=0, fill=1)
+    c.setFont(B, 12.5); c.setFillColor(TXT); c.drawString(M + 16, y, name)
+    c.setFont(R, 11.5); c.setFillColor(MUT); c.drawString(M + 210, y, desc)
+    y -= 27
+
+y = rule(y - 2)
+c.setFont(R, 12.5); c.setFillColor(SEC)
+c.drawString(M, y, "1,500+ OpenWrt router models. No custom firmware image.")
+chrome(5); c.showPage()
+
+# ── 6 · how it deploys ───────────────────────────────────────────────
 bg()
 y = eyebrow(H - 92, "Deployment", EMER)
 y = heading(y, ["Meet the device", "~where it is."], 36, 44)
@@ -222,20 +258,20 @@ c.setFont(B, 13); c.setFillColor(TXT)
 c.drawString(M, y, "Config changes ship as JSON Patch (RFC 6902)")
 c.setFont(R, 13); c.setFillColor(SEC)
 c.drawString(M, y - 22, "~200 bytes per update, not a ~50 KB full-config push.")
-chrome(5); c.showPage()
+chrome(6); c.showPage()
 
-# ── 6 · CTA ──────────────────────────────────────────────────────────
+# ── 7 · CTA ──────────────────────────────────────────────────────────
 bg()
 c.setFillColor(VIOLET); c.rect(M, H - 150, 54, 4, stroke=0, fill=1)
-y = heading(H - 236, ["Looking for a few", "~design partners."], 40, 50)
-y = body(y - 8, "Best fit: a messy access network. Multiple CPE silicon vendors, "
-                "a platform inherited from an acquisition, aggregation gear still "
-                "on SNMP, and a RAN team you'd like to stop emailing spreadsheets to.",
+y = heading(H - 236, ["Ten protocols.", "~One control plane."], 40, 50)
+y = body(y - 8, "Built for a messy access network. Multiple CPE silicon vendors, a "
+                "platform inherited from an acquisition, aggregation gear still on "
+                "SNMP, and fixed wireless CPE nobody has a dashboard for.",
          13.5, 22)
 y -= 24
-for t in ["Founding-partner pricing, locked for the life of the contract",
-          "Direct input on roadmap priority",
-          "Our engineering time on your specific protocol mix"]:
+for t in ["$0.30 / device / month at volume — no per-device AI tax",
+          "Open source agent, managed platform, EU / US data residency",
+          "Self-hosting licensed on Enterprise"]:
     c.setFillColor(CYAN); c.drawString(M, y, "—")
     c.setFont(R, 13); c.setFillColor(SEC); c.drawString(M + 20, y, t)
     y -= 24
@@ -246,10 +282,10 @@ c.roundRect(M, y - 78, W - 2 * M, 74, 10, stroke=1, fill=1)
 c.setFont(B, 16); c.setFillColor(TXT)
 c.drawString(M + 24, y - 32, "aether-io.com")
 c.setFont(R, 12); c.setFillColor(SEC)
-c.drawString(M + 24, y - 54, "Running today · Early access · Not a sales process")
+c.drawString(M + 24, y - 54, "Running today · aether-io.com/pricing")
 c.setFont(Mo, 9); c.setFillColor(MUT)
 c.drawString(M, y - 108, "OPTIM ENTERPRISES BV")
-chrome(6); c.showPage()
+chrome(7); c.showPage()
 
 c.save()
 print("wrote aether-converged-access.pdf")
