@@ -38,7 +38,7 @@ const apiPushCode = `curl -X POST \\
   -d <span class="c-cyan">'&#123;"ssid":"MyNet","band":"5g"&#125;'</span> \\
   <span class="c-cyan">https://api.optimcloud.com/v1/devices/dev_7f3a9b/wifi</span>
 
-<span class="c-muted"># Delta delivered to device in &lt;1ms</span>
+<span class="c-muted"># Delta pushed to device as a JSON Patch</span>
 <span class="c-muted"># JSON Patch RFC 6902 — 200 bytes not 50KB</span>`;
 
 const helmCode = `<span class="c-muted"># Add Aether Helm repo</span>
@@ -148,11 +148,11 @@ helm install aether aether/aether \\
       <div class="card" style="padding:20px; text-align:center;">
         <div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--aether-violet); margin-bottom:8px;">MEMORY</div>
         <div style="font-size:0.88rem; font-weight:600;">&lt;512 MB base</div>
-        <div style="font-size:0.78rem; color:var(--text-muted); margin-top:4px;">200k devices on commodity hardware</div>
+        <div style="font-size:0.78rem; color:var(--text-muted); margin-top:4px;">Single binary on commodity hardware</div>
       </div>
       <div class="card" style="padding:20px; text-align:center;">
         <div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--aether-emerald); margin-bottom:8px;">LATENCY</div>
-        <div style="font-size:0.88rem; font-weight:600;">&lt;1ms config delta</div>
+        <div style="font-size:0.88rem; font-weight:600;">200 B config delta</div>
         <div style="font-size:0.78rem; color:var(--text-muted); margin-top:4px;">JSON Patch, not full config push</div>
       </div>
     </div>
