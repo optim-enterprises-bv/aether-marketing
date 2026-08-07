@@ -113,11 +113,11 @@ import Layout from '../layouts/Layout.astro';
         <div>
           <div class="audience-eyebrow" style="color:var(--aether-amber);">Builders &amp; Tinkerers</div>
           <h3 class="audience-title">Built by engineers.<br>For engineers.</h3>
-          <p class="audience-desc">API-first. Open source agent. On-premise available on Enterprise. The platform you'd build yourself if you had 3 years.</p>
+          <p class="audience-desc">API-first. Managed service. Self-hosting under licence on Enterprise. The platform you'd build yourself if you had 3 years.</p>
           <ul class="audience-features">
-            <li>ac-client — Apache-2.0, OpenWRT opkg</li>
+            <li>ac-client — OpenWRT opkg + LuCI app</li>
             <li>REST + GraphQL — every action via API</li>
-            <li>Helm chart — self-host on any k8s</li>
+            <li>Managed cloud — EU / US residency</li>
             <li>Full TR-181:2.16 data model</li>
           </ul>
           <div class="audience-cta" style="color:var(--aether-amber);">$0.50 / device / month →</div>
@@ -425,7 +425,7 @@ import Layout from '../layouts/Layout.astro';
         <div class="matrix-header" style="color:#38bdf8">OpenWrt</div>
         <div class="matrix-item green">✓ device agent (TR-369)</div>
         <div class="matrix-item green">✓ cfg80211 / nl80211</div>
-        <div class="matrix-item green">✓ 30k+ router models</div>
+        <div class="matrix-item green">✓ 1,500+ router models</div>
         <div class="matrix-item green">✓ opkg package install</div>
         <div class="matrix-item green">✓ Post-quantum TLS</div>
       </div>
@@ -477,7 +477,6 @@ import Layout from '../layouts/Layout.astro';
           </tr>
         </thead>
         <tbody>
-          <tr><td>Open source</td><td class="td-aether"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>OpenWiFi / OpenWrt</td><td class="td-aether"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>QSDK support</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="part">Partial</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="part">Partial</span></td></tr>
           <tr><td>RDK-B support</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
@@ -493,7 +492,7 @@ import Layout from '../layouts/Layout.astro';
           <tr><td>O-RAN A1 / VES</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>Post-quantum TLS</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>TMF Open API (BSS/OSS)</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="part">Partial</span></td><td><span class="part">Partial</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td></tr>
-          <tr><td>On-premise deployment</td><td class="td-aether"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>On-premise deployment</td><td class="td-aether"><span class="part">Licensed</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td></tr>
           <tr><td>Per-device SaaS fee</td><td class="td-aether" style="color:var(--aether-emerald);font-weight:700;">None</td><td style="color:var(--aether-emerald)">None</td><td style="color:var(--aether-emerald)">None</td><td style="color:var(--aether-rose)">~$6–18/mo</td><td style="color:var(--aether-rose)">~$4–12/mo</td><td style="color:var(--aether-rose)">~$2–5/mo</td><td style="color:var(--aether-rose)">~$3–8/mo</td></tr>
         </tbody>
       </table>
@@ -687,15 +686,15 @@ import Layout from '../layouts/Layout.astro';
       </div>
       <div class="pricing-card">
         <div class="pricing-tier">Operator</div>
-        <div class="pricing-name">Aether Open</div>
+        <div class="pricing-name">Aether Standard</div>
         <div class="pricing-price">$0.50 <span>/ device / mo</span></div>
-        <div class="pricing-desc">For operators self-hosting Aether. All 10 protocols, mesh, and events — no AI tier lock.</div>
+        <div class="pricing-desc">For operators running Aether as a managed service. All 10 protocols, mesh, and events — no AI tier lock.</div>
         <ul class="pricing-features">
           <li><span class="check">✓</span> All 10 protocols (Hermes)</li>
           <li><span class="check">✓</span> Meridian mesh management</li>
           <li><span class="check">✓</span> Pheme event delivery</li>
           <li><span class="check">✓</span> Post-quantum TLS</li>
-          <li><span class="check">✓</span> Self-hosted / on-premise</li>
+          <li><span class="check">✓</span> Managed cloud — EU / US residency</li>
           <li><span class="check">✓</span> Community support</li>
         </ul>
         <a href="/early-access" class="btn" style="width:100%;justify-content:center;background:rgba(34,211,238,0.1);border:1px solid rgba(34,211,238,0.4);color:#22d3ee;">Request Early Access</a>
@@ -706,7 +705,7 @@ import Layout from '../layouts/Layout.astro';
         <div class="pricing-price">$0.30 <span>/ device / mo</span></div>
         <div class="pricing-desc">For ISPs at scale. Full AI, security suite, OpenSync native port, and white-label apps.</div>
         <ul class="pricing-features">
-          <li><span class="check">✓</span> Everything in Open</li>
+          <li><span class="check">✓</span> Everything in Standard</li>
           <li><span class="check">✓</span> Prometheus AI/RF optimizer</li>
           <li><span class="check">✓</span> Argus IoT fingerprinting</li>
           <li><span class="check">✓</span> Aegis content filtering</li>
