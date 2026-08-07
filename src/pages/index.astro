@@ -14,9 +14,9 @@ import Layout from '../layouts/Layout.astro';
       <span class="gradient-text">Every device.<br>Infinite intelligence.</span>
     </h1>
     <p class="hero-sub fade-up fade-up-delay-2">
-      The unified wireless management platform that replaces seven fragmented stacks
-      with a single high-performance system — from OpenWRT routers to QSDK and RDK-B gateways,
-      from OpenWiFi access points to prplOS mesh nodes.
+      The unified access management platform that replaces seven fragmented stacks with a single
+      high-performance system — from OpenWRT routers to QSDK and RDK-B gateways, from OpenWiFi
+      access points to prplOS mesh nodes, and out to fixed wireless CPE, transport gear and O-RAN A1.
     </p>
     <div class="hero-cta fade-up fade-up-delay-3">
       <a href="/early-access" class="btn btn-primary">Request Early Access →</a>
@@ -113,9 +113,9 @@ import Layout from '../layouts/Layout.astro';
         <div>
           <div class="audience-eyebrow" style="color:var(--aether-amber);">Builders &amp; Tinkerers</div>
           <h3 class="audience-title">Built by engineers.<br>For engineers.</h3>
-          <p class="audience-desc">API-first. Managed service. Self-hosting under licence on Enterprise. The platform you'd build yourself if you had 3 years.</p>
+          <p class="audience-desc">API-first. Open source agent, managed platform. Self-hosting under licence on Enterprise. The platform you'd build yourself if you had 3 years.</p>
           <ul class="audience-features">
-            <li>ac-client — OpenWRT opkg + LuCI app</li>
+            <li>ac-client — BSD-3-Clause, OpenWRT opkg</li>
             <li>REST + GraphQL — every action via API</li>
             <li>Managed cloud — EU / US residency</li>
             <li>Full TR-181:2.16 data model</li>
@@ -407,6 +407,40 @@ import Layout from '../layouts/Layout.astro';
   </div>
 </section>
 
+<!-- ═══ RAN & CELLULAR ═════════════════════════════════ -->
+<section id="ran">
+  <div class="page">
+    <div class="tag tag-amber">RAN &amp; Cellular</div>
+    <h2>Not just WiFi.<br><span class="gradient-text">The whole access edge.</span></h2>
+    <p style="margin-top:20px; color:var(--text-secondary); max-width:680px; font-size:1rem; line-height:1.7;">
+      Fixed wireless and mobile access sit in the same control plane as the CPE fleet — so a subscriber
+      complaint can be traced from the home, through the backhaul, to the radio without leaving one system.
+    </p>
+    <div class="tech-grid" style="margin-top:48px;">
+      <div class="tech-card" style="border-top-color:#f59e0b">
+        <div class="tech-label" style="color:#f59e0b">O-RAN</div>
+        <div class="tech-name">A1 policy interface</div>
+        <div class="tech-desc">Full policy lifecycle against a Near-RT RIC — deliver, withdraw, fetch, and enumerate policy types, with policy status tracked and stored. Aether is an A1 client, not a RIC.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#f43f5e">
+        <div class="tech-label" style="color:#f43f5e">O-RAN</div>
+        <div class="tech-name">VES collector</div>
+        <div class="tech-desc">Emits VES events into ONAP-style OSS. The same pipeline carrying CPE telemetry reports RAN events to the systems your RAN already reports into.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#10b981">
+        <div class="tech-label" style="color:#10b981">Cellular / FWA</div>
+        <div class="tech-name">Device.Cellular</div>
+        <div class="tech-desc">TR-181 cellular data model on OpenWRT CPE via ModemManager — IMEI, IMSI, ICCID, and live RSRP, RSRQ and SINR. Fixed wireless CPE managed exactly like fixed-line CPE.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#8b5cf6">
+        <div class="tech-label" style="color:#8b5cf6">Transport</div>
+        <div class="tech-name">NETCONF · SNMP · gNMI</div>
+        <div class="tech-desc">Aggregation and backhaul gear in the same device list as the CPE. YANG models over NETCONF, streaming telemetry over gNMI, and SNMP for anything too old for either.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ PLATFORM MATRIX ════════════════════════════════ -->
 <section>
   <div class="page">
@@ -428,6 +462,7 @@ import Layout from '../layouts/Layout.astro';
         <div class="matrix-item green">✓ 1,500+ router models</div>
         <div class="matrix-item green">✓ opkg package install</div>
         <div class="matrix-item green">✓ Post-quantum TLS</div>
+        <div class="matrix-item green">✓ Device.Cellular (ModemManager)</div>
       </div>
       <div class="matrix-col">
         <div class="matrix-header" style="color:#818cf8">QSDK</div>
@@ -477,6 +512,7 @@ import Layout from '../layouts/Layout.astro';
           </tr>
         </thead>
         <tbody>
+          <tr><td>Open source device agent</td><td class="td-aether"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>OpenWiFi / OpenWrt</td><td class="td-aether"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>QSDK support</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="part">Partial</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="part">Partial</span></td></tr>
           <tr><td>RDK-B support</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
@@ -490,6 +526,7 @@ import Layout from '../layouts/Layout.astro';
           <tr><td>SNMP (v1/v2c/v3)</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>gNMI streaming telemetry</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="part">Partial</span></td></tr>
           <tr><td>O-RAN A1 / VES</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Cellular / FWA CPE (RSRP, RSRQ, SINR)</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="part">Partial</span></td></tr>
           <tr><td>Post-quantum TLS</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>TMF Open API (BSS/OSS)</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="part">Partial</span></td><td><span class="part">Partial</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td></tr>
           <tr><td>On-premise deployment</td><td class="td-aether"><span class="part">Licensed</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td></tr>
