@@ -59,6 +59,10 @@ Written to survive a hostile RAN engineer in the comments. Keep it that way.
 | NETCONF/YANG, RFC 6241/6242 | `crates/netconf` — framing, rpc, session |
 | SNMP v1/v2c/v3, polling + traps | `crates/snmp` |
 | gNMI streaming telemetry | `crates/gnmi` |
+| **O-RAN O1 over real NETCONF** | `crates/oran/lib.rs` — `/api/v1/oran/nodes/:serial/config` get-config/edit-config; verified against netopeer2 in `proto-sims` |
+| **VES 7 collector** | `/eventListener/v7` — the standard O-RAN/ONAP path |
+| **Federated ML** | `crates/prometheus-engine/src/federated/` — `aggregator.rs`, `round.rs` |
+| **Live protocol test targets in-cluster** | `proto-sims` ns: O-RAN-SC a1-simulator 2.5.0, Nokia SR Linux (gNMI), sysrepo/netopeer2, snmpsim, VES sink |
 | **O-RAN A1 full policy lifecycle** | `crates/oran/a1_client.rs` — `deliver`, `withdraw`, `fetch_policy`, `list_policy_types`, `fetch_status`, `upsert_status` |
 | **VES collector** | `crates/oran/ves.rs` |
 | **Device.Cellular on OpenWrt CPE** | `ac-client src/usp/dm/misc.rs` — IMEI, IMSI, ICCID, RSRP, RSRQ, SINR via ModemManager |
@@ -85,7 +89,6 @@ Written to survive a hostile RAN engineer in the comments. Keep it that way.
 - ❌ `<1ms config delta delivery` — never measured
 - ⚠️ `distributed SQL` — **supported, not deployed here.** sqlx is built on the PostgreSQL wire protocol (`features = ["postgres"]`), so CockroachDB is a deployment choice rather than a code change. Say "deploys against PostgreSQL or CockroachDB", not "we run CockroachDB", until a CRDB deployment is tested.
 - ⚠️ `event streaming` — **the capability is real**: `crates/pheme` (pub/sub, webhooks, delivery), `crates/audit` (immutable journal + rollback), `crates/events` (SSE), over a 3-node EMQX MQTT 5.0 cluster. What does not exist is a Kafka/Redpanda log. Describe the pipeline, don't name Kafka.
-- ❌ Federated ML as shipping — roadmap
 - ❌ Any SLA as a current term — 99.9/99.99% are GA commitments
 - ❌ **`Apache-2.0`** — the repo is BSD 3-Clause. Apache adds a patent grant BSD-3 lacks; if you want that, relicence first, then say it.
 - ⚠️ **`4 MTPs`** — true of the **platform** (all four terminate). NOT true of **ac-client**, which is WebSocket + MQTT only. Always say which side you mean.

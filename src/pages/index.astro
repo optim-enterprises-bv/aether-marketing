@@ -400,7 +400,7 @@ import Layout from '../layouts/Layout.astro';
         <text x="950" y="424" fill="#f9a8d4" font-family="monospace" font-size="10" font-weight="800" text-anchor="middle" dominant-baseline="middle">NATIVE</text>
         <text x="20" y="468" fill="#9ca3af" font-family="monospace" font-size="11" font-weight="600" dominant-baseline="middle">O-RAN A1 / VES</text>
         <rect x="180" y="454" width="220" height="28" rx="6" fill="url(#bar10)"/>
-        <text x="290" y="468" fill="white" font-family="sans-serif" font-size="10" font-weight="700" text-anchor="middle" dominant-baseline="middle">A1 policy · Near-RT RIC · VES collector</text>
+        <text x="290" y="468" fill="white" font-family="sans-serif" font-size="10" font-weight="700" text-anchor="middle" dominant-baseline="middle">A1 policy · O1 over NETCONF · VES 7 collector</text>
         <text x="950" y="468" fill="#fdba74" font-family="monospace" font-size="10" font-weight="800" text-anchor="middle" dominant-baseline="middle">NATIVE</text>
       </svg>
     </div>
@@ -421,6 +421,11 @@ import Layout from '../layouts/Layout.astro';
         <div class="tech-label" style="color:#f59e0b">O-RAN</div>
         <div class="tech-name">A1 policy interface</div>
         <div class="tech-desc">Full policy lifecycle against a Near-RT RIC — deliver, withdraw, fetch, and enumerate policy types, with policy status tracked and stored. Aether is an A1 client, not a RIC.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#0ea5e9">
+        <div class="tech-label" style="color:#0ea5e9">O-RAN</div>
+        <div class="tech-name">O1 interface</div>
+        <div class="tech-desc">O-RAN node management over real NETCONF — get-config and edit-config against the running datastore, verified against netopeer2. FM/PM ingestion arrives on the standard VES 7 event listener.</div>
       </div>
       <div class="tech-card" style="border-top-color:#f43f5e">
         <div class="tech-label" style="color:#f43f5e">O-RAN</div>
@@ -523,7 +528,7 @@ import Layout from '../layouts/Layout.astro';
           <tr><td>RDK-B support</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>prplOS / EasyMesh</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="part">Partial</span></td></tr>
           <tr><td>AI RF optimization</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="part">Partial</span></td></tr>
-          <tr><td>Federated ML</td><td class="td-aether"><span class="part">Roadmap</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Federated ML</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>IoT fingerprinting</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>DNS content filtering</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>Subscriber mobile app</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
@@ -533,6 +538,7 @@ import Layout from '../layouts/Layout.astro';
           <tr><td>O-RAN A1 / VES</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>Cellular / FWA CPE (RSRP, RSRQ, SINR)</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="part">Partial</span></td></tr>
           <tr><td>All 4 USP MTPs (WS, MQTT, STOMP, CoAP)</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>O-RAN O1 (NETCONF-backed)</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="part">Partial</span></td></tr>
           <tr><td>Post-quantum TLS</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>TMF Open API (BSS/OSS)</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="part">Partial</span></td><td><span class="part">Partial</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td></tr>
           <tr><td>On-premise deployment</td><td class="td-aether"><span class="part">Licensed</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td></tr>
@@ -540,7 +546,7 @@ import Layout from '../layouts/Layout.astro';
         </tbody>
       </table>
       <p style="margin-top:16px; color:var(--text-muted); font-size:0.82rem; line-height:1.7;">
-        Aether capabilities marked <span class="part">Roadmap</span> are planned, not shipping. Everything else runs today.
+        Every Aether row ships today. <span class="part">Licensed</span> means available under separate licence.
         Competitor pricing is list-price estimate; verify against your own contracts.
       </p>
     </div>

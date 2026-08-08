@@ -196,13 +196,14 @@ y = heading(y, ["Aether is not a RIC.", "~Here is what it is."], 32, 40)
 y -= 4
 
 bands = [
-    ("IS", EMER, ["A1 client — deliver, withdraw, fetch and status policy",
-                  "VES collector — events into ONAP-style OSS",
+    ("IS", EMER, ["A1 — deliver, withdraw, fetch and status policy",
+                  "O1 — get-config / edit-config over real NETCONF",
+                  "VES 7 collector — events into ONAP-style OSS",
                   "Device.Cellular — IMEI, IMSI, RSRP, RSRQ, SINR on FWA CPE",
-                  "One data model across CPE, transport and RAN"]),
-    ("ON THE ROADMAP", AMBER, ["O1 — FCAPS alongside the vendor EMS, not replacing it",
-                               "Non-RT RIC and an rApp runtime over R1",
-                               "STOMP and CoAP message transports"]),
+                  "Federated ML — FedAvg aggregation across the fleet"]),
+    ("ON THE ROADMAP", AMBER, ["Non-RT RIC and an rApp runtime over R1",
+                               "IoT device management — LwM2M, ONVIF, MQTT ingest",
+                               "STOMP and CoAP in the OpenWrt agent"]),
     ("IS NOT", ROSE, ["A Near-RT RIC. No E2 termination, and so no xApp runtime —",
                       "that belongs at the edge on a sub-second control loop,",
                       "not in a cloud control plane. Different product."]),
