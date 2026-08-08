@@ -83,8 +83,8 @@ Written to survive a hostile RAN engineer in the comments. Keep it that way.
 
 - ❌ `200k+ concurrent connections` — never load-tested
 - ❌ `<1ms config delta delivery` — never measured
-- ❌ `CockroachDB` / `distributed SQL` / `horizontal scale` — it's PostgreSQL + sqlx
-- ❌ `distributed event streaming` — no Kafka/Redpanda tier exists
+- ⚠️ `distributed SQL` — **supported, not deployed here.** sqlx is built on the PostgreSQL wire protocol (`features = ["postgres"]`), so CockroachDB is a deployment choice rather than a code change. Say "deploys against PostgreSQL or CockroachDB", not "we run CockroachDB", until a CRDB deployment is tested.
+- ⚠️ `event streaming` — **the capability is real**: `crates/pheme` (pub/sub, webhooks, delivery), `crates/audit` (immutable journal + rollback), `crates/events` (SSE), over a 3-node EMQX MQTT 5.0 cluster. What does not exist is a Kafka/Redpanda log. Describe the pipeline, don't name Kafka.
 - ❌ Federated ML as shipping — roadmap
 - ❌ Any SLA as a current term — 99.9/99.99% are GA commitments
 - ❌ **`Apache-2.0`** — the repo is BSD 3-Clause. Apache adds a patent grant BSD-3 lacks; if you want that, relicence first, then say it.
