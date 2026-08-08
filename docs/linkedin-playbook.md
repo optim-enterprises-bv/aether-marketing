@@ -7,9 +7,11 @@ it lives where the users actually are.
 
 ## Positioning in one line
 
-> **Open agent. Managed platform.**
-> `ac-client` is open source under BSD 3-Clause — download, install, sign up.
-> Aether itself is a managed service; self-hosting is licensed on Enterprise.
+> **Open OpenWrt agent. Managed platform.**
+> `ac-client` — the **OpenWrt** USP/TR-369 package — is open source under BSD
+> 3-Clause. Download, install, sign up.
+> QSDK, prplOS and RDK-B run their own native agents; Aether speaks to those
+> directly, nothing to install. The platform itself is proprietary.
 
 Post from a **personal profile**, not the company page — roughly 5–10x the
 organic reach. Mechanics for every LinkedIn post below:
@@ -41,7 +43,8 @@ Written to survive a hostile RAN engineer in the comments. Keep it that way.
 | Post-quantum mTLS, X25519 + ML-KEM-768 | `rustls-post-quantum`, always on, no toggle |
 | RDK-B zero-install via Parodus | `crates/proto-wrp`, `crates/parodus2ccsp` |
 | TR-369 / USP 1.3, TP-469 tested | ac-client — TP-469 report, 25 OB-USP-Agent instances |
-| ac-client is **BSD 3-Clause** | repo `LICENSE` |
+| ac-client is **BSD 3-Clause**, **OpenWrt only** | repo `LICENSE`; README is "USP Agent for OpenWrt Access Points"; zero QSDK/RDK-B/prplOS references in source |
+| QSDK / prplOS / RDK-B need **no Aether agent** | They run their own — Parodus on RDK-B, the TR-181 bus on prplOS. Aether terminates what is already there |
 | 47 UCI backend operations, WiFi 7 EHT | ac-client README |
 | ~1,500+ OpenWrt router models | OpenWrt Table of Hardware, current stable |
 | **All 4 USP MTPs terminate on the platform** | `crates/connection-manager/uspcoap.rs` (249 L), `uspstomp.rs` (398 L), 6 tests, wired into `Protocol` enum |
@@ -59,7 +62,8 @@ Written to survive a hostile RAN engineer in the comments. Keep it that way.
 - ❌ **`Apache-2.0`** — the repo is BSD 3-Clause. Apache adds a patent grant BSD-3 lacks; if you want that, relicence first, then say it.
 - ⚠️ **`4 MTPs`** — true of the **platform** (all four terminate). NOT true of **ac-client**, which is WebSocket + MQTT only. Always say which side you mean.
 - ❌ **`30k+ router models`** — off by an order of magnitude.
-- ❌ **"Aether is open source"** — the *agent* is. The platform is proprietary SaaS. Always scope it.
+- ❌ **"Aether is open source"** — only `ac-client` is, and only on OpenWrt.
+- ❌ **"the device agent is open source"** — `ac-client` is the **OpenWrt** package and it is open. Other platforms do not run an Aether agent at all. Say "the OpenWrt agent", never "the agent".
 - ❌ **"Self-hosted"** as a headline — it's licensed on Enterprise only.
 - ❌ **"Aether is a RIC"** — it speaks A1 and emits VES. Not the same thing.
 
@@ -109,7 +113,7 @@ behind one control plane. No WiFi vendor can follow — it's outside their categ
 > One process. One normalized event stream. An OpenWrt router in a living room
 > and an A1 policy toward a Near-RT RIC land in the same pipeline.
 >
-> It's called Aether. Rust. The device agent is open source; the platform is a
+> It's called Aether. Rust. The OpenWrt agent is open source; the platform is a
 > managed service with EU and US data residency.
 >
 > Architecture write-up in the comments.
@@ -253,11 +257,17 @@ residency. For operators who need it, self-hosting is licensed on Enterprise.
 
 **B5 — The open agent.** *(rewritten — the old version claimed Apache-2.0)*
 
-> The device agent is open source. The platform isn't. That split is deliberate.
+> Our OpenWrt agent is open source. The platform isn't. That split is deliberate,
+> and I want to be precise about where the line falls.
 >
-> `ac-client` is BSD 3-Clause. It implements TR-369/USP 1.3, it's been tested
-> against the Broadband Forum's TP-469 suite, it drives real OpenWrt config
-> through UCI, and it does post-quantum mTLS by default.
+> `ac-client` is BSD 3-Clause and OpenWrt-specific. It implements TR-369/USP 1.3,
+> it's been tested against the Broadband Forum's TP-469 suite, it drives real
+> OpenWrt config through UCI, and it does post-quantum mTLS by default.
+>
+>
+> The other platforms don't run our agent at all. QSDK, prplOS and RDK-B already
+> have their own — Parodus on RDK-B, the TR-181 bus on prplOS — and we terminate
+> what's already there rather than asking anyone to install something.
 >
 > The reasoning is simple. If you're going to put an agent on a million devices
 > in people's homes, running as root, you should be able to read what it does.

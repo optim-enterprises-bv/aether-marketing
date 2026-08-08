@@ -170,22 +170,25 @@ bands = [
                   "VES collector — events into ONAP-style OSS",
                   "Device.Cellular — IMEI, IMSI, RSRP, RSRQ, SINR on FWA CPE",
                   "One data model across CPE, transport and RAN"]),
-    ("ON THE ROADMAP", AMBER, ["O1 interface — the NETCONF/YANG transport is already in place",
-                               "Non-RT RIC / rApp runtime over R1",
+    ("ON THE ROADMAP", AMBER, ["O1 — FCAPS alongside the vendor EMS, not replacing it",
+                               "Non-RT RIC and an rApp runtime over R1",
                                "STOMP and CoAP message transports"]),
-    ("IS NOT", ROSE, ["A Near-RT RIC, or E2 termination",
-                      "An xApp hosting platform",
-                      "A replacement for your RAN vendor's EMS"]),
+    ("IS NOT", ROSE, ["A Near-RT RIC. No E2 termination, and so no xApp runtime —",
+                      "that belongs at the edge on a sub-second control loop,",
+                      "not in a cloud control plane. Different product."]),
 ]
 for title, col, items in bands:
     c.setFont(Mo, 9.5); c.setFillColor(col)
     c.drawString(M, y, title)
     y -= 21
-    for it in items:
-        c.setFillColor(col); c.setFont(R, 12)
-        c.drawString(M, y, "—")
-        c.setFillColor(SEC)
-        c.drawString(M + 18, y, it)
+    for i, it in enumerate(items):
+        c.setFont(R, 12)
+        if title != "IS NOT":
+            c.setFillColor(col); c.drawString(M, y, "—")
+            c.setFillColor(SEC); c.drawString(M + 18, y, it)
+        else:
+            c.setFillColor(SEC if i else TXT)
+            c.drawString(M, y, it)
         y -= 20
     y -= 14
 
@@ -197,11 +200,11 @@ chrome(4); c.showPage()
 
 # ── 5 · the open agent ───────────────────────────────────────────────
 bg()
-y = eyebrow(H - 92, "Open source", CYAN)
+y = eyebrow(H - 92, "Open source · OpenWrt", CYAN)
 y = heading(y, ["ac-client.", "~Download. Install. Sign up."], 34, 42)
-y = body(y - 6, "The agent is open source under BSD 3-Clause. The platform it "
-                "reports to is a managed service. Three commands and the router "
-                "is under management.", 13, 21)
+y = body(y - 6, "The OpenWrt USP agent is open source under BSD 3-Clause. Three "
+                "commands and the router is under management. QSDK, prplOS and "
+                "RDK-B run their own native agents — nothing of ours to install there.", 13, 21)
 y -= 24
 
 c.setFillColor(CARD); c.setStrokeColor(LINE); c.setLineWidth(1)
@@ -226,6 +229,8 @@ for name, desc, col in feats:
 y = rule(y - 2)
 c.setFont(R, 12.5); c.setFillColor(SEC)
 c.drawString(M, y, "1,500+ OpenWrt router models. No custom firmware image.")
+c.setFont(R, 11.5); c.setFillColor(MUT)
+c.drawString(M, y - 20, "The OpenWrt package is open. The platform is a managed service.")
 chrome(5); c.showPage()
 
 # ── 6 · how it deploys ───────────────────────────────────────────────
