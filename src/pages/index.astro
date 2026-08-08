@@ -8,15 +8,15 @@ import Layout from '../layouts/Layout.astro';
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="page hero-content">
-    <div class="hero-eyebrow fade-up">Introducing Project Aether</div>
+    <div class="hero-eyebrow fade-up">Introducing Project Aether · Live platform · Early access</div>
     <h1 class="fade-up fade-up-delay-1">
       One platform.<br>
       <span class="gradient-text">Every device.<br>Infinite intelligence.</span>
     </h1>
     <p class="hero-sub fade-up fade-up-delay-2">
-      The unified wireless management platform that replaces seven fragmented stacks
-      with a single high-performance system — from OpenWRT routers to QSDK and RDK-B gateways,
-      from OpenWiFi access points to prplOS mesh nodes.
+      The unified access management platform that replaces seven fragmented stacks with a single
+      high-performance system — from OpenWRT routers to QSDK and RDK-B gateways, from OpenWiFi
+      access points to prplOS mesh nodes, and out to fixed wireless CPE, transport gear and O-RAN A1.
     </p>
     <div class="hero-cta fade-up fade-up-delay-3">
       <a href="/early-access" class="btn btn-primary">Request Early Access →</a>
@@ -24,8 +24,8 @@ import Layout from '../layouts/Layout.astro';
     </div>
     <div class="hero-stats fade-up fade-up-delay-4">
       <div>
-        <div class="stat-num">200k+</div>
-        <div class="stat-label">Concurrent device connections</div>
+        <div class="stat-num">$0.30</div>
+        <div class="stat-label">Per device / month — no AI tax</div>
       </div>
       <div>
         <div class="stat-num">1</div>
@@ -36,12 +36,12 @@ import Layout from '../layouts/Layout.astro';
         <div class="stat-label">Device platforms supported</div>
       </div>
       <div>
-        <div class="stat-num">6</div>
-        <div class="stat-label">Protocols in one router</div>
+        <div class="stat-num">10</div>
+        <div class="stat-label">Protocols in one binary</div>
       </div>
       <div>
-        <div class="stat-num">&lt;1ms</div>
-        <div class="stat-label">Config delta delivery</div>
+        <div class="stat-num">200 B</div>
+        <div class="stat-label">Config delta payload, not 50 KB</div>
       </div>
     </div>
   </div>
@@ -113,11 +113,11 @@ import Layout from '../layouts/Layout.astro';
         <div>
           <div class="audience-eyebrow" style="color:var(--aether-amber);">Builders &amp; Tinkerers</div>
           <h3 class="audience-title">Built by engineers.<br>For engineers.</h3>
-          <p class="audience-desc">API-first. Open source agent. On-premise available on Enterprise. The platform you'd build yourself if you had 3 years.</p>
+          <p class="audience-desc">API-first. Open source OpenWrt agent, managed platform. Self-hosting under licence on Enterprise. The platform you'd build yourself if you had 3 years.</p>
           <ul class="audience-features">
-            <li>ac-client — Apache-2.0, OpenWRT opkg</li>
+            <li>ac-client — BSD-3-Clause, OpenWRT opkg</li>
             <li>REST + GraphQL — every action via API</li>
-            <li>Helm chart — self-host on any k8s</li>
+            <li>Managed cloud — EU / US residency</li>
             <li>Full TR-181:2.16 data model</li>
           </ul>
           <div class="audience-cta" style="color:var(--aether-amber);">$0.50 / device / month →</div>
@@ -128,8 +128,8 @@ import Layout from '../layouts/Layout.astro';
         <div class="audience-icon" style="background:rgba(14,165,233,0.1); color:var(--aether-blue);">⊞</div>
         <div>
           <div class="audience-eyebrow" style="color:var(--aether-blue);">ISPs &amp; Carriers</div>
-          <h3 class="audience-title">$100k/month starts<br>with one carrier.</h3>
-          <p class="audience-desc">333k devices × $0.30 = $100k/month. White-label portal, ZTP at scale, TMF Open API, SLA-backed uptime. One invoice replaces three vendors.</p>
+          <h3 class="audience-title">Carrier scale.<br>Without the AI tax.</h3>
+          <p class="audience-desc">333k devices at $0.30 — a fraction of what you pay today. White-label portal, ZTP at scale, TMF Open API, SLA-backed uptime at GA. One invoice replaces three vendors.</p>
           <ul class="audience-features">
             <li>White-label subscriber app</li>
             <li>OSS/BSS — TMF638, TMF632</li>
@@ -250,8 +250,8 @@ import Layout from '../layouts/Layout.astro';
         <path d="M 460 260 L 500 310" stroke="#f59e0b" stroke-width="1.2" opacity="0.4"/>
         <path d="M 460 270 L 500 400" stroke="#10b981" stroke-width="1.2" opacity="0.4"/>
         <rect x="710" y="100" width="140" height="44" rx="8" fill="#111827" stroke="#1f2937" stroke-width="1"/>
-        <text x="780" y="120" fill="#9ca3af" font-family="sans-serif" font-size="10" font-weight="700" text-anchor="middle">Distributed SQL</text>
-        <text x="780" y="135" fill="#4b5563" font-family="sans-serif" font-size="8.5" text-anchor="middle">CRDB · compile-time queries</text>
+        <text x="780" y="120" fill="#9ca3af" font-family="sans-serif" font-size="10" font-weight="700" text-anchor="middle">PostgreSQL</text>
+        <text x="780" y="135" fill="#4b5563" font-family="sans-serif" font-size="8.5" text-anchor="middle">PostgreSQL · compile-time queries</text>
         <rect x="710" y="158" width="140" height="44" rx="8" fill="#111827" stroke="#1f2937" stroke-width="1"/>
         <text x="780" y="178" fill="#9ca3af" font-family="sans-serif" font-size="10" font-weight="700" text-anchor="middle">Event Streaming</text>
         <text x="780" y="193" fill="#4b5563" font-family="sans-serif" font-size="8.5" text-anchor="middle">Telemetry · Audit · AI pipeline</text>
@@ -288,9 +288,9 @@ import Layout from '../layouts/Layout.astro';
       <div class="component-card cc-hermes">
         <div class="cc-name" style="color:#22d3ee">Hermes</div>
         <div class="cc-role">Protocol Router</div>
-        <div class="cc-desc">The universal translator. Hermes speaks every wireless management protocol natively — routing, transforming, and normalizing device telemetry from any vendor into a single internal event stream.</div>
+        <div class="cc-desc">The universal translator. Hermes speaks every wireless, transport and RAN management protocol natively — routing, transforming, and normalizing device telemetry from any vendor into a single internal event stream.</div>
         <div class="cc-pills">
-          <span class="pill">uCentral</span><span class="pill">TR-369/USP</span><span class="pill">WRP/Xmidt</span><span class="pill">IEEE 1905.1</span><span class="pill">OpenSync</span><span class="pill">MQTT</span>
+          <span class="pill">uCentral</span><span class="pill">TR-369/USP · 4 MTPs</span><span class="pill">WRP/Xmidt</span><span class="pill">IEEE 1905.1</span><span class="pill">OpenSync</span><span class="pill">MQTT</span><span class="pill">NETCONF</span><span class="pill">SNMP</span><span class="pill">gNMI</span><span class="pill">O-RAN A1/VES</span>
         </div>
       </div>
       <div class="component-card cc-meridian">
@@ -342,8 +342,13 @@ import Layout from '../layouts/Layout.astro';
   <div class="page">
     <div class="tag tag-blue">Protocol Coverage</div>
     <h2>Every protocol.<br><span class="gradient-text">Zero compromises.</span></h2>
+    <p style="margin-top:20px; color:var(--text-secondary); max-width:680px; font-size:1rem; line-height:1.7;">
+      Ten protocols in one binary. Beyond the WiFi CPE stacks, Hermes speaks NETCONF, SNMP and gNMI
+      for transport and backhaul, plus O-RAN A1 and VES for RAN policy and event collection — so the
+      access network and the CPE fleet live in the same control plane.
+    </p>
     <div class="diagram-wrap">
-      <svg viewBox="0 0 1040 320" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto;">
+      <svg viewBox="0 0 1040 510" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto;">
         <defs>
           <linearGradient id="bar1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#22d3ee;stop-opacity:0.9"/><stop offset="100%" style="stop-color:#0ea5e9;stop-opacity:0.7"/></linearGradient>
           <linearGradient id="bar2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#6366f1;stop-opacity:0.9"/><stop offset="100%" style="stop-color:#818cf8;stop-opacity:0.7"/></linearGradient>
@@ -351,6 +356,10 @@ import Layout from '../layouts/Layout.astro';
           <linearGradient id="bar4" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.9"/><stop offset="100%" style="stop-color:#c4b5fd;stop-opacity:0.7"/></linearGradient>
           <linearGradient id="bar5" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#f59e0b;stop-opacity:0.9"/><stop offset="100%" style="stop-color:#fcd34d;stop-opacity:0.7"/></linearGradient>
           <linearGradient id="bar6" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#10b981;stop-opacity:0.9"/><stop offset="100%" style="stop-color:#34d399;stop-opacity:0.7"/></linearGradient>
+          <linearGradient id="bar7" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#f43f5e;stop-opacity:0.9"/><stop offset="100%" style="stop-color:#fb7185;stop-opacity:0.7"/></linearGradient>
+          <linearGradient id="bar8" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#a3e635;stop-opacity:0.9"/><stop offset="100%" style="stop-color:#bef264;stop-opacity:0.7"/></linearGradient>
+          <linearGradient id="bar9" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#f472b6;stop-opacity:0.9"/><stop offset="100%" style="stop-color:#f9a8d4;stop-opacity:0.7"/></linearGradient>
+          <linearGradient id="bar10" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#fb923c;stop-opacity:0.9"/><stop offset="100%" style="stop-color:#fdba74;stop-opacity:0.7"/></linearGradient>
         </defs>
         <text x="520" y="30" fill="#f0f4f8" font-family="sans-serif" font-size="14" font-weight="700" text-anchor="middle">Hermes Protocol Support Matrix</text>
         <text x="20" y="72" fill="#9ca3af" font-family="monospace" font-size="11" font-weight="600" dominant-baseline="middle">uCentral / TIP</text>
@@ -359,7 +368,7 @@ import Layout from '../layouts/Layout.astro';
         <text x="950" y="72" fill="#22d3ee" font-family="monospace" font-size="10" font-weight="800" text-anchor="middle" dominant-baseline="middle">NATIVE</text>
         <text x="20" y="116" fill="#9ca3af" font-family="monospace" font-size="11" font-weight="600" dominant-baseline="middle">TR-369 / USP</text>
         <rect x="180" y="102" width="700" height="28" rx="6" fill="url(#bar2)"/>
-        <text x="530" y="116" fill="white" font-family="sans-serif" font-size="10" font-weight="700" text-anchor="middle" dominant-baseline="middle">WebSocket + MQTT · protobuf  ·  QSDK · prplOS</text>
+        <text x="530" y="116" fill="white" font-family="sans-serif" font-size="10" font-weight="700" text-anchor="middle" dominant-baseline="middle">All 4 USP MTPs · protobuf  ·  QSDK · prplOS</text>
         <text x="950" y="116" fill="#818cf8" font-family="monospace" font-size="10" font-weight="800" text-anchor="middle" dominant-baseline="middle">NATIVE</text>
         <text x="20" y="160" fill="#9ca3af" font-family="monospace" font-size="11" font-weight="600" dominant-baseline="middle">WRP / Xmidt</text>
         <rect x="180" y="146" width="640" height="28" rx="6" fill="url(#bar3)"/>
@@ -377,7 +386,57 @@ import Layout from '../layouts/Layout.astro';
         <rect x="180" y="278" width="460" height="28" rx="6" fill="url(#bar6)"/>
         <text x="410" y="292" fill="white" font-family="sans-serif" font-size="10" font-weight="700" text-anchor="middle" dominant-baseline="middle">MQTT 3.1 / 5.0 · clustered broker · USP MQTT MTP</text>
         <text x="950" y="292" fill="#34d399" font-family="monospace" font-size="10" font-weight="800" text-anchor="middle" dominant-baseline="middle">NATIVE</text>
+        <text x="20" y="336" fill="#9ca3af" font-family="monospace" font-size="11" font-weight="600" dominant-baseline="middle">NETCONF / YANG</text>
+        <rect x="180" y="322" width="400" height="28" rx="6" fill="url(#bar7)"/>
+        <text x="380" y="336" fill="white" font-family="sans-serif" font-size="10" font-weight="700" text-anchor="middle" dominant-baseline="middle">SSH + XML framing · RFC 6241 / 6242 · YANG models</text>
+        <text x="950" y="336" fill="#fb7185" font-family="monospace" font-size="10" font-weight="800" text-anchor="middle" dominant-baseline="middle">NATIVE</text>
+        <text x="20" y="380" fill="#9ca3af" font-family="monospace" font-size="11" font-weight="600" dominant-baseline="middle">SNMP</text>
+        <rect x="180" y="366" width="340" height="28" rx="6" fill="url(#bar8)"/>
+        <text x="350" y="380" fill="white" font-family="sans-serif" font-size="10" font-weight="700" text-anchor="middle" dominant-baseline="middle">v1 / v2c / v3 · polling + traps · legacy CPE &amp; backhaul</text>
+        <text x="950" y="380" fill="#bef264" font-family="monospace" font-size="10" font-weight="800" text-anchor="middle" dominant-baseline="middle">NATIVE</text>
+        <text x="20" y="424" fill="#9ca3af" font-family="monospace" font-size="11" font-weight="600" dominant-baseline="middle">gNMI</text>
+        <rect x="180" y="410" width="280" height="28" rx="6" fill="url(#bar9)"/>
+        <text x="320" y="424" fill="white" font-family="sans-serif" font-size="10" font-weight="700" text-anchor="middle" dominant-baseline="middle">gRPC + protobuf · streaming telemetry · OpenConfig</text>
+        <text x="950" y="424" fill="#f9a8d4" font-family="monospace" font-size="10" font-weight="800" text-anchor="middle" dominant-baseline="middle">NATIVE</text>
+        <text x="20" y="468" fill="#9ca3af" font-family="monospace" font-size="11" font-weight="600" dominant-baseline="middle">O-RAN A1 / VES</text>
+        <rect x="180" y="454" width="220" height="28" rx="6" fill="url(#bar10)"/>
+        <text x="290" y="468" fill="white" font-family="sans-serif" font-size="10" font-weight="700" text-anchor="middle" dominant-baseline="middle">A1 policy · Near-RT RIC · VES collector</text>
+        <text x="950" y="468" fill="#fdba74" font-family="monospace" font-size="10" font-weight="800" text-anchor="middle" dominant-baseline="middle">NATIVE</text>
       </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RAN & CELLULAR ═════════════════════════════════ -->
+<section id="ran">
+  <div class="page">
+    <div class="tag tag-amber">RAN &amp; Cellular</div>
+    <h2>Not just WiFi.<br><span class="gradient-text">The whole access edge.</span></h2>
+    <p style="margin-top:20px; color:var(--text-secondary); max-width:680px; font-size:1rem; line-height:1.7;">
+      Fixed wireless and mobile access sit in the same control plane as the CPE fleet — so a subscriber
+      complaint can be traced from the home, through the backhaul, to the radio without leaving one system.
+    </p>
+    <div class="tech-grid" style="margin-top:48px;">
+      <div class="tech-card" style="border-top-color:#f59e0b">
+        <div class="tech-label" style="color:#f59e0b">O-RAN</div>
+        <div class="tech-name">A1 policy interface</div>
+        <div class="tech-desc">Full policy lifecycle against a Near-RT RIC — deliver, withdraw, fetch, and enumerate policy types, with policy status tracked and stored. Aether is an A1 client, not a RIC.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#f43f5e">
+        <div class="tech-label" style="color:#f43f5e">O-RAN</div>
+        <div class="tech-name">VES collector</div>
+        <div class="tech-desc">Emits VES events into ONAP-style OSS. The same pipeline carrying CPE telemetry reports RAN events to the systems your RAN already reports into.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#10b981">
+        <div class="tech-label" style="color:#10b981">Cellular / FWA</div>
+        <div class="tech-name">Device.Cellular</div>
+        <div class="tech-desc">TR-181 cellular data model on OpenWRT CPE via ModemManager — IMEI, IMSI, ICCID, and live RSRP, RSRQ and SINR. Fixed wireless CPE managed exactly like fixed-line CPE.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#8b5cf6">
+        <div class="tech-label" style="color:#8b5cf6">Transport</div>
+        <div class="tech-name">NETCONF · SNMP · gNMI</div>
+        <div class="tech-desc">Aggregation and backhaul gear in the same device list as the CPE. YANG models over NETCONF, streaming telemetry over gNMI, and SNMP for anything too old for either.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -387,10 +446,15 @@ import Layout from '../layouts/Layout.astro';
   <div class="page">
     <div class="tag tag-emerald">Platform Support</div>
     <h2>Every device platform.<br><span class="gradient-text">One control plane.</span></h2>
+    <p style="margin-top:20px; color:var(--text-secondary); max-width:680px; font-size:1rem; line-height:1.7;">
+      We ship one agent — <a href="/open" style="color:var(--aether-cyan)">ac-client</a> for OpenWRT. Every other platform here already
+      runs its own, and Aether terminates what is already on the device. Running something not listed?
+      Firmware development is our other business — OpenWRT, OpenWiFi, wlan-ap, RDK-B and QSDK, plus camera firmware on embedded Linux. Agent implementation, platform HALs and full firmware builds for OEM, ODM and custom hardware, priced per device.
+    </p>
     <div class="matrix-grid">
       <div class="matrix-col">
         <div class="matrix-header" style="color:#22d3ee">OpenWiFi</div>
-        <div class="matrix-item green">✓ native client</div>
+        <div class="matrix-item green">✓ native agent, nothing to install</div>
         <div class="matrix-item green">✓ Full uCentral protocol</div>
         <div class="matrix-item green">✓ OTA firmware (owfms)</div>
         <div class="matrix-item green">✓ Zero-touch provisioning</div>
@@ -398,31 +462,32 @@ import Layout from '../layouts/Layout.astro';
       </div>
       <div class="matrix-col">
         <div class="matrix-header" style="color:#38bdf8">OpenWrt</div>
-        <div class="matrix-item green">✓ device agent (TR-369)</div>
+        <div class="matrix-item green">✓ ac-client agent (TR-369)</div>
         <div class="matrix-item green">✓ cfg80211 / nl80211</div>
-        <div class="matrix-item green">✓ 30k+ router models</div>
+        <div class="matrix-item green">✓ 1,500+ router models</div>
         <div class="matrix-item green">✓ opkg package install</div>
         <div class="matrix-item green">✓ Post-quantum TLS</div>
+        <div class="matrix-item green">✓ Device.Cellular (ModemManager)</div>
       </div>
       <div class="matrix-col">
         <div class="matrix-header" style="color:#818cf8">QSDK</div>
-        <div class="matrix-item green">✓ device agent</div>
-        <div class="matrix-item green">✓ cfg80211tool HAL</div>
-        <div class="matrix-item green">✓ qca-hostapd wrapper</div>
+        <div class="matrix-item green">✓ native agent, nothing to install</div>
+        <div class="matrix-item green">✓ obuspa USP agent on-device</div>
+        <div class="matrix-item green">✓ TR-181 → QCA HAL mapping</div>
         <div class="matrix-item green">✓ QCA chipset data model</div>
         <div class="matrix-item green">✓ TR-069 migration path</div>
       </div>
       <div class="matrix-col">
         <div class="matrix-header" style="color:#c4b5fd">RDK-B</div>
         <div class="matrix-item green">✓ Parodus / WRP (zero install)</div>
-        <div class="matrix-item green">✓ device agent via MQTT</div>
+        <div class="matrix-item green">✓ USP over MQTT MTP</div>
         <div class="matrix-item green">✓ Comcast/Cox/Charter CPE</div>
         <div class="matrix-item green">✓ No firmware changes</div>
         <div class="matrix-item green">✓ CcspHalExtFetch bridge</div>
       </div>
       <div class="matrix-col">
         <div class="matrix-header" style="color:#34d399">prplOS</div>
-        <div class="matrix-item green">✓ device agent + data model bus</div>
+        <div class="matrix-item green">✓ native agent, nothing to install</div>
         <div class="matrix-item green">✓ TR-181 data model bus</div>
         <div class="matrix-item green">✓ prplMesh EasyMesh</div>
         <div class="matrix-item green">✓ Intel, Broadcom CPE</div>
@@ -452,22 +517,32 @@ import Layout from '../layouts/Layout.astro';
           </tr>
         </thead>
         <tbody>
-          <tr><td>Open source</td><td class="td-aether"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Open source OpenWrt agent</td><td class="td-aether"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>OpenWiFi / OpenWrt</td><td class="td-aether"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>QSDK support</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="part">Partial</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="part">Partial</span></td></tr>
           <tr><td>RDK-B support</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>prplOS / EasyMesh</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="part">Partial</span></td></tr>
           <tr><td>AI RF optimization</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="part">Partial</span></td></tr>
-          <tr><td>Federated ML</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Federated ML</td><td class="td-aether"><span class="part">Roadmap</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>IoT fingerprinting</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>DNS content filtering</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>Subscriber mobile app</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>NETCONF / YANG</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>SNMP (v1/v2c/v3)</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>gNMI streaming telemetry</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="part">Partial</span></td></tr>
+          <tr><td>O-RAN A1 / VES</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Cellular / FWA CPE (RSRP, RSRQ, SINR)</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="part">Partial</span></td></tr>
+          <tr><td>All 4 USP MTPs (WS, MQTT, STOMP, CoAP)</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>Post-quantum TLS</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>TMF Open API (BSS/OSS)</td><td class="td-aether"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="part">Partial</span></td><td><span class="part">Partial</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td></tr>
-          <tr><td>On-premise deployment</td><td class="td-aether"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>On-premise deployment</td><td class="td-aether"><span class="part">Licensed</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td></tr>
           <tr><td>Per-device SaaS fee</td><td class="td-aether" style="color:var(--aether-emerald);font-weight:700;">None</td><td style="color:var(--aether-emerald)">None</td><td style="color:var(--aether-emerald)">None</td><td style="color:var(--aether-rose)">~$6–18/mo</td><td style="color:var(--aether-rose)">~$4–12/mo</td><td style="color:var(--aether-rose)">~$2–5/mo</td><td style="color:var(--aether-rose)">~$3–8/mo</td></tr>
         </tbody>
       </table>
+      <p style="margin-top:16px; color:var(--text-muted); font-size:0.82rem; line-height:1.7;">
+        Aether capabilities marked <span class="part">Roadmap</span> are planned, not shipping. Everything else runs today.
+        Competitor pricing is list-price estimate; verify against your own contracts.
+      </p>
     </div>
   </div>
 </section>
@@ -476,7 +551,7 @@ import Layout from '../layouts/Layout.astro';
 <section id="roadmap">
   <div class="page">
     <div class="tag tag-blue">Roadmap</div>
-    <h2>8 phases to full parity.<br><span class="gradient-text">Production in 18 months.</span></h2>
+    <h2>8 phases to full parity.<br><span class="gradient-text">Running today. Hardening for scale.</span></h2>
     <div class="diagram-wrap">
       <svg viewBox="0 0 1040 380" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto;">
         <defs>
@@ -561,7 +636,7 @@ import Layout from '../layouts/Layout.astro';
         <!-- Milestone banner -->
         <rect x="60" y="240" width="920" height="48" rx="10" fill="rgba(99,102,241,0.08)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
         <text x="520" y="261" fill="#818cf8" font-family="sans-serif" font-size="11" font-weight="700" text-anchor="middle">Key Milestone: M18 — Feature parity with Plume Cloud, Nokia Altiplano, and Cisco Meraki</text>
-        <text x="520" y="279" fill="#4b5563" font-family="sans-serif" font-size="9.5" text-anchor="middle">Single binary · 200k+ concurrent connections · 5 device platforms · Post-quantum security · On-premise or cloud</text>
+        <text x="520" y="279" fill="#4b5563" font-family="sans-serif" font-size="9.5" text-anchor="middle">Single binary · multi-protocol ingest · 5 device platforms · Post-quantum security · On-premise or cloud</text>
         <!-- Team growth -->
         <text x="60" y="330" fill="#374151" font-family="sans-serif" font-size="10" font-weight="600">Team growth path:</text>
         <rect x="200" y="316" width="80" height="24" rx="4" fill="rgba(34,211,238,0.1)" stroke="rgba(34,211,238,0.2)" stroke-width="1"/>
@@ -586,22 +661,22 @@ import Layout from '../layouts/Layout.astro';
       <div class="tech-card" style="border-top-color:#22d3ee">
         <div class="tech-label" style="color:#22d3ee">Runtime</div>
         <div class="tech-name">Memory-safe async runtime</div>
-        <div class="tech-desc">Async-first, memory-safe, zero-cost abstractions. Async HTTP/WebSocket server handling 200k+ concurrent device connections.</div>
+        <div class="tech-desc">Async-first, memory-safe, zero-cost abstractions. Async HTTP/WebSocket server with a lock-free connection registry.</div>
       </div>
       <div class="tech-card" style="border-top-color:#6366f1">
         <div class="tech-label" style="color:#6366f1">Database</div>
-        <div class="tech-name">Distributed SQL</div>
-        <div class="tech-desc">Distributed relational database with compile-time query validation. Horizontal scale without operational complexity.</div>
+        <div class="tech-name">PostgreSQL + sqlx</div>
+        <div class="tech-desc">PostgreSQL with compile-time query validation via sqlx. Distributed SQL and horizontal scale-out are on the roadmap.</div>
       </div>
       <div class="tech-card" style="border-top-color:#f59e0b">
         <div class="tech-label" style="color:#f59e0b">Streaming</div>
         <div class="tech-name">Event Streaming</div>
-        <div class="tech-desc">Telemetry ingestion, immutable audit log, and AI/ML feature pipeline via distributed event streaming.</div>
+        <div class="tech-desc">Telemetry ingestion and immutable audit log today. The dedicated event-streaming tier for the AI/ML feature pipeline is on the roadmap.</div>
       </div>
       <div class="tech-card" style="border-top-color:#10b981">
         <div class="tech-label" style="color:#10b981">Concurrency</div>
         <div class="tech-name">Lock-free registry + Channels</div>
-        <div class="tech-desc">Lock-free concurrent registry for 200k+ endpoints. Async channels between internal modules with zero shared-state overhead.</div>
+        <div class="tech-desc">Lock-free concurrent registry for device endpoints. Async channels between internal modules with zero shared-state overhead.</div>
       </div>
       <div class="tech-card" style="border-top-color:#8b5cf6">
         <div class="tech-label" style="color:#8b5cf6">Security</div>
@@ -621,7 +696,7 @@ import Layout from '../layouts/Layout.astro';
       <div class="tech-card" style="border-top-color:#fbbf24">
         <div class="tech-label" style="color:#fbbf24">Efficiency</div>
         <div class="tech-name">Delta Config</div>
-        <div class="tech-desc">JSON Patch (RFC 6902) over full config diffs. 200 bytes instead of 50 KB per update. &lt;1ms delivery time.</div>
+        <div class="tech-desc">JSON Patch (RFC 6902) over full config diffs. 200 bytes instead of 50 KB per update.</div>
       </div>
     </div>
   </div>
@@ -632,6 +707,10 @@ import Layout from '../layouts/Layout.astro';
   <div class="page">
     <div class="tag tag-emerald">Pricing</div>
     <h2>Simple, transparent pricing.<br><span class="gradient-text">No per-device AI tax.</span></h2>
+    <p style="margin-top:18px; color:var(--text-muted); max-width:640px; font-size:0.85rem; line-height:1.7;">
+      <strong style="color:var(--text-secondary);">Founding-partner pricing.</strong> These rates are locked for the life of your
+      contract for early access partners. Billing begins at general availability — early access is unpriced.
+    </p>
     <div class="pricing-grid">
       <div class="pricing-card">
         <div class="pricing-tier">Home</div>
@@ -646,22 +725,22 @@ import Layout from '../layouts/Layout.astro';
           <li><span class="check">✓</span> Parental controls</li>
           <li><span class="check">✓</span> Network map &amp; speed test</li>
         </ul>
-        <a href="/early-access" class="btn" style="width:100%;justify-content:center;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.4);color:#10b981;">Get Started</a>
+        <a href="/early-access" class="btn" style="width:100%;justify-content:center;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.4);color:#10b981;">Join the Waitlist</a>
       </div>
       <div class="pricing-card">
         <div class="pricing-tier">Operator</div>
-        <div class="pricing-name">Aether Open</div>
+        <div class="pricing-name">Aether Standard</div>
         <div class="pricing-price">$0.50 <span>/ device / mo</span></div>
-        <div class="pricing-desc">For operators self-hosting Aether. All 6 protocols, mesh, and events — no AI tier lock.</div>
+        <div class="pricing-desc">For operators running Aether as a managed service. All 10 protocols, mesh, and events — no AI tier lock.</div>
         <ul class="pricing-features">
-          <li><span class="check">✓</span> All 6 protocols (Hermes)</li>
+          <li><span class="check">✓</span> All 10 protocols (Hermes)</li>
           <li><span class="check">✓</span> Meridian mesh management</li>
           <li><span class="check">✓</span> Pheme event delivery</li>
           <li><span class="check">✓</span> Post-quantum TLS</li>
-          <li><span class="check">✓</span> Self-hosted / on-premise</li>
+          <li><span class="check">✓</span> Managed cloud — EU / US residency</li>
           <li><span class="check">✓</span> Community support</li>
         </ul>
-        <a href="/early-access" class="btn" style="width:100%;justify-content:center;background:rgba(34,211,238,0.1);border:1px solid rgba(34,211,238,0.4);color:#22d3ee;">Start Trial</a>
+        <a href="/early-access" class="btn" style="width:100%;justify-content:center;background:rgba(34,211,238,0.1);border:1px solid rgba(34,211,238,0.4);color:#22d3ee;">Request Early Access</a>
       </div>
       <div class="pricing-card featured">
         <div class="pricing-tier">Volume Operator</div>
@@ -669,29 +748,29 @@ import Layout from '../layouts/Layout.astro';
         <div class="pricing-price">$0.30 <span>/ device / mo</span></div>
         <div class="pricing-desc">For ISPs at scale. Full AI, security suite, OpenSync native port, and white-label apps.</div>
         <ul class="pricing-features">
-          <li><span class="check">✓</span> Everything in Open</li>
+          <li><span class="check">✓</span> Everything in Standard</li>
           <li><span class="check">✓</span> Prometheus AI/RF optimizer</li>
           <li><span class="check">✓</span> Argus IoT fingerprinting</li>
           <li><span class="check">✓</span> Aegis content filtering</li>
           <li><span class="check">✓</span> OpenSync native port</li>
           <li><span class="check">✓</span> Aether Home white-label</li>
-          <li><span class="check">✓</span> 99.9% SLA + priority support</li>
+          <li><span class="check">✓</span> 99.9% SLA at GA + priority support</li>
         </ul>
-        <a href="/early-access" class="btn btn-primary" style="width:100%;justify-content:center;">Start Trial</a>
+        <a href="/early-access" class="btn btn-primary" style="width:100%;justify-content:center;">Request Early Access</a>
       </div>
       <div class="pricing-card">
         <div class="pricing-tier">Enterprise</div>
         <div class="pricing-name">Aether Enterprise</div>
         <div class="pricing-price">Custom <span>/ contact us</span></div>
-        <div class="pricing-desc">For Tier 1 operators, OEMs, and system integrators requiring BSS/OSS integration and 99.99% SLA.</div>
+        <div class="pricing-desc">For Tier 1 operators, OEMs, and system integrators requiring BSS/OSS integration and a 99.99% SLA at GA.</div>
         <ul class="pricing-features">
           <li><span class="check">✓</span> Everything in Pro</li>
           <li><span class="check">✓</span> TMF Open API integration</li>
           <li><span class="check">✓</span> Federated ML fleet-wide</li>
-          <li><span class="check">✓</span> Custom device platform HALs</li>
+          <li><span class="check">✓</span> OEM / ODM firmware — OpenWRT, RDK-B, QSDK</li>
           <li><span class="check">✓</span> OEM / white-label branding</li>
           <li><span class="check">✓</span> Dedicated engineering pod</li>
-          <li><span class="check">✓</span> 99.99% SLA + 24/7 support</li>
+          <li><span class="check">✓</span> 99.99% SLA at GA + 24/7 support</li>
         </ul>
         <a href="/early-access" class="btn" style="width:100%;justify-content:center;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.4);color:#8b5cf6;">Contact Sales</a>
       </div>

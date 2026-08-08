@@ -38,7 +38,7 @@ const apiPushCode = `curl -X POST \\
   -d <span class="c-cyan">'&#123;"ssid":"MyNet","band":"5g"&#125;'</span> \\
   <span class="c-cyan">https://api.optimcloud.com/v1/devices/dev_7f3a9b/wifi</span>
 
-<span class="c-muted"># Delta delivered to device in &lt;1ms</span>
+<span class="c-muted"># Delta pushed to device as a JSON Patch</span>
 <span class="c-muted"># JSON Patch RFC 6902 — 200 bytes not 50KB</span>`;
 
 const helmCode = `<span class="c-muted"># Add Aether Helm repo</span>
@@ -57,7 +57,7 @@ helm install aether aether/aether \\
 <span class="c-muted"># Port 8883 → MQTT broker</span>`;
 ---
 
-<Layout title="Aether for Builders — Built by engineers, for engineers" description="ac-client open source Apache-2.0. Full TR-181:2.16, 4 MTPs, post-quantum TLS. OpenWRT opkg install. API-first. $0.50/device operator tier.">
+<Layout title="Aether for Builders — Built by engineers, for engineers" description="ac-client open source BSD-3-Clause USP/TR-369 agent for OpenWRT. Full TR-181:2.16, WebSocket and MQTT MTPs, post-quantum TLS. API-first. $0.50/device operator tier.">
 
 <section class="hero" style="min-height:55vh; padding-top:120px; padding-bottom:80px;">
   <div class="hero-bg" style="background: radial-gradient(ellipse 70% 60% at 60% 30%, rgba(245,158,11,0.1) 0%, transparent 60%), radial-gradient(ellipse 50% 50% at 10% 80%, rgba(99,102,241,0.1) 0%, transparent 50%);"></div>
@@ -68,7 +68,7 @@ helm install aether aether/aether \\
       <span class="gradient-text">For engineers.</span>
     </h1>
     <p class="hero-sub">
-      API-first. Open source agent. On-premise available on Enterprise. The platform you'd build yourself if you had 3 years and a team of 14.
+      API-first. Open source OpenWrt agent, managed platform. Self-hosting available under licence on Enterprise. The platform you'd build yourself if you had 3 years and a team of 14.
     </p>
     <div class="hero-cta">
       <a href="/open" class="btn btn-primary">ac-client on GitHub →</a>
@@ -81,8 +81,8 @@ helm install aether aether/aether \\
 <section>
   <div class="page">
     <div class="tag tag-emerald">Open Source</div>
-    <h2>ac-client is Apache-2.0.<br><span class="gradient-text">Ship it anywhere.</span></h2>
-    <p style="margin-top:16px; color:var(--text-secondary); max-width:600px; font-size:1rem; line-height:1.7;">The USP/TR-369 device agent for OpenWRT. 30k+ router models. Full TR-181:2.16 data model. Post-quantum TLS. One opkg install and your router is managed.</p>
+    <h2>ac-client is BSD 3-Clause.<br><span class="gradient-text">Ship it on any OpenWrt box.</span></h2>
+    <p style="margin-top:16px; color:var(--text-secondary); max-width:600px; font-size:1rem; line-height:1.7;">The USP/TR-369 device agent for OpenWRT. 1,500+ router models. Full TR-181:2.16 data model. Post-quantum TLS. One opkg install and your router is managed.</p>
 
     <div class="grid-2col">
       <div>
@@ -94,8 +94,8 @@ helm install aether aether/aether \\
           <p style="font-size:0.82rem; color:var(--text-secondary);">30+ DM modules: WiFi, DHCP, hosts, firewall, QoS, diagnostics, firmware, security, VoIP, bulk data, GNSS. Complete device visibility.</p>
         </div>
         <div class="card" style="padding:20px; border-left:3px solid var(--aether-cyan);">
-          <h4 style="font-size:0.9rem; color:var(--aether-cyan); margin-bottom:8px;">4 MTPs supported</h4>
-          <p style="font-size:0.82rem; color:var(--text-secondary);">WebSocket, MQTT, STOMP, CoAP. Default: MQTT to EMQX. Choose the transport that fits your network topology.</p>
+          <h4 style="font-size:0.9rem; color:var(--aether-cyan); margin-bottom:8px;">2 MTPs supported</h4>
+          <p style="font-size:0.82rem; color:var(--text-secondary);">The agent speaks WebSocket and MQTT. The platform terminates all four USP MTPs — WebSocket, MQTT, STOMP and CoAP — so you can bring your own agent on any of them.</p>
         </div>
         <div class="card" style="padding:20px; border-left:3px solid var(--aether-violet);">
           <h4 style="font-size:0.9rem; color:var(--aether-violet); margin-bottom:8px;">Post-quantum TLS</h4>
@@ -135,7 +135,7 @@ helm install aether aether/aether \\
   <div class="page">
     <div class="tag tag-violet">On-Premise</div>
     <h2>Need it on your infra?<br><span class="gradient-text">Enterprise has you covered.</span></h2>
-    <p style="margin-top:16px; color:var(--text-secondary); max-width:600px; font-size:1rem; line-height:1.7;">On-premise deployment is available on the Enterprise tier — for carriers with data residency requirements or operators who need full infrastructure control. Kubernetes-based, Helm-deployed, same codebase as cloud.</p>
+    <p style="margin-top:16px; color:var(--text-secondary); max-width:600px; font-size:1rem; line-height:1.7;">Aether runs as a managed service by default. Self-hosted and on-premise deployment are available under separate licence on the Enterprise tier — for carriers with data residency requirements or operators who need full infrastructure control. Kubernetes-based, Helm-deployed, same codebase as cloud.</p>
 
     <div class="code-block" style="margin-top:32px;" set:html={helmCode} />
 
@@ -148,11 +148,11 @@ helm install aether aether/aether \\
       <div class="card" style="padding:20px; text-align:center;">
         <div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--aether-violet); margin-bottom:8px;">MEMORY</div>
         <div style="font-size:0.88rem; font-weight:600;">&lt;512 MB base</div>
-        <div style="font-size:0.78rem; color:var(--text-muted); margin-top:4px;">200k devices on commodity hardware</div>
+        <div style="font-size:0.78rem; color:var(--text-muted); margin-top:4px;">Single binary on commodity hardware</div>
       </div>
       <div class="card" style="padding:20px; text-align:center;">
         <div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--aether-emerald); margin-bottom:8px;">LATENCY</div>
-        <div style="font-size:0.88rem; font-weight:600;">&lt;1ms config delta</div>
+        <div style="font-size:0.88rem; font-weight:600;">200 B config delta</div>
         <div style="font-size:0.78rem; color:var(--text-muted); margin-top:4px;">JSON Patch, not full config push</div>
       </div>
     </div>

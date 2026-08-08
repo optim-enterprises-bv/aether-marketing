@@ -35,11 +35,12 @@ const currentPath = Astro.url.pathname;
   <ul class="nav-links" id="nav-links">
     <li><a href="/#platform" class={currentPath === '/' ? 'active' : ''}>Platform</a></li>
     <li><a href="/#protocols">Protocols</a></li>
+        <li><a href="/#ran">RAN &amp; Cellular</a></li>
     <li class="nav-dropdown">
       <a href="/#who" class="nav-dropdown-toggle">For <span class="nav-chevron">▾</span></a>
       <ul class="nav-dropdown-menu">
         <li><a href="/for/home"><span class="nav-dd-label">Home Users</span><span class="nav-dd-sub">Mesh · cameras · backup</span></a></li>
-        <li><a href="/for/builders"><span class="nav-dd-label">Builders</span><span class="nav-dd-sub">API-first · open source</span></a></li>
+        <li><a href="/for/builders"><span class="nav-dd-label">Builders</span><span class="nav-dd-sub">API-first · open OpenWrt agent</span></a></li>
         <li><a href="/for/operators"><span class="nav-dd-label">ISP Operators</span><span class="nav-dd-sub">Carrier-grade · $0.30/device</span></a></li>
       </ul>
     </li>
@@ -67,7 +68,7 @@ const currentPath = Astro.url.pathname;
     <div class="footer-inner">
       <div class="footer-brand">
         <div class="footer-logo">Aether</div>
-        <p class="footer-tagline">The unified wireless intelligence platform. Open. Extensible. Production-ready.</p>
+        <p class="footer-tagline">The unified wireless intelligence platform. Open. Extensible. Running today.</p>
       </div>
 
       <div class="footer-col">

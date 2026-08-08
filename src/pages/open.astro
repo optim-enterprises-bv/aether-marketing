@@ -21,7 +21,7 @@ const uciConfig = `<span class="c-muted"># /etc/config/optimacs</span>
 config optimacs <span class="c-amber">'config'</span>
   option server_host    <span class="c-cyan">'usp.aether-io.com'</span>
   option server_port    <span class="c-amber">'443'</span>
-  option mtp            <span class="c-amber">'mqtt'</span>   <span class="c-muted"># or ws/stomp/coap</span>
+  option mtp            <span class="c-amber">'mqtt'</span>   <span class="c-muted"># or ws</span>
   option mqtt_host      <span class="c-cyan">'emqx.aether-io.com'</span>
   option mqtt_port      <span class="c-amber">'1883'</span>
   option claim_token    <span class="c-green">'YOUR_TOKEN'</span>
@@ -29,7 +29,7 @@ config optimacs <span class="c-amber">'config'</span>
   option log_level      <span class="c-amber">'info'</span>`;
 ---
 
-<Layout title="Open Source — ac-client" description="ac-client is the open source Apache-2.0 USP/TR-369 device agent for OpenWRT. Full TR-181:2.16, 4 MTPs, post-quantum TLS, opkg install.">
+<Layout title="Open Source — ac-client" description="ac-client is the open source BSD-3-Clause USP/TR-369 device agent for OpenWRT. Full TR-181:2.16, WebSocket and MQTT MTPs, post-quantum mTLS, opkg install.">
 
 <section class="hero" style="min-height:50vh; padding-top:120px; padding-bottom:80px;">
   <div class="hero-bg" style="background: radial-gradient(ellipse 70% 60% at 60% 30%, rgba(16,185,129,0.12) 0%, transparent 60%);"></div>
@@ -39,10 +39,10 @@ config optimacs <span class="c-amber">'config'</span>
         <div class="hero-eyebrow">Open Source</div>
         <h1 style="font-size:clamp(2.4rem,5vw,4rem);">
           ac-client<br>
-          <span class="gradient-text">Apache-2.0</span>
+          <span class="gradient-text">BSD 3-Clause</span>
         </h1>
         <p class="hero-sub" style="margin:24px 0 40px;">
-          The USP/TR-369 device agent for OpenWRT. Open sourced because it runs on OpenWRT — and that's the right thing to do.
+          The open source USP/TR-369 agent for OpenWRT. Download it, install it, sign up — the router is under management in three commands. ac-client is the OpenWRT package, for OpenWRT users. QSDK, prplOS and RDK-B run their own native agents — Aether speaks to those directly, with nothing new to install.
         </p>
         <div style="display:flex; gap:16px; flex-wrap:wrap;">
           <a href="https://github.com/optim-enterprises-bv/ac-client" target="_blank" class="btn btn-primary">View on GitHub →</a>
@@ -52,13 +52,13 @@ config optimacs <span class="c-amber">'config'</span>
       <div>
         <div class="card" style="border-color:rgba(16,185,129,0.3); padding:28px;">
           <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--aether-emerald); margin-bottom:16px; letter-spacing:0.1em;">LICENCE</div>
-          <div style="font-family:var(--font-display); font-size:1.6rem; font-weight:800; margin-bottom:8px;">Apache 2.0</div>
-          <p style="font-size:0.83rem; color:var(--text-secondary); line-height:1.7; margin-bottom:20px;">Use it, modify it, distribute it. Commercial use permitted. No copyleft conditions. Build your own managed WiFi product on top.</p>
+          <div style="font-family:var(--font-display); font-size:1.6rem; font-weight:800; margin-bottom:8px;">BSD 3-Clause</div>
+          <p style="font-size:0.83rem; color:var(--text-secondary); line-height:1.7; margin-bottom:20px;">Use it, modify it, distribute it. Commercial use permitted, no copyleft conditions. This covers ac-client, the OpenWRT package. The Aether platform itself is a managed service — self-hosting is licensed separately on Enterprise.</p>
           <div style="display:flex; flex-wrap:wrap; gap:8px;">
             <span style="font-family:var(--font-mono); font-size:0.68rem; padding:4px 10px; border-radius:99px; background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.25); color:var(--aether-emerald);">✓ Commercial use</span>
             <span style="font-family:var(--font-mono); font-size:0.68rem; padding:4px 10px; border-radius:99px; background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.25); color:var(--aether-emerald);">✓ Modification</span>
-            <span style="font-family:var(--font-mono); font-size:0.68rem; padding:4px 10px; border-radius:99px; background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.25); color:var(--aether-emerald);">✓ Distribution</span>
-            <span style="font-family:var(--font-mono); font-size:0.68rem; padding:4px 10px; border-radius:99px; background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.25); color:var(--aether-emerald);">✓ Patent use</span>
+            <span style="font-family:var(--font-mono); font-size:0.68rem; padding:4px 10px; border-radius:99px; background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.25); color:var(--aether-emerald);">✓ Redistribution</span>
+            <span style="font-family:var(--font-mono); font-size:0.68rem; padding:4px 10px; border-radius:99px; background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.25); color:var(--aether-emerald);">✓ No copyleft</span>
           </div>
         </div>
       </div>
@@ -70,17 +70,17 @@ config optimacs <span class="c-amber">'config'</span>
 <section>
   <div class="page">
     <div class="tag tag-emerald">Why open source?</div>
-    <h2>GPL compatibility.<br><span class="gradient-text">The honest answer.</span></h2>
+    <h2>Native to the box.<br><span class="gradient-text">Not bolted on.</span></h2>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; margin-top:48px; align-items:start;">
       <div>
         <p style="font-size:1rem; color:var(--text-secondary); line-height:1.8; margin-bottom:24px;">
           ac-client runs on OpenWRT. It calls <code style="font-family:var(--font-mono); font-size:0.88em; color:var(--aether-cyan); background:rgba(34,211,238,0.08); padding:2px 6px; border-radius:4px;">uci</code> subprocess, reads dnsmasq lease files, and uses nl80211 — deep integration with OpenWRT's GPL-licensed components.
         </p>
         <p style="font-size:1rem; color:var(--text-secondary); line-height:1.8; margin-bottom:24px;">
-          Distributing ac-client as an opkg package on OpenWRT triggers GPL copyleft obligations on linked components. Apache-2.0 resolves this cleanly — no ambiguity, no risk, no legal grey area for operators who include it in their CPE.
+          It ships as an opkg package with a LuCI app, cross-compiled through the standard OpenWRT feed. A permissive licence means no copyleft obligations for operators who bundle it into their CPE images — no ambiguity, no legal grey area.
         </p>
         <p style="font-size:1rem; color:var(--text-secondary); line-height:1.8;">
-          It's also the right call for the community. The OpenWRT ecosystem has 30,000+ router models. An open USP agent that any router can run is a rising tide.
+          That reach is the point. The OpenWRT ecosystem covers more than 1,500 router models on a current stable release. A single agent that any of them can run means one integration instead of one per vendor.
         </p>
       </div>
       <div style="display:flex; flex-direction:column; gap:16px;">
@@ -114,8 +114,8 @@ config optimacs <span class="c-amber">'config'</span>
       </div>
       <div class="tech-card" style="border-top-color:#6366f1">
         <div class="tech-label" style="color:#6366f1">Transports</div>
-        <div class="tech-name">4 MTPs</div>
-        <div class="tech-desc">WebSocket, MQTT, STOMP, CoAP. Default: MQTT to EMQX broker at emqx.aether-io.com:1883. Switch MTP via UCI config — no recompile needed.</div>
+        <div class="tech-name">2 MTPs</div>
+        <div class="tech-desc">The agent speaks WebSocket and MQTT; STOMP and CoAP are on the agent roadmap. The Aether platform terminates all four USP MTPs today. Switch MTP via UCI config — no recompile.</div>
       </div>
       <div class="tech-card" style="border-top-color:#8b5cf6">
         <div class="tech-label" style="color:#8b5cf6">Security</div>
@@ -170,7 +170,7 @@ config optimacs <span class="c-amber">'config'</span>
   <div class="page">
     <div class="cta-banner">
       <h2 style="margin-bottom:16px;">Contribute or deploy.<br><span class="gradient-text">Both are welcome.</span></h2>
-      <p style="color:var(--text-secondary); max-width:440px; margin:0 auto 36px; line-height:1.7;">File issues, submit PRs, package for your router. Or just run it as-is and connect to Aether. Apache-2.0 — no strings.</p>
+      <p style="color:var(--text-secondary); max-width:440px; margin:0 auto 36px; line-height:1.7;">File issues, submit PRs, package it for your router — or just install it and sign up. Three commands and the device is in your dashboard.</p>
       <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
         <a href="https://github.com/optim-enterprises-bv/ac-client" target="_blank" class="btn btn-primary">GitHub →</a>
         <a href="/early-access" class="btn btn-outline">Get Aether API access</a>
