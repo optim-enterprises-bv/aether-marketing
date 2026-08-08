@@ -21,7 +21,7 @@ const uciConfig = `<span class="c-muted"># /etc/config/optimacs</span>
 config optimacs <span class="c-amber">'config'</span>
   option server_host    <span class="c-cyan">'usp.aether-io.com'</span>
   option server_port    <span class="c-amber">'443'</span>
-  option mtp            <span class="c-amber">'mqtt'</span>   <span class="c-muted"># or ws/stomp/coap</span>
+  option mtp            <span class="c-amber">'mqtt'</span>   <span class="c-muted"># or ws</span>
   option mqtt_host      <span class="c-cyan">'emqx.aether-io.com'</span>
   option mqtt_port      <span class="c-amber">'1883'</span>
   option claim_token    <span class="c-green">'YOUR_TOKEN'</span>
@@ -115,7 +115,7 @@ config optimacs <span class="c-amber">'config'</span>
       <div class="tech-card" style="border-top-color:#6366f1">
         <div class="tech-label" style="color:#6366f1">Transports</div>
         <div class="tech-name">2 MTPs</div>
-        <div class="tech-desc">WebSocket and MQTT today; STOMP and CoAP on the roadmap. Default: MQTT to the EMQX broker. Switch MTP via UCI config — no recompile needed.</div>
+        <div class="tech-desc">The agent speaks WebSocket and MQTT; STOMP and CoAP are on the agent roadmap. The Aether platform terminates all four USP MTPs today. Switch MTP via UCI config — no recompile.</div>
       </div>
       <div class="tech-card" style="border-top-color:#8b5cf6">
         <div class="tech-label" style="color:#8b5cf6">Security</div>

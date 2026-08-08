@@ -44,6 +44,7 @@ Written to survive a hostile RAN engineer in the comments. Keep it that way.
 | ac-client is **BSD 3-Clause** | repo `LICENSE` |
 | 47 UCI backend operations, WiFi 7 EHT | ac-client README |
 | ~1,500+ OpenWrt router models | OpenWrt Table of Hardware, current stable |
+| **All 4 USP MTPs terminate on the platform** | `crates/connection-manager/uspcoap.rs` (249 L), `uspstomp.rs` (398 L), 6 tests, wired into `Protocol` enum |
 | JSON Patch delta, ~200 B vs ~50 KB | RFC 6902 — property of the format, not a benchmark |
 | $0.30 / $0.50 / $5 pricing | Published |
 
@@ -56,7 +57,7 @@ Written to survive a hostile RAN engineer in the comments. Keep it that way.
 - ❌ Federated ML as shipping — roadmap
 - ❌ Any SLA as a current term — 99.9/99.99% are GA commitments
 - ❌ **`Apache-2.0`** — the repo is BSD 3-Clause. Apache adds a patent grant BSD-3 lacks; if you want that, relicence first, then say it.
-- ❌ **`4 MTPs`** — USP 1.3 defines four; ac-client implements two (WebSocket, MQTT). STOMP and CoAP are roadmap.
+- ⚠️ **`4 MTPs`** — true of the **platform** (all four terminate). NOT true of **ac-client**, which is WebSocket + MQTT only. Always say which side you mean.
 - ❌ **`30k+ router models`** — off by an order of magnitude.
 - ❌ **"Aether is open source"** — the *agent* is. The platform is proprietary SaaS. Always scope it.
 - ❌ **"Self-hosted"** as a headline — it's licensed on Enterprise only.
