@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""A-track LinkedIn document ad — 6 square slides, converged access story."""
+"""A-track LinkedIn document ad — 9 square slides, converged access story."""
 from reportlab.pdfgen import canvas
 from reportlab.lib.colors import HexColor
 from reportlab.lib.utils import simpleSplit
@@ -31,7 +31,7 @@ def bg():
     c.rect(0, 0, W, H, stroke=0, fill=1)
 
 
-def chrome(n, total=7):
+def chrome(n, total=9):
     c.setFont(Mo, 8)
     c.setFillColor(MUT)
     c.drawString(M, 34, "AETHER-IO.COM")
@@ -88,7 +88,37 @@ c.setFont(Mo, 10); c.setFillColor(MUT)
 c.drawString(M, y, "10 PROTOCOLS  ·  ONE BINARY  ·  OPEN AGENT  ·  MANAGED PLATFORM")
 chrome(1); c.showPage()
 
-# ── 2 · the problem ──────────────────────────────────────────────────
+# ── 2 · who builds this ──────────────────────────────────────────────
+bg()
+y = eyebrow(H - 92, "Who builds this", EMER)
+y = heading(y, ["Not a first attempt.", "~A replacement."], 36, 44)
+y = body(y - 6, "Aether is the platform we built to replace the seven stacks "
+                "underneath a fleet we already run.", 13.5, 21)
+y -= 34
+
+stats = [("5M+", "devices under management", CYAN),
+         ("7", "firmware platforms we build on", VIOLET),
+         ("10", "protocols in one binary", EMER)]
+cw = (W - 2 * M - 32) / 3
+for i, (num, label, col) in enumerate(stats):
+    x = M + i * (cw + 16)
+    c.setFillColor(CARD); c.setStrokeColor(LINE); c.setLineWidth(1)
+    c.roundRect(x, y - 96, cw, 92, 10, stroke=1, fill=1)
+    c.setFont(B, 30); c.setFillColor(col)
+    c.drawString(x + 18, y - 44, num)
+    c.setFont(R, 10.5); c.setFillColor(SEC)
+    for j, ln in enumerate(simpleSplit(label, R, 10.5, cw - 36)):
+        c.drawString(x + 18, y - 64 - j * 14, ln)
+y -= 128
+
+y = body(y, "Firmware development is our other business — OpenWRT, OpenWiFi, "
+            "wlan-ap, RDK-B and QSDK, plus camera and IoT firmware on embedded "
+            "Linux. "
+            "The protocol coverage looks the way it does because we have had to "
+            "live with all of it.", 12.5, 20, SEC)
+chrome(2); c.showPage()
+
+# ── 3 · the problem ──────────────────────────────────────────────────
 bg()
 y = eyebrow(H - 92, "The problem", ROSE)
 y = heading(y, ["The access network is", "~managed twice."], 36, 44)
@@ -123,9 +153,9 @@ c.setFont(B, 14); c.setFillColor(TXT)
 c.drawString(M, y, "When a subscriber says “my connection is bad” —")
 c.setFont(R, 14); c.setFillColor(SEC)
 c.drawString(M, y - 24, "no single system can see the home, the backhaul and the radio.")
-chrome(2); c.showPage()
+chrome(3); c.showPage()
 
-# ── 3 · ten protocols ────────────────────────────────────────────────
+# ── 4 · ten protocols ────────────────────────────────────────────────
 bg()
 y = eyebrow(H - 92, "Protocol coverage", CYAN)
 y = heading(y, ["Ten protocols.", "~One binary."], 36, 44)
@@ -157,9 +187,9 @@ for i, (name, desc, col) in enumerate(protos):
         yy -= 8
 c.setFont(Mo, 9); c.setFillColor(MUT)
 c.drawString(M, yy - 4, "ABOVE THE LINE: CPE.   BELOW: TRANSPORT, BACKHAUL AND RAN.")
-chrome(3); c.showPage()
+chrome(4); c.showPage()
 
-# ── 4 · what we are / are not ────────────────────────────────────────
+# ── 5 · what we are / are not ────────────────────────────────────────
 bg()
 y = eyebrow(H - 88, "Precision", VIOLET)
 y = heading(y, ["Aether is not a RIC.", "~Here is what it is."], 32, 40)
@@ -196,9 +226,9 @@ y = rule(y + 6)
 y = body(y, "The hard part was never A1. It was a data model where a TR-181 "
             "parameter from an OpenWrt box and a gNMI subscription from an "
             "aggregation switch are both first-class.", 12, 19, MUT)
-chrome(4); c.showPage()
+chrome(5); c.showPage()
 
-# ── 5 · the open agent ───────────────────────────────────────────────
+# ── 6 · the open agent ───────────────────────────────────────────────
 bg()
 y = eyebrow(H - 92, "Open source · OpenWrt", CYAN)
 y = heading(y, ["ac-client.", "~Download. Install. Sign up."], 34, 42)
@@ -231,9 +261,9 @@ c.setFont(R, 12.5); c.setFillColor(SEC)
 c.drawString(M, y, "1,500+ OpenWrt router models. No custom firmware image.")
 c.setFont(R, 11.5); c.setFillColor(MUT)
 c.drawString(M, y - 20, "The OpenWrt package is open. The platform is a managed service.")
-chrome(5); c.showPage()
+chrome(6); c.showPage()
 
-# ── 6 · how it deploys ───────────────────────────────────────────────
+# ── 7 · how it deploys ───────────────────────────────────────────────
 bg()
 y = eyebrow(H - 92, "Deployment", EMER)
 y = heading(y, ["Meet the device", "~where it is."], 36, 44)
@@ -263,9 +293,37 @@ c.setFont(B, 13); c.setFillColor(TXT)
 c.drawString(M, y, "Config changes ship as JSON Patch (RFC 6902)")
 c.setFont(R, 13); c.setFillColor(SEC)
 c.drawString(M, y - 22, "~200 bytes per update, not a ~50 KB full-config push.")
-chrome(6); c.showPage()
+chrome(7); c.showPage()
 
-# ── 7 · CTA ──────────────────────────────────────────────────────────
+# ── 8 · OEM / ODM firmware ───────────────────────────────────────────
+bg()
+y = eyebrow(H - 92, "OEM / ODM", AMBER)
+y = heading(y, ["We write the firmware", "~as well."], 36, 44)
+y = body(y - 6, "Agent implementation, platform HALs and full firmware builds. "
+                "An engagement, priced per device.", 13.5, 21)
+y -= 28
+
+rows = [("OpenWRT · OpenWiFi · wlan-ap", "the stacks most shops stop at", CYAN),
+        ("RDK-B", "where an ODM assumes they are stuck with the silicon vendor", VIOLET),
+        ("QSDK", "QCA HAL, chipset data model", BLUE),
+        ("Camera / embedded Linux", "RTSP, ONVIF", EMER),
+        ("IoT / embedded", "constrained devices, custom silicon", AMBER)]
+for name, desc, col in rows:
+    c.setFillColor(col); c.rect(M, y - 3, 3, 15, stroke=0, fill=1)
+    c.setFont(B, 13); c.setFillColor(TXT); c.drawString(M + 16, y, name)
+    c.setFont(R, 11.5); c.setFillColor(MUT)
+    for j, ln in enumerate(simpleSplit(desc, R, 11.5, W - 2 * M - 16)):
+        c.drawString(M + 16, y - 18 - j * 15, ln)
+    y -= 48
+
+y = rule(y + 8)
+c.setFont(B, 13.5); c.setFillColor(TXT)
+c.drawString(M, y, "Firmware, agent and platform from one team.")
+c.setFont(R, 13); c.setFillColor(SEC)
+c.drawString(M, y - 22, "One accountability line instead of four.")
+chrome(8); c.showPage()
+
+# ── 9 · CTA ──────────────────────────────────────────────────────────
 bg()
 c.setFillColor(VIOLET); c.rect(M, H - 150, 54, 4, stroke=0, fill=1)
 y = heading(H - 236, ["Ten protocols.", "~One control plane."], 40, 50)
@@ -275,7 +333,7 @@ y = body(y - 8, "Built for a messy access network. Multiple CPE silicon vendors,
          13.5, 22)
 y -= 24
 for t in ["$0.30 / device / month at volume — no per-device AI tax",
-          "Open source agent, managed platform, EU / US data residency",
+          "Open source OpenWrt agent, managed platform, EU / US residency",
           "Self-hosting licensed on Enterprise"]:
     c.setFillColor(CYAN); c.drawString(M, y, "—")
     c.setFont(R, 13); c.setFillColor(SEC); c.drawString(M + 20, y, t)
@@ -290,7 +348,7 @@ c.setFont(R, 12); c.setFillColor(SEC)
 c.drawString(M + 24, y - 54, "Running today · aether-io.com/pricing")
 c.setFont(Mo, 9); c.setFillColor(MUT)
 c.drawString(M, y - 108, "OPTIM ENTERPRISES BV")
-chrome(7); c.showPage()
+chrome(9); c.showPage()
 
 c.save()
 print("wrote aether-converged-access.pdf")

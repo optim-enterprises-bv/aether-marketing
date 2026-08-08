@@ -1,9 +1,10 @@
 # Aether — go-to-market playbook
 
-Three tracks. **Track A (O-RAN / convergence) leads on LinkedIn.** Track B (WiFi
+Four tracks. **Track A (O-RAN / convergence) leads on LinkedIn.** Track B (WiFi
 economics) is the commercial follow-on. **Track C (OpenWrt / bottom-up) does not
 run on LinkedIn at all** — it's the only track with a same-day feedback loop, and
-it lives where the users actually are.
+it lives where the users actually are. **Track D (OEM/ODM firmware)** sells a
+different thing entirely — engineering, not subscriptions — to device makers.
 
 ## Positioning in one line
 
@@ -12,6 +13,28 @@ it lives where the users actually are.
 > 3-Clause. Download, install, sign up.
 > QSDK, prplOS and RDK-B run their own native agents; Aether speaks to those
 > directly, nothing to install. The platform itself is proprietary.
+
+## Company context — use it, it's the strongest card
+
+Aether reads like a new product from an unknown company. It isn't, and every
+track below is weaker for not saying so.
+
+| Asset | Why it matters |
+|---|---|
+| **5M+ devices under management worldwide** via the global ACS | The most persuasive fact available. An operator's first question is "can you handle our fleet" — this answers it before it's asked |
+| **Firmware is an existing business** | OpenWRT, OpenWiFi, wlan-ap, RDK-B, QSDK, plus camera and IoT firmware on embedded Linux |
+| **A shipping NVR product** | `nvr.optimcloud.com`, nvr-server 2.0.0 — camera management, not a slideware adjacency |
+| **Track record to 2022** | APClient, APConfig, wlan-cloud-ucentral-deploy, the OpenWiFi repos |
+| **Optim Enterprises BV** — sovereign IaaS, NVR, LLM inference, eCommerce, global ACS | Aether is a new product from an operating company, not a startup's first swing |
+
+**Lead with this in any first contact.** "We already manage 5M+ devices, and we
+write the firmware and the NVR underneath them — Aether is the platform we built
+to replace the seven stacks in the middle" is a fundamentally different opening
+from "we built a thing."
+
+Reconcile the number first: optimcloud.com currently says 4.21M in three places.
+Pick the real figure and pair it with *since when* and *how many operators* — a
+bare number invites doubt, an anchored one doesn't.
 
 Post from a **personal profile**, not the company page — roughly 5–10x the
 organic reach. Mechanics for every LinkedIn post below:
@@ -50,6 +73,11 @@ Written to survive a hostile RAN engineer in the comments. Keep it that way.
 | **All 4 USP MTPs terminate on the platform** | `crates/connection-manager/uspcoap.rs` (249 L), `uspstomp.rs` (398 L), 6 tests, wired into `Protocol` enum |
 | JSON Patch delta, ~200 B vs ~50 KB | RFC 6902 — property of the format, not a benchmark |
 | $0.30 / $0.50 / $5 pricing | Published |
+| **5M+ devices under management** | Existing global ACS fleet — not the Aether dev instance, which has 0 devices and 3.4k telemetry rows |
+| **Firmware across OpenWRT, OpenWiFi, wlan-ap, RDK-B, QSDK, camera + IoT/embedded Linux** | optimcloud.com Engineering; an existing line of business |
+| **NVR product shipping** | `nvr.optimcloud.com`, nvr-server 2.0.0 running in cluster |
+| QSDK on-device translation is **obuspa** against the QCA HAL | `crates/platform/src/qsdk.rs` doc comment; our part is server-side config rendering + TR-181 params |
+| `cfg80211tool` / `qca-hostapd` are **Qualcomm's**, ship with QSDK | 0 references anywhere in our tree |
 
 ### Do NOT claim
 
@@ -66,6 +94,9 @@ Written to survive a hostile RAN engineer in the comments. Keep it that way.
 - ❌ **"the device agent is open source"** — `ac-client` is the **OpenWrt** package and it is open. Other platforms do not run an Aether agent at all. Say "the OpenWrt agent", never "the agent".
 - ❌ **"Self-hosted"** as a headline — it's licensed on Enterprise only.
 - ❌ **"Aether is a RIC"** — it speaks A1 and emits VES. Not the same thing.
+- ❌ **`cfg80211tool` / `qca-hostapd` as ours** — Qualcomm ships both with QSDK.
+- ❌ **camera / PTZ / RTSP in `ac-client`** — removed in `c64a286`. That work lives in **nvr-server** now. MQTT video streaming and MQTT PTZ control were real (`0321664`, `a793c19`) but verify they are in nvr-server 2.0.0 before claiming them.
+- ⚠️ **`AS207819`** — RIPE RDAP resolves it to NOVAMETRO OU, not Optim Enterprises. It's on optimcloud.com and staying there by decision; just don't repeat it in a post without knowing the arrangement, because peering people check ASNs reflexively.
 
 **Benchmark rule:** post the hardware and duration with any number, or don't post
 the number. Fix the telemetry write batching before publishing throughput figures.
@@ -102,6 +133,9 @@ behind one control plane. No WiFi vendor can follow — it's outside their categ
 
 ## A2 — What we built
 
+> We manage over 5 million devices. Aether is the platform we built to replace
+> the seven stacks underneath that.
+>
 > Ten protocols in one binary, because the alternative was ten integrations.
 >
 > CPE side: uCentral, TR-369/USP, WRP for RDK-B, IEEE 1905.1 for EasyMesh,
@@ -113,8 +147,12 @@ behind one control plane. No WiFi vendor can follow — it's outside their categ
 > One process. One normalized event stream. An OpenWrt router in a living room
 > and an A1 policy toward a Near-RT RIC land in the same pipeline.
 >
-> It's called Aether. Rust. The OpenWrt agent is open source; the platform is a
-> managed service with EU and US data residency.
+> Rust. The OpenWrt agent is open source; the platform is a managed service
+> with EU and US data residency.
+>
+> We also write the firmware — OpenWRT, OpenWiFi, wlan-ap, RDK-B, QSDK, plus
+> camera and IoT — which is why the protocol coverage looks the way it does.
+> We've had to live with all of it.
 >
 > Architecture write-up in the comments.
 
@@ -184,6 +222,9 @@ behind one control plane. No WiFi vendor can follow — it's outside their categ
 >
 > Meet the device where it is. The alternative is asking an operator to reflash a
 > million gateways, which is the same as asking them to say no.
+>
+> We also build RDK-B and QSDK firmware commercially, which is how we learned
+> that lesson the expensive way.
 
 ## A6 — Post-quantum TLS (contrarian)
 
@@ -210,6 +251,9 @@ behind one control plane. No WiFi vendor can follow — it's outside their categ
 
 > Aether is running today. Ten protocols, one control plane, from the CPE in the
 > home out to O-RAN A1.
+>
+> Built by a team already managing 5M+ devices, who also write the firmware
+> underneath them.
 >
 > $0.30 per device per month at volume. No per-device AI tax, no separate charge
 > for RF optimization or IoT fingerprinting.
@@ -325,6 +369,90 @@ because nobody in this audience will email you.
 
 ---
 
+# Track D — OEM / ODM firmware (LinkedIn, own audience)
+
+A separate business and a separate buyer. Device makers don't buy a per-device
+subscription; they buy engineering. This track sells firmware work, and Aether
+follows as the management layer rather than leading.
+
+## What's being sold
+
+Agent implementation, platform HALs and **full firmware builds** across OpenWRT,
+OpenWiFi, wlan-ap, RDK-B and QSDK, plus camera and IoT firmware on embedded
+Linux. Priced per device. An existing line of business, not a capability claim —
+which is the whole advantage.
+
+## Why it converts
+
+An ODM building a gateway has to solve firmware, management and cloud
+separately, usually with three vendors and three integration timelines. You do
+all three, and the management platform is already built.
+
+Two differentiators most firmware shops can't match:
+
+- **RDK-B and QSDK.** Most shops are OpenWRT-only. RDK-B is where an ODM assumes
+  they're stuck with the silicon vendor.
+- **Camera and IoT.** A shipping NVR product at `nvr.optimcloud.com`, not a
+  claim — including video and PTZ control over MQTT rather than a separate
+  streaming stack.
+
+## D1 — The build-vs-buy post
+
+> An ODM quoted a customer 14 months to get a gateway to market. Nine of those
+> were firmware and cloud integration, not hardware.
+>
+> The hardware was done. What wasn't: a management agent, a HAL mapping the
+> chipset's proprietary parameters to something standard, a TR-069 or TR-369
+> story, and a cloud to point it at.
+>
+> Four separate problems, usually four separate vendors, and each discovers the
+> others' assumptions late.
+>
+> We do firmware for OpenWRT, OpenWiFi, wlan-ap, RDK-B and QSDK, plus camera and
+> IoT firmware on embedded Linux — and the management platform the devices
+> report to is ours as well.
+>
+> One accountability line instead of four.
+>
+> ODMs and OEMs: what actually blows your schedules? My money's on the
+> integration between two vendors who each thought the other owned it.
+
+## D2 — The RDK-B post
+
+> Most firmware shops will take your OpenWRT work and pass on RDK-B.
+>
+> Which is a problem, because if you're building for a North American MSO, RDK-B
+> is what they'll ask for.
+>
+> We do both, plus QSDK, wlan-ap and OpenWiFi — and camera and IoT firmware on
+> embedded Linux. The same team that writes the firmware writes the management
+> agent and runs the platform it reports to, so when the CPE misbehaves in the
+> field there's no argument about whose bug it is.
+>
+> Priced per device, so it scales with your volume rather than your schedule.
+
+## Channels
+
+Almost none of this is a feed post. It's targeted outreach.
+
+| Where | How |
+|---|---|
+| **LinkedIn Sales Navigator** | Titles: VP Engineering, Director of Firmware, Head of Product (CPE), Program Manager – Gateways, at ODMs and OEMs |
+| **Direct DM** | Reference their specific product line. A considered purchase; 20 good messages beat any campaign |
+| **Broadband Forum / prpl** | ODMs attend for certification reasons. Same rooms as Track A, different conversation |
+| **Trade events** | ANGA COM, Network X, MWC — but ODM conversations happen in meeting rooms, not on the floor |
+
+## Targeting
+
+**Companies:** Taiwanese and Chinese ODMs (Arcadyan, Askey, Sercomm, Gemtek,
+CIG, Tozed), silicon-adjacent integrators, regional OEMs building
+operator-branded CPE, and camera/IoT ODMs for the NVR side.
+
+**The question that qualifies fastest:** *"Which platforms are you expected to
+support, and which one are you currently outsourcing?"*
+
+---
+
 ## Targeting (LinkedIn tracks only)
 
 ### Track A — O-RAN / convergence
@@ -341,6 +469,9 @@ ISP), Director of CPE/Devices, Head of Managed WiFi, PM – Residential Broadban
 **Communities:** TIP OpenWiFi, prpl Foundation, RDK Management, WISPA.
 **Events:** ANGA COM (Cologne — highest-value room for a Dutch company), Fiber
 Connect, WISPAMERICA, Network X.
+
+### Track D — OEM / ODM
+See the track above; it has its own targeting section.
 
 ### The multiplier
 Both LinkedIn audiences together are ~5,000 people globally. Small enough to
