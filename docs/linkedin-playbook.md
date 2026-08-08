@@ -74,6 +74,7 @@ Written to survive a hostile RAN engineer in the comments. Keep it that way.
 | QSDK / prplOS / RDK-B need **no Aether agent** | They run their own — Parodus on RDK-B, the TR-181 bus on prplOS. Aether terminates what is already there |
 | 47 UCI backend operations, WiFi 7 EHT | ac-client README |
 | ~1,500+ OpenWrt router models | OpenWrt Table of Hardware, current stable |
+| **IoT: MQTT ingest + LwM2M** | `connection-manager/iot_mqtt.rs` 253 L, `lwm2m.rs` 521 L — ADR-005 Accepted. ONVIF/Matter not built |
 | **All 4 USP MTPs terminate on the platform** | `crates/connection-manager/uspcoap.rs` (249 L), `uspstomp.rs` (398 L), 6 tests, wired into `Protocol` enum |
 | JSON Patch delta, ~200 B vs ~50 KB | RFC 6902 — property of the format, not a benchmark |
 | $0.30 / $0.50 / $5 pricing | Published |
@@ -86,6 +87,10 @@ Written to survive a hostile RAN engineer in the comments. Keep it that way.
 ### Do NOT claim
 
 - ❌ `200k+ concurrent connections` — never load-tested
+- ❌ **`Aether Home app`** — no codebase. The $5/home tier sells it.
+- ⚠️ **`Aether Ops mobile terminal`** — the app exists (Expo, Phase 1: login,
+  device list, detail, reboot) but has **no RTTY terminal**, which the name
+  implies. Say "Aether Ops app (early access)", not "mobile terminal".
 - ❌ `<1ms config delta delivery` — never measured
 - ⚠️ `distributed SQL` — **supported, not deployed here.** sqlx is built on the PostgreSQL wire protocol (`features = ["postgres"]`), so CockroachDB is a deployment choice rather than a code change. Say "deploys against PostgreSQL or CockroachDB", not "we run CockroachDB", until a CRDB deployment is tested.
 - ⚠️ `event streaming` — **the capability is real**: `crates/pheme` (pub/sub, webhooks, delivery), `crates/audit` (immutable journal + rollback), `crates/events` (SSE), over a 3-node EMQX MQTT 5.0 cluster. What does not exist is a Kafka/Redpanda log. Describe the pipeline, don't name Kafka.

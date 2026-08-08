@@ -99,16 +99,24 @@ each came from grepping for a *technology* rather than checking the *capability*
 
 - **Near-RT RIC / E2 termination / xApp runtime.** Not built and shouldn't be —
   see `e2-phase1-scope.md`.
-- **IoT device management adapters.** `ADR-005` (Proposed, 2026-08-08) scopes
-  LwM2M, generic MQTT ingest, ONVIF and Matter. **None built yet.** Note the
-  distinction: Argus IoT *fingerprinting* ships; IoT device *management* does not.
+- **IoT device management.** *Updated:* ADR-005 is now **Accepted** — generic
+  MQTT ingest (`iot_mqtt.rs`, `Protocol::MqttIot`) and LwM2M (`lwm2m.rs`,
+  Registration/Update/Deregister/Notify) both ship. **ONVIF and Matter remain.**
 - **STOMP / CoAP in `ac-client`.** The platform terminates all four USP MTPs
   (`02c5f35`); the OpenWrt agent is still WebSocket + MQTT.
 - **Kafka/Redpanda log.** Planned in `MASTER_PLAN` §10; not deployed. The
   pipeline is covered another way — describe the capability, don't name Kafka.
-- **Phase 8 GA hardening.** The real one: `device_telemetry` single-row inserts
-  taking 1.5–8s against a shared single-instance CNPG. This is the gate on ever
-  publishing a throughput number.
+- **Phase 8 GA hardening.** The real one. `20c3d93` landed batched writes and is
+  deployed, but measured over 30 min the gate is **still unmet**: `device_telemetry`
+  inserts median 2.81 s / max 3.97 s, and the heartbeat `UPDATE`s are now worse
+  (`gnmi_devices` max 4.61 s). `rows_affected` is 3, not 500 — the batcher flushes
+  on a timer with an empty buffer in this lab, so the path is untested. The
+  remainder is the storage tier: shared `pg-shared` on single-replica LINSTOR.
+  **No throughput figure is publishable until this clears.**
+- **Mobile.** *Updated:* Aether **Ops** started (`c5da739`) — Expo 51,
+  ~1,304 L TS: login, device list with search/filter, detail, single reboot.
+  Absent: MFA, RTTY terminal, bulk ops, push notifications, topology map.
+  **Aether Home has no codebase** and is what the $5/home tier leads with.
 
 ---
 
