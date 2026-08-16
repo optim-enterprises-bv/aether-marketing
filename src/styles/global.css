@@ -329,6 +329,7 @@ h3 { font-size: 1.4rem; }
 .cc-prometheus::before { background: linear-gradient(90deg, var(--aether-amber), var(--aether-rose)); }
 .cc-argus::before    { background: linear-gradient(90deg, var(--aether-emerald), var(--aether-cyan)); }
 .cc-aegis::before    { background: linear-gradient(90deg, var(--aether-violet), var(--aether-rose)); }
+.cc-oran::before     { background: linear-gradient(90deg, var(--aether-amber), var(--aether-rose)); }
 
 .cc-hermes:hover   { border-color: rgba(34,211,238,0.3);  box-shadow: 0 8px 32px rgba(34,211,238,0.08); }
 .cc-meridian:hover { border-color: rgba(14,165,233,0.3);  box-shadow: 0 8px 32px rgba(14,165,233,0.08); }
@@ -336,6 +337,7 @@ h3 { font-size: 1.4rem; }
 .cc-prometheus:hover { border-color: rgba(245,158,11,0.3); box-shadow: 0 8px 32px rgba(245,158,11,0.08); }
 .cc-argus:hover    { border-color: rgba(16,185,129,0.3);  box-shadow: 0 8px 32px rgba(16,185,129,0.08); }
 .cc-aegis:hover    { border-color: rgba(139,92,246,0.3);  box-shadow: 0 8px 32px rgba(139,92,246,0.08); }
+.cc-oran:hover     { border-color: rgba(245,158,11,0.3);  box-shadow: 0 8px 32px rgba(245,158,11,0.08); }
 
 .cc-name {
   font-family: var(--font-display);
