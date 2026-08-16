@@ -8,40 +8,84 @@ import Layout from '../layouts/Layout.astro';
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="page hero-content">
-    <div class="hero-eyebrow fade-up">Introducing Project Aether · Live platform · Early access</div>
-    <h1 class="fade-up fade-up-delay-1">
-      Seven stacks.<br>
-      <span class="gradient-text">One platform.<br>Infinite intelligence.</span>
-    </h1>
-    <p class="hero-sub fade-up fade-up-delay-2">
-      The unified access management platform that replaces seven fragmented stacks with a single
-      high-performance system — from OpenWRT routers to QSDK and RDK-B gateways, from OpenWiFi
-      access points to prplOS mesh nodes, and out to fixed wireless CPE, transport gear and O-RAN A1.
-    </p>
-    <div class="hero-cta fade-up fade-up-delay-3">
-      <a href="/early-access" class="btn btn-primary">Request Early Access →</a>
-      <a href="#platform" class="btn btn-outline">Read the Architecture</a>
+    <div class="hero-copy">
+      <div class="hero-eyebrow fade-up">Introducing Project Aether · Live platform · Early access</div>
+      <h1 class="fade-up fade-up-delay-1">
+        Seven stacks.<br>
+        <span class="gradient-text">One platform.<br>Infinite intelligence.</span>
+      </h1>
+      <p class="hero-sub fade-up fade-up-delay-2">
+        The unified access management platform that replaces seven fragmented stacks with a single
+        high-performance system — from OpenWRT routers to QSDK and RDK-B gateways, from OpenWiFi
+        access points to prplOS mesh nodes, and out to fixed wireless CPE, transport gear and O-RAN A1.
+      </p>
+      <div class="hero-cta fade-up fade-up-delay-3">
+        <a href="/early-access" class="btn btn-primary">Request Early Access →</a>
+        <a href="#platform" class="btn btn-outline">Read the Architecture</a>
+      </div>
+      <div class="hero-stats fade-up fade-up-delay-4">
+        <div>
+          <div class="stat-num">$0.30</div>
+          <div class="stat-label">Per device / month — no AI tax</div>
+        </div>
+        <div>
+          <div class="stat-num">1</div>
+          <div class="stat-label">Binary replaces 15 services</div>
+        </div>
+        <div>
+          <div class="stat-num">6</div>
+          <div class="stat-label">Device platforms supported</div>
+        </div>
+        <div>
+          <div class="stat-num">10</div>
+          <div class="stat-label">Protocols in one binary</div>
+        </div>
+        <div>
+          <div class="stat-num">200 B</div>
+          <div class="stat-label">Config delta payload, not 50 KB</div>
+        </div>
+      </div>
     </div>
-    <div class="hero-stats fade-up fade-up-delay-4">
-      <div>
-        <div class="stat-num">$0.30</div>
-        <div class="stat-label">Per device / month — no AI tax</div>
-      </div>
-      <div>
-        <div class="stat-num">1</div>
-        <div class="stat-label">Binary replaces 15 services</div>
-      </div>
-      <div>
-        <div class="stat-num">6</div>
-        <div class="stat-label">Device platforms supported</div>
-      </div>
-      <div>
-        <div class="stat-num">10</div>
-        <div class="stat-label">Protocols in one binary</div>
-      </div>
-      <div>
-        <div class="stat-num">200 B</div>
-        <div class="stat-label">Config delta payload, not 50 KB</div>
+
+    <div class="hero-visual fade-up fade-up-delay-2">
+      <div class="converge">
+        <svg viewBox="0 0 520 480" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="hstrand" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stop-color="#2DD4BF" stop-opacity=".15"/>
+              <stop offset="100%" stop-color="#2DD4BF" stop-opacity=".85"/>
+            </linearGradient>
+            <radialGradient id="hapex" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#F5C26B"/><stop offset="100%" stop-color="#E8A33D"/>
+            </radialGradient>
+          </defs>
+
+          <!-- device nodes (the many) -->
+          <g class="node"><circle cx="40" cy="400" r="16" fill="#131a2e" stroke="#2DD4BF" stroke-width="2"/><text x="40" y="405" text-anchor="middle" font-size="11" fill="#8A93A8" font-family="monospace">QSDK</text></g>
+          <g class="node"><circle cx="120" cy="430" r="16" fill="#131a2e" stroke="#2DD4BF" stroke-width="2"/><text x="120" y="435" text-anchor="middle" font-size="11" fill="#8A93A8" font-family="monospace">RDK-B</text></g>
+          <g class="node"><circle cx="200" cy="440" r="16" fill="#131a2e" stroke="#2DD4BF" stroke-width="2"/><text x="200" y="445" text-anchor="middle" font-size="11" fill="#8A93A8" font-family="monospace">OpenWrt</text></g>
+          <g class="node"><circle cx="280" cy="440" r="16" fill="#131a2e" stroke="#2DD4BF" stroke-width="2"/><text x="280" y="445" text-anchor="middle" font-size="11" fill="#8A93A8" font-family="monospace">OpenWiFi</text></g>
+          <g class="node"><circle cx="360" cy="430" r="16" fill="#131a2e" stroke="#2DD4BF" stroke-width="2"/><text x="360" y="435" text-anchor="middle" font-size="11" fill="#8A93A8" font-family="monospace">prplOS</text></g>
+          <g class="node"><circle cx="440" cy="400" r="16" fill="#131a2e" stroke="#2DD4BF" stroke-width="2"/><text x="440" y="405" text-anchor="middle" font-size="11" fill="#8A93A8" font-family="monospace">Plume</text></g>
+
+          <!-- converging strands -->
+          <path class="strand" d="M40 384 L260 120" fill="none" stroke="url(#hstrand)" stroke-width="3" stroke-linecap="round"/>
+          <path class="strand" d="M120 414 L260 120" fill="none" stroke="url(#hstrand)" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+          <path class="strand" d="M200 424 L260 120" fill="none" stroke="url(#hstrand)" stroke-width="2" stroke-linecap="round" opacity=".5"/>
+          <path class="strand" d="M280 424 L260 120" fill="none" stroke="url(#hstrand)" stroke-width="2" stroke-linecap="round" opacity=".5"/>
+          <path class="strand" d="M360 414 L260 120" fill="none" stroke="url(#hstrand)" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+          <path class="strand" d="M440 384 L260 120" fill="none" stroke="url(#hstrand)" stroke-width="3" stroke-linecap="round"/>
+
+          <!-- unified platform bar -->
+          <rect x="150" y="250" width="220" height="16" rx="8" fill="#E8A33D" opacity=".9"/>
+          <text x="260" y="262" text-anchor="middle" font-size="11" fill="#0a0e1a" font-weight="700" font-family="monospace">AETHER PLATFORM</text>
+
+          <!-- apex -->
+          <g class="pulse">
+            <circle cx="260" cy="120" r="14" fill="url(#hapex)"/>
+            <circle cx="260" cy="120" r="26" fill="none" stroke="#E8A33D" stroke-width="1.5" opacity=".4"/>
+          </g>
+        </svg>
       </div>
     </div>
   </div>
