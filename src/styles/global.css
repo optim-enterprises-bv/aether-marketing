@@ -810,6 +810,20 @@ footer {
   color: var(--text-muted);
   letter-spacing: 0.05em;
 }
+.footer-legal {
+  display: flex;
+  gap: 20px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+.footer-legal a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.footer-legal a:hover {
+  color: var(--text-primary);
+}
 
 /* ─── FORMS ──────────────────────────────────── */
 .form-group {

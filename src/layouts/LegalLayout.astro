@@ -1,0 +1,140 @@
+---
+import Layout from './Layout.astro';
+
+// ─── Shared chrome for the public legal pages ─────────────────────────────────
+//
+// Wraps the marketing Layout (site nav + footer) and renders a readable prose
+// column plus the company / imprint block carrying the public registration data
+// (KVK / RSIN / VAT) and the Merchant of Record notice. Mirrors the legal pages
+// served by the product app so the two surfaces stay identical.
+
+export interface Props {
+  title: string;
+  updated?: string;
+  description?: string;
+}
+
+const { title, updated, description } = Astro.props;
+
+// Legal entity & contact facts — single source of truth, sourced from the Dutch
+// Business Register (Handelsregister / KVK). The registered street address is
+// intentionally not published; the entity is identified by its registration
+// numbers and statutory seat only, with contact by email.
+const COMPANY = {
+  legalName: 'Optim Enterprises B.V.',
+  form: 'a private limited company (besloten vennootschap) incorporated in the Netherlands',
+  kvk: '70926638',
+  rsin: '858513699',
+  vat: 'NL858513699B01',
+  seat: 'Amsterdam, Netherlands',
+  product: 'Aether',
+  contactEmail: 'info@aether-io.com',
+  merchantOfRecord: 'Paddle.com Market Ltd',
+};
+---
+
+<Layout title={`${title} — Aether`} description={description ?? `${title} for the Aether platform, operated by ${COMPANY.legalName}.`}>
+
+  <section class="legal-head">
+    <div class="page">
+      <div class="hero-eyebrow">Legal</div>
+      <h1><span class="gradient-text">{title}</span></h1>
+      {updated && <p class="legal-updated">Last updated: {updated}</p>}
+    </div>
+  </section>
+
+  <section>
+    <div class="page">
+      <article class="legal">
+        <slot />
+      </article>
+
+      <div class="legal-imprint">
+        <p class="legal-imprint-lead">
+          {COMPANY.product} is operated by {COMPANY.legalName}, {COMPANY.form}.
+        </p>
+        <p>
+          Chamber of Commerce (KVK): {COMPANY.kvk} · RSIN: {COMPANY.rsin} · VAT: {COMPANY.vat}
+          <br />
+          Registered office: {COMPANY.seat} · Contact:
+          <a href={`mailto:${COMPANY.contactEmail}`}>{COMPANY.contactEmail}</a>
+        </p>
+        <p class="legal-imprint-mor">
+          Orders and payments are processed by {COMPANY.merchantOfRecord} (Paddle) as Merchant of Record.
+        </p>
+        <p class="legal-imprint-copy">© 2026 {COMPANY.legalName}</p>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .legal-head {
+    padding-top: 120px;
+    padding-bottom: 24px;
+  }
+  .legal-head h1 {
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    margin-top: 8px;
+  }
+  .legal-updated {
+    margin-top: 16px;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  /* Prose column — narrower than the site grid for readability. */
+  .legal {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .legal :global(h2) {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 40px 0 14px;
+  }
+  .legal :global(p) {
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.75;
+    margin-bottom: 16px;
+  }
+  .legal :global(ul) {
+    list-style: disc;
+    padding-left: 22px;
+    margin: 0 0 18px;
+  }
+  .legal :global(li) {
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+  .legal :global(a) {
+    color: var(--aether-cyan);
+    text-decoration: none;
+  }
+  .legal :global(a:hover) {
+    text-decoration: underline;
+  }
+
+  .legal-imprint {
+    max-width: 760px;
+    margin: 56px auto 0;
+    padding-top: 28px;
+    border-top: 1px solid var(--aether-border);
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+  .legal-imprint-lead { color: var(--text-secondary); margin-bottom: 10px; }
+  .legal-imprint a { color: var(--text-secondary); }
+  .legal-imprint a:hover { color: var(--text-primary); }
+  .legal-imprint-mor { margin-top: 14px; }
+  .legal-imprint-copy { margin-top: 16px; }
+</style>
