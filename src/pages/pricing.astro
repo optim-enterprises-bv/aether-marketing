@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Pricing — Aether" description="Simple, transparent pricing. No per-device AI tax. From $5/home to carrier-grade at $0.30/device/month.">
+<Layout title="Pricing — Aether" description="Simple, transparent pricing. No per-device AI tax. From $5/home to carrier-grade at $0.15/device/month.">
 
 <section class="hero" style="min-height:40vh; padding-top:120px; padding-bottom:60px;">
   <div class="hero-bg"></div>
@@ -10,7 +10,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="hero-eyebrow" style="justify-content:center;">Pricing</div>
     <h1 style="font-size:clamp(2.2rem,5vw,4rem);">Simple, transparent pricing.<br><span class="gradient-text">No per-device AI tax.</span></h1>
     <p class="hero-sub" style="margin:24px auto 0; text-align:center; max-width:560px;">
-      From the home user to Tier 1 carriers. One platform, four tiers. Every AI feature included — no upsells.
+      From the home user to Tier 1 carriers. One platform, five tiers. Every AI feature included — no upsells.
     </p>
   </div>
 </section>
@@ -39,7 +39,7 @@ import Layout from '../layouts/Layout.astro';
 
       <div class="pricing-card">
         <div class="pricing-tier">Operator</div>
-        <div class="pricing-name">Aether Standard</div>
+        <div class="pricing-name">Aether Open</div>
         <div class="pricing-price">$0.50 <span>/ device / mo</span></div>
         <div class="pricing-desc">For operators running Aether as a managed service. Full protocol support, mesh, and event delivery. No AI tier lock.</div>
         <ul class="pricing-features">
@@ -62,7 +62,7 @@ import Layout from '../layouts/Layout.astro';
         <div class="pricing-price">$0.30 <span>/ device / mo</span></div>
         <div class="pricing-desc">For ISPs at scale. Full AI stack, security suite, OpenSync port, and white-label subscriber apps.</div>
         <ul class="pricing-features">
-          <li><span class="check">✓</span> Everything in Standard</li>
+          <li><span class="check">✓</span> Everything in Open</li>
           <li><span class="check">✓</span> Prometheus AI/RF optimizer</li>
           <li><span class="check">✓</span> Federated reinforcement learning</li>
           <li><span class="check">✓</span> Argus IoT fingerprinting + ML classifier</li>
@@ -78,9 +78,25 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <div class="pricing-card">
+        <div class="pricing-tier">Wholesale</div>
+        <div class="pricing-name">Aether Telecom</div>
+        <div class="pricing-price">$0.15 <span>/ device / mo</span></div>
+        <div class="pricing-desc">For national telcos and wholesale operators running very large fleets. A volume rate at carrier scale.</div>
+        <ul class="pricing-features">
+          <li><span class="check">✓</span> Everything in Pro</li>
+          <li><span class="check">✓</span> Volume wholesale rate — from 25,000 devices</li>
+          <li><span class="check">✓</span> Fleet-wide federated ML</li>
+          <li><span class="check">✓</span> Dedicated onboarding &amp; RF tuning</li>
+          <li><span class="check">✓</span> Data residency (EU / US / APAC)</li>
+          <li><span class="check">✓</span> 99.95% SLA at GA</li>
+          <li><span class="check">✓</span> Unlimited event retention</li>
+        </ul>
+        <a href="/early-access" class="btn" style="width:100%;justify-content:center;background:rgba(20,184,166,0.1);border:1px solid rgba(20,184,166,0.4);color:#14b8a6;">Request Early Access</a>
+      </div>
+      <div class="pricing-card">
         <div class="pricing-tier">Enterprise</div>
         <div class="pricing-name">Aether Enterprise</div>
-        <div class="pricing-price">Custom <span>/ contact us</span></div>
+        <div class="pricing-price">$0.20 <span>/ device / mo</span></div>
         <div class="pricing-desc">For Tier 1 operators, OEMs, and system integrators requiring BSS/OSS integration and a 99.99% SLA at GA.</div>
         <ul class="pricing-features">
           <li><span class="check">✓</span> Everything in Pro</li>
