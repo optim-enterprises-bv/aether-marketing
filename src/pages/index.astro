@@ -545,8 +545,8 @@ import Layout from '../layouts/Layout.astro';
     </div>
     <p style="margin-top:32px; color:var(--text-tertiary, var(--text-secondary)); max-width:680px; font-size:0.85rem; line-height:1.6;">
       Enforcement depth depends on the device: in-kernel app blocking requires a supported
-      OpenWRT/prplOS or OpenSync image. On other platforms Aether applies the DNS-layer control and
-      reports the difference rather than hiding it.
+      OpenWRT, QSDK, prplOS or OpenSync image. On other platforms Aether applies the DNS-layer
+      control and reports the difference rather than hiding it.
     </p>
   </div>
 </section>
@@ -608,8 +608,8 @@ import Layout from '../layouts/Layout.astro';
     <div class="tag tag-emerald">Platform Support</div>
     <h2>Every device platform.<br><span class="gradient-text">One control plane.</span></h2>
     <p style="margin-top:20px; color:var(--text-secondary); max-width:680px; font-size:1rem; line-height:1.7;">
-      We ship one agent — <a href="/open" style="color:var(--aether-cyan)">ac-client</a> for OpenWRT. Every other platform here already
-      runs its own, and Aether terminates what is already on the device. Running something not listed?
+      We ship one agent — <a href="/open" style="color:var(--aether-cyan)">ac-client</a>, for OpenWRT and QSDK-derived
+      images. Every other platform here already runs its own, and Aether terminates what is already on the device. Running something not listed?
       Firmware development is our other business — OpenWRT, OpenWiFi, wlan-ap, RDK-B and QSDK, plus camera and IoT firmware on embedded Linux. Agent implementation, platform HALs and full firmware builds for OEM, ODM and custom hardware, priced per device.
     </p>
     <div class="matrix-grid">
@@ -632,10 +632,11 @@ import Layout from '../layouts/Layout.astro';
       </div>
       <div class="matrix-col">
         <div class="matrix-header" style="color:#818cf8">QSDK</div>
-        <div class="matrix-item green">✓ native agent, nothing to install</div>
-        <div class="matrix-item green">✓ obuspa USP agent on-device</div>
-        <div class="matrix-item green">✓ TR-181 → QCA HAL mapping</div>
-        <div class="matrix-item green">✓ QCA chipset data model</div>
+        <div class="matrix-item green">✓ ac-client agent (TR-369/USP)</div>
+        <div class="matrix-item green">✓ TR-181 → UCI mapping</div>
+        <div class="matrix-item green">✓ qca-wifi driver targets</div>
+        <div class="matrix-item green">✓ On-device app filtering</div>
+        <div class="matrix-item green">✓ IPQ5018 factory images</div>
         <div class="matrix-item green">✓ TR-069 migration path</div>
       </div>
       <div class="matrix-col">
@@ -645,6 +646,16 @@ import Layout from '../layouts/Layout.astro';
         <div class="matrix-item green">✓ Comcast/Cox/Charter CPE</div>
         <div class="matrix-item green">✓ No firmware changes</div>
         <div class="matrix-item green">✓ CcspHalExtFetch bridge</div>
+      </div>
+      <div class="matrix-col">
+        <div class="matrix-header" style="color:#f472b6">OpenSync</div>
+        <div class="matrix-item green">✓ native agent, nothing to install</div>
+        <div class="matrix-item green">✓ OVSDB control plane (10 tables)</div>
+        <div class="matrix-item green">✓ Plume-lineage CPE</div>
+        <div class="matrix-item green">✓ Native app policy (FSM)</div>
+        <div class="matrix-item green">✓ Flow telemetry (FCM)</div>
+        <div class="matrix-item green">✓ OpenSync mesh onboarding</div>
+        <div class="matrix-item green">✓ Validated against real ovsdb-server</div>
       </div>
       <div class="matrix-col">
         <div class="matrix-header" style="color:#34d399">prplOS</div>
