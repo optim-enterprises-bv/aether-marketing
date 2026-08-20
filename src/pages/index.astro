@@ -504,8 +504,8 @@ import Layout from '../layouts/Layout.astro';
     <div class="tech-grid" style="margin-top:48px;">
       <div class="tech-card" style="border-top-color:#f43f5e">
         <div class="tech-label" style="color:#f43f5e">Enforcement</div>
-        <div class="tech-name">In-kernel, per device</div>
-        <div class="tech-desc">App rules compile to in-kernel match-and-drop keyed to a single device&rsquo;s MAC — not a household-wide DNS list. One child&rsquo;s tablet is filtered while the rest of the home is untouched.</div>
+        <div class="tech-name">1,300+ apps, per device</div>
+        <div class="tech-desc">Over 1,300 application signatures across 30 classes — games, video, social, chat, downloads — compiled to in-kernel match-and-drop keyed to a single device&rsquo;s MAC, not a household-wide DNS list. One child&rsquo;s tablet is filtered while the rest of the home is untouched.</div>
       </div>
       <div class="tech-card" style="border-top-color:#f59e0b">
         <div class="tech-label" style="color:#f59e0b">Offload-aware</div>
@@ -525,7 +525,17 @@ import Layout from '../layouts/Layout.astro';
       <div class="tech-card" style="border-top-color:#22d3ee">
         <div class="tech-label" style="color:#22d3ee">Engines</div>
         <div class="tech-name">One policy, every stack</div>
-        <div class="tech-desc">The same rule renders to Open App Filter on OpenWRT and prplOS, to native FSM/FCM policy on OpenSync, and to nDPI where that is what the image ships. Vendor choice stops being a policy decision.</div>
+        <div class="tech-desc">The same rule renders to the on-device filter on OpenWRT, prplOS and QSDK, to the native policy engine on OpenSync, and to whichever classifier a given image ships. Vendor choice stops being a policy decision.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#ec4899">
+        <div class="tech-label" style="color:#ec4899">Screen time</div>
+        <div class="tech-name">Rules that know the day and hour</div>
+        <div class="tech-desc">Policies carry weekday and time-window schedules, so homework hours, bedtimes and weekends are distinct rules rather than one blunt on/off switch — and the schedule is enforced on the device, not by a cloud job that has to reach it first.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#14b8a6">
+        <div class="tech-label" style="color:#14b8a6">Beyond the catalogue</div>
+        <div class="tech-name">Custom URL, port and payload</div>
+        <div class="tech-desc">When an application is not in the signature set, rules can match on URL, port or layer-7 payload directly — so a regional app, a school platform or something that appeared last week does not have to wait for a signature release.</div>
       </div>
       <div class="tech-card" style="border-top-color:#0ea5e9">
         <div class="tech-label" style="color:#0ea5e9">Honest by default</div>
@@ -537,6 +547,57 @@ import Layout from '../layouts/Layout.astro';
       Enforcement depth depends on the device: in-kernel app blocking requires a supported
       OpenWRT/prplOS or OpenSync image. On other platforms Aether applies the DNS-layer control and
       reports the difference rather than hiding it.
+    </p>
+  </div>
+</section>
+
+<!-- ═══ APP VISIBILITY / DPI ════════════════════════════════ -->
+<section id="visibility">
+  <div class="page">
+    <div class="tag tag-violet">App Visibility &amp; Network Intelligence</div>
+    <h2>You cannot govern<br><span class="gradient-text">what you cannot see.</span></h2>
+    <p style="margin-top:20px; color:var(--text-secondary); max-width:680px; font-size:1rem; line-height:1.7;">
+      Blocking is the last step. Before it comes knowing what is actually on the network — which
+      applications, on whose device, at what hour, carrying what risk. Aether classifies traffic on
+      the router itself and receives only the verdict, so the platform learns what an application
+      <em>is</em> without the packets ever leaving the home.
+    </p>
+    <div class="tech-grid" style="margin-top:48px;">
+      <div class="tech-card" style="border-top-color:#8b5cf6">
+        <div class="tech-label" style="color:#8b5cf6">Classification</div>
+        <div class="tech-name">20 application categories</div>
+        <div class="tech-desc">Streaming, gaming, social, messaging, video conferencing, file sharing, shopping, finance, adult, advertising, VPN/proxy, remote access, IoT and more — resolved per flow, per client, not guessed from a port number.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#f43f5e">
+        <div class="tech-label" style="color:#f43f5e">Risk</div>
+        <div class="tech-name">Seven threat classes</div>
+        <div class="tech-desc">Malware, phishing, Tor, anonymisers, suspicious protocols and unsafe TLS surface as first-class signals on the flow that carried them — so a risky connection is attributable to a device and a moment, not just a daily total.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#10b981">
+        <div class="tech-label" style="color:#10b981">Privacy</div>
+        <div class="tech-name">Inspection stays on the router</div>
+        <div class="tech-desc">Classification happens at the edge. Aether orchestrates and normalises — it performs no in-cloud inspection and never receives subscriber payloads. What crosses the wire is a verdict, not traffic.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#22d3ee">
+        <div class="tech-label" style="color:#22d3ee">Encrypted traffic</div>
+        <div class="tech-name">Built for a TLS-everywhere network</div>
+        <div class="tech-desc">Modern traffic is encrypted and increasingly hides the hostname that naive classifiers rely on. The edge engines Aether drives are chosen and configured for that reality rather than degrading silently when they meet it.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#f59e0b">
+        <div class="tech-label" style="color:#f59e0b">Normalisation</div>
+        <div class="tech-name">One schema, any engine</div>
+        <div class="tech-desc">Different silicon ships different classifiers. Aether normalises every verdict into one flow record — same categories, same risk vocabulary, same client identity — so reporting does not fork per vendor and a mixed fleet reads as one fleet.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#0ea5e9">
+        <div class="tech-label" style="color:#0ea5e9">Attribution</div>
+        <div class="tech-name">Per client, resale-safe</div>
+        <div class="tech-desc">Every flow resolves to a client the server already knows, never to an identifier the device asserts. Usage history is keyed to a provisioning generation, so a re-provisioned or resold router starts clean instead of inheriting the previous household&rsquo;s record.</div>
+      </div>
+    </div>
+    <p style="margin-top:32px; color:var(--text-secondary); max-width:680px; font-size:0.85rem; line-height:1.6;">
+      Visibility depth follows the image: platforms with a native classifier report full per-flow
+      application and risk data, and Aether states plainly what a given device can and cannot see
+      rather than presenting a partial picture as a complete one.
     </p>
   </div>
 </section>
