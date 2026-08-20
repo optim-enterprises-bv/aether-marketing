@@ -490,6 +490,57 @@ import Layout from '../layouts/Layout.astro';
   </div>
 </section>
 
+<!-- ═══ PARENTAL CONTROLS / DPI ════════════════════════════════ -->
+<section id="protect">
+  <div class="page">
+    <div class="tag tag-rose">Parental Controls &amp; App Visibility</div>
+    <h2>Most parental controls ask nicely.<br><span class="gradient-text">Ours drop the packet.</span></h2>
+    <p style="margin-top:20px; color:var(--text-secondary); max-width:680px; font-size:1rem; line-height:1.7;">
+      Nearly every &ldquo;parental control&rdquo; in this market is a DNS blocklist. DNS filtering is a
+      suggestion: encrypted DNS, a hardcoded resolver, a QUIC connection or a raw IP walks straight
+      past it, and the dashboard still reports the block as applied. Aether compiles policy into the
+      router&rsquo;s own kernel, per device, and then asks the router what it actually dropped.
+    </p>
+    <div class="tech-grid" style="margin-top:48px;">
+      <div class="tech-card" style="border-top-color:#f43f5e">
+        <div class="tech-label" style="color:#f43f5e">Enforcement</div>
+        <div class="tech-name">In-kernel, per device</div>
+        <div class="tech-desc">App rules compile to in-kernel match-and-drop keyed to a single device&rsquo;s MAC — not a household-wide DNS list. One child&rsquo;s tablet is filtered while the rest of the home is untouched.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#f59e0b">
+        <div class="tech-label" style="color:#f59e0b">Offload-aware</div>
+        <div class="tech-name">Survives hardware NAT</div>
+        <div class="tech-desc">Hardware flow offload routes traffic around the classifier entirely — filtering configures cleanly, reports healthy, and inspects nothing. Aether disables the offload path on the SoCs where it applies and re-asserts that on every policy push, not once at setup.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#8b5cf6">
+        <div class="tech-label" style="color:#8b5cf6">Verification</div>
+        <div class="tech-name">Measured, not assumed</div>
+        <div class="tech-desc">The router reports which rules it enforced. &ldquo;14 attempts blocked today&rdquo; is a count the device sent back, not an inference from a policy we hoped applied. A rule that stops matching is visible as enforcement drift.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#10b981">
+        <div class="tech-label" style="color:#10b981">Privacy</div>
+        <div class="tech-name">Resale-safe by design</div>
+        <div class="tech-desc">Every device carries a provisioning generation. Re-provision or resell it and usage history starts a new series — the next household cannot inherit the previous occupant&rsquo;s browsing record, and an erasure request severs it cleanly.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#22d3ee">
+        <div class="tech-label" style="color:#22d3ee">Engines</div>
+        <div class="tech-name">One policy, every stack</div>
+        <div class="tech-desc">The same rule renders to Open App Filter on OpenWRT and prplOS, to native FSM/FCM policy on OpenSync, and to nDPI where that is what the image ships. Vendor choice stops being a policy decision.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#0ea5e9">
+        <div class="tech-label" style="color:#0ea5e9">Honest by default</div>
+        <div class="tech-name">Coverage gaps are reported</div>
+        <div class="tech-desc">When a platform cannot enforce a rule natively, Aether says so and names what it fell back to. A policy that silently degraded to a weaker control is the failure mode this was built to remove.</div>
+      </div>
+    </div>
+    <p style="margin-top:32px; color:var(--text-tertiary, var(--text-secondary)); max-width:680px; font-size:0.85rem; line-height:1.6;">
+      Enforcement depth depends on the device: in-kernel app blocking requires a supported
+      OpenWRT/prplOS or OpenSync image. On other platforms Aether applies the DNS-layer control and
+      reports the difference rather than hiding it.
+    </p>
+  </div>
+</section>
+
 <!-- ═══ PLATFORM MATRIX ════════════════════════════════ -->
 <section>
   <div class="page">
