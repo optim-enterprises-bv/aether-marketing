@@ -46,7 +46,7 @@ const currentPath = Astro.url.pathname;
     </li>
     <li><a href="/pricing">Pricing</a></li>
     <li><a href="/open">Open Source</a></li>
-    <li><a href="/docs" style="opacity:0.5;cursor:not-allowed;">Docs</a></li>
+    <li><a href="/docs" class={currentPath === '/docs' ? 'active' : ''}>Docs</a></li>
   </ul>
 
   <div style="display:flex; align-items:center; gap:16px;">

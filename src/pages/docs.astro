@@ -1,0 +1,187 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Every command on this page was run against a real device before publishing.
+// The previous install snippets on /open were not, and named a package that
+// does not exist, a hostname that does not resolve, and a UCI section that
+// returns "Entry not found".
+
+const feedCode = `<span class="c-muted"># Add the feed to your OpenWRT buildroot or SDK</span>
+echo <span class="c-cyan">'src-git optimwrt https://github.com/optim-enterprises-bv/optim-wrt.git'</span> &gt;&gt; feeds.conf
+
+./scripts/feeds update optimwrt
+./scripts/feeds install -a -p optimwrt`;
+
+const buildCode = `<span class="c-muted"># Build the agent</span>
+make package/feeds/optimwrt/ac-client/compile
+
+<span class="c-muted"># Optional: traffic classification</span>
+make package/feeds/optimwrt/aether-sensord/compile
+
+<span class="c-muted"># Packages land in bin/packages/&lt;arch&gt;/optimwrt/</span>`;
+
+const installCode = `<span class="c-muted"># BusyBox has no SFTP server, so stream the file</span>
+ssh root@192.168.1.1 <span class="c-cyan">'cat &gt; /tmp/ac-client.apk'</span> &lt; ac-client-0.1.0-r16.apk
+
+ssh root@192.168.1.1 <span class="c-amber">'apk add --allow-untrusted /tmp/ac-client.apk'</span>
+
+<span class="c-muted"># On older OpenWRT releases this is opkg install instead.</span>`;
+
+const serialCode = `<span class="c-muted"># The agent logs the endpoint ID it registered with</span>
+logread | grep -oE <span class="c-cyan">'oui:[0-9A-Fa-f]{6}:[0-9a-f:]{17}'</span> | tail -1
+<span class="c-green">oui:00005A:ea:5e:ca:cf:3f:18</span>
+
+<span class="c-muted"># Not yet logged? Derive it — the OUI is fixed:</span>
+echo <span class="c-cyan">"oui:00005A:$(cat /sys/class/net/br-lan/address)"</span>
+
+<span class="c-muted"># Do NOT use uci get optimacs.agent.mac_addr — it is empty</span>
+<span class="c-muted"># on a normal device (the MAC is auto-detected, not stored).</span>`;
+
+const claimCode = `<span class="c-muted"># 1. Log in and start the claim</span>
+TOKEN=$(curl -sS -X POST <span class="c-cyan">"$BASE/portal/v1/login"</span> \\
+  -H <span class="c-amber">'Content-Type: application/json'</span> \\
+  -d <span class="c-cyan">'{"email":"you@example.com","password":"..."}'</span> \\
+  | sed -n <span class="c-amber">'s/.*"token":"\\([^"]*\\)".*/\\1/p'</span>)
+
+curl -sS -X POST <span class="c-cyan">"$BASE/portal/v1/me/devices/claim"</span> \\
+  -H <span class="c-amber">"Authorization: Bearer $TOKEN"</span> \\
+  -d <span class="c-cyan">"{\\"serial\\":\\"$SERIAL\\"}"</span>
+<span class="c-green">{"pending":true,"expires_in":600}</span>
+
+<span class="c-muted"># 2. Read the code off the router</span>
+logread | grep aether-claim
+<span class="c-green">aether-claim: claim code is CEAMJP7X</span>
+
+<span class="c-muted"># 3. Confirm it</span>
+curl -sS -X POST <span class="c-cyan">"$BASE/portal/v1/me/devices/claim/confirm"</span> \\
+  -H <span class="c-amber">"Authorization: Bearer $TOKEN"</span> \\
+  -d <span class="c-cyan">"{\\"serial\\":\\"$SERIAL\\",\\"code\\":\\"CEAMJP7X\\"}"</span>
+<span class="c-green">{"claimed":true}</span>`;
+---
+
+<Layout title="Docs — Getting started" description="Build the Aether OpenWRT packages, install the ac-client agent, and claim your router. Every command verified against a live device.">
+
+<section class="hero" style="min-height:40vh; padding-top:120px; padding-bottom:56px;">
+  <div class="hero-bg" style="background: radial-gradient(ellipse 70% 60% at 60% 30%, rgba(16,185,129,0.12) 0%, transparent 60%);"></div>
+  <div class="page hero-content">
+    <div class="hero-eyebrow">Documentation</div>
+    <h1 style="font-size:clamp(2.2rem,4.5vw,3.4rem);">
+      From a flashed router<br>
+      <span class="gradient-text">to a managed device.</span>
+    </h1>
+    <p class="hero-sub" style="margin:24px 0 32px; max-width:760px;">
+      Add the feed, build the agent, install it, claim the device. Every command
+      below was run against a live OpenWRT router before it was published.
+    </p>
+    <div style="display:flex; gap:16px; flex-wrap:wrap;">
+      <a href="https://github.com/optim-enterprises-bv/optim-wrt" target="_blank" class="btn btn-primary">The feed on GitHub →</a>
+      <a href="/open" class="btn btn-outline">About ac-client</a>
+    </div>
+  </div>
+</section>
+
+<section style="padding:56px 0;">
+  <div class="page">
+    <div class="tag tag-emerald">Step 1</div>
+    <h2 style="margin-bottom:8px;">Add the feed</h2>
+    <p style="color:var(--text-secondary); max-width:720px; margin-bottom:28px;">
+      The packages are built from source in your own OpenWRT buildroot or SDK.
+      There is no public binary repository yet, so <code>opkg install ac-client</code>
+      will not find anything — you build it.
+    </p>
+    <div class="code-block" set:html={feedCode} />
+  </div>
+</section>
+
+<section style="padding:56px 0;">
+  <div class="page">
+    <div class="tag tag-emerald">Step 2</div>
+    <h2 style="margin-bottom:8px;">Build</h2>
+    <p style="color:var(--text-secondary); max-width:720px; margin-bottom:28px;">
+      <code>ac-client</code> alone gets the router managed. <code>aether-sensord</code>
+      adds traffic classification, app blocking and threat reputation — it reads
+      packet payload and is consented separately.
+    </p>
+    <div class="code-block" set:html={buildCode} />
+  </div>
+</section>
+
+<section style="padding:56px 0;">
+  <div class="page">
+    <div class="tag tag-emerald">Step 3</div>
+    <h2 style="margin-bottom:8px;">Install</h2>
+    <div class="code-block" set:html={installCode} />
+    <p style="color:var(--text-secondary); max-width:720px; margin-top:24px;">
+      The defaults in <code>/etc/config/optimacs</code> already point at the
+      controller, and the agent ships with a bootstrap certificate — there is no
+      token to paste in. Confirm it connected with
+      <code>logread | grep ac-client</code>; a healthy agent sends a heartbeat
+      every 60 seconds.
+    </p>
+  </div>
+</section>
+
+<section style="padding:56px 0;">
+  <div class="page">
+    <div class="tag tag-emerald">Step 4</div>
+    <h2 style="margin-bottom:8px;">Find your serial</h2>
+    <div class="code-block" set:html={serialCode} />
+  </div>
+</section>
+
+<section style="padding:56px 0;">
+  <div class="page">
+    <div class="tag tag-emerald">Step 5</div>
+    <h2 style="margin-bottom:8px;">Claim the device</h2>
+    <p style="color:var(--text-secondary); max-width:760px; margin-bottom:28px;">
+      Sign up and verify your email first. Your device list will be empty until
+      you claim — that is expected. <strong>The portal does not have a claim
+      button yet</strong>, so this step is an API call today.
+    </p>
+    <div class="code-block" set:html={claimCode} />
+    <div class="card" style="margin-top:32px; border-color:rgba(16,185,129,0.3); padding:24px; max-width:820px;">
+      <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--aether-emerald); margin-bottom:12px; letter-spacing:0.1em;">WHY A CODE OFF THE ROUTER</div>
+      <p style="font-size:0.88rem; color:var(--text-secondary); line-height:1.7;">
+        A serial is not a secret. It is printed on the box, it appears in DHCP
+        logs, and it is derivable from a MAC address your radio broadcasts in
+        every beacon frame. If a serial were enough, anyone within WiFi range
+        could bind your router to their account and inherit your WiFi settings,
+        your client list and your traffic history. Reading the code requires SSH
+        or LuCI access — which is what owning the router actually means. The
+        code expires in 10 minutes and allows 5 attempts; an already-claimed
+        device is refused rather than transferred.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section style="padding:56px 0 96px;">
+  <div class="page">
+    <div class="tag tag-emerald">Gotchas</div>
+    <h2 style="margin-bottom:28px;">Things that fail quietly</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:20px; max-width:1000px;">
+      <div class="card" style="padding:22px;">
+        <div style="font-family:var(--font-mono); font-size:0.72rem; color:var(--aether-amber); margin-bottom:8px;">status_interval</div>
+        <p style="font-size:0.85rem; color:var(--text-secondary); line-height:1.65;">Leave it at 60. It is the only periodic traffic on the WebSocket, so it decides whether the connection survives an idle timeout. Cloudflare closes an idle socket at ~126s; at the old default of 300 a board reconnected roughly 28 times an hour.</p>
+      </div>
+      <div class="card" style="padding:22px;">
+        <div style="font-family:var(--font-mono); font-size:0.72rem; color:var(--aether-amber); margin-bottom:8px;">ca_file</div>
+        <p style="font-size:0.85rem; color:var(--text-secondary); line-height:1.65;">Must be the public CA bundle. The controller's certificate is publicly issued; pointing this at a private CA breaks the connection at TLS, before anything useful is logged.</p>
+      </div>
+      <div class="card" style="padding:22px;">
+        <div style="font-family:var(--font-mono); font-size:0.72rem; color:var(--aether-amber); margin-bottom:8px;">iw and tc</div>
+        <p style="font-size:0.85rem; color:var(--text-secondary); line-height:1.65;">Runtime dependencies of the telemetry, not the binary. Strip them from a minimal image and the radio survey and queue statistics report nothing — the RF and bufferbloat views go silently empty.</p>
+      </div>
+      <div class="card" style="padding:22px;">
+        <div style="font-family:var(--font-mono); font-size:0.72rem; color:var(--aether-amber); margin-bottom:8px;">Radios ship disabled</div>
+        <p style="font-size:0.85rem; color:var(--text-secondary); line-height:1.65;">Stock OpenWRT behaviour, not ours. <code>uci set wireless.radio0.disabled='0'</code> then <code>wifi reload</code>. It is the usual reason a new device shows no RF data.</p>
+      </div>
+    </div>
+    <p style="color:var(--text-secondary); margin-top:36px; font-size:0.9rem;">
+      Full reference, including troubleshooting and per-device certificates, is in the
+      <a href="https://github.com/optim-enterprises-bv/optim-wrt#readme" target="_blank" style="color:var(--aether-emerald);">feed README</a>.
+    </p>
+  </div>
+</section>
+
+</Layout>
