@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 ---
 
-<Layout title="Aether for Operators — Carrier-grade wireless management" description="Carrier-grade WiFi + NVR + IoT platform for ISPs and carriers. White-label, ZTP at scale, TMF Open API integration, and $0.30/device/month pricing.">
+<Layout title="Aether for Operators — Carrier-grade wireless management" description="Carrier-grade WiFi + NVR + IoT platform for ISPs and carriers. White-label, self-service device claiming, TMF Open API integration, and $0.30/device/month pricing.">
 
 <section class="hero" style="min-height:60vh; padding-top:120px; padding-bottom:80px;">
   <div class="hero-bg" style="background: radial-gradient(ellipse 80% 60% at 65% 20%, rgba(14,165,233,0.14) 0%, transparent 60%), radial-gradient(ellipse 50% 50% at 5% 85%, rgba(99,102,241,0.1) 0%, transparent 50%);"></div>
@@ -13,7 +13,7 @@ import Layout from '../../layouts/Layout.astro';
       <span class="gradient-text">Every device you manage.</span>
     </h1>
     <p class="hero-sub">
-      Carrier-grade WiFi management, NVR, and IoT visibility — unified under a single API. White-label ready, ZTP at scale, OSS/BSS integration out of the box.
+      Carrier-grade WiFi management, NVR, and IoT visibility — unified under a single API. White-label ready, self-service device claiming, OSS/BSS integration out of the box.
     </p>
     <div class="hero-cta">
       <a href="/early-access" class="btn btn-primary">Contact Sales →</a>
@@ -83,7 +83,7 @@ import Layout from '../../layouts/Layout.astro';
       </div>
       <div class="card" style="border-top:2px solid var(--aether-indigo);">
         <h3 style="color:var(--aether-indigo); font-size:1rem; margin-bottom:12px;">Zero-touch provisioning</h3>
-        <p style="font-size:0.84rem; color:var(--text-secondary); line-height:1.7;">Truck rolls with no config. The ac-client claim_token links the CPE to the subscriber account on first boot. No technician involvement after hardware install. Scales to millions of CPEs.</p>
+        <p style="font-size:0.84rem; color:var(--text-secondary); line-height:1.7;">The subscriber claims their own CPE: the controller sends a one-time code to the router and they confirm it in the portal. No technician involvement after hardware install, and no serial-guessing attack, because the code only exists on the device.</p>
       </div>
       <div class="card" style="border-top:2px solid var(--aether-violet);">
         <h3 style="color:var(--aether-violet); font-size:1rem; margin-bottom:12px;">OSS/BSS integration</h3>

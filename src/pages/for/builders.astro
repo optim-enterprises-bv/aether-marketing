@@ -6,9 +6,7 @@ opkg update
 opkg install ac-client
 
 <span class="c-muted"># Configure</span>
-uci set optimacs.&#64;config[0].server_host=<span class="c-cyan">'usp.optimcloud.com'</span>
-uci set optimacs.&#64;config[0].claim_token=<span class="c-amber">'your-account-token'</span>
-uci commit optimacs
+<span class="c-muted"># Defaults already point at the controller.</span>
 
 <span class="c-muted"># Start</span>
 /etc/init.d/ac-client enable
@@ -102,7 +100,7 @@ helm install aether aether/aether \\
           <p style="font-size:0.82rem; color:var(--text-secondary);">X25519 + ML-KEM-768 mTLS via step-ca provisioned certs. Future-proof device-to-cloud security from day one.</p>
         </div>
         <div class="card" style="padding:20px; border-left:3px solid var(--aether-amber);">
-          <h4 style="font-size:0.9rem; color:var(--aether-amber); margin-bottom:8px;">ZTP via claim_token</h4>
+          <h4 style="font-size:0.9rem; color:var(--aether-amber); margin-bottom:8px;">Claim by proof of possession</h4>
           <p style="font-size:0.82rem; color:var(--text-secondary);">Set one token in UCI config. Device auto-links to your tenant on first boot. No portal login, no per-device manual registration.</p>
         </div>
       </div>
