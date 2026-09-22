@@ -597,7 +597,8 @@ import Layout from '../layouts/Layout.astro';
       moves several dB from sample to sample. A still room does not do that. Aether now reads presence
       from the links every managed device already maintains &mdash; mesh backhaul and associated clients &mdash;
       with no extra radio, no extra traffic and no camera. It ships in the device agent, and it is off
-      until the household turns it on.
+      until the household turns it on. Motion, then falls, breathing and heart rate as candidates &mdash;
+      each with a confidence, none of them a medical device.
     </p>
     <div class="tech-grid" style="margin-top:48px;">
       <div class="tech-card" style="border-top-color:#22d3ee">
@@ -636,9 +637,13 @@ import Layout from '../layouts/Layout.astro';
             24-hour strip of transitions with the source recorded, and exposes an events API filtered by sensor.
           </p>
           <p style="color:var(--text-secondary); font-size:0.98rem; line-height:1.75; margin-top:16px;">
-            The same channel supports finer questions, and they are on the CSI path in that order: fall
-            detection and breathing rate are in development; heart rate is research. None of the three is
-            shipped, and we will say when each is measured rather than when it is planned.
+            On the same channel, over half a minute of a link that is not moving, the agent now estimates a
+            breathing rate and a heart rate and raises a fall candidate: a large transient that ends in
+            nobody getting up. Breathing is read from CSI magnitude; heart rate from carrier phase, because a
+            chest wall moves millimetres and at 5&nbsp;GHz that is about six degrees of phase and almost nothing
+            of power. Each estimate ships with its confidence, and every surface that renders them says what
+            they are: experimental candidates, not a medical measurement. Nothing on the controller alerts,
+            escalates or records them as a clinical observation.
           </p>
           <div style="display:flex; gap:14px; flex-wrap:wrap; margin-top:28px;">
             <a href="/early-access" class="btn btn-primary">See it on a lab mesh</a>
@@ -660,15 +665,17 @@ import Layout from '../layouts/Layout.astro';
               <div class="stat-label">CSI motion energy of an empty room, steady within 0.6&nbsp;dB across a 97-record capture &mdash; measured</div>
             </div>
             <div>
-              <div class="stat-num" style="font-size:2.1rem;">0</div>
-              <div class="stat-label">extra radios, extra packets or cameras; the frames were being sent anyway</div>
+              <div class="stat-num" style="font-size:2.1rem;">30&nbsp;s</div>
+              <div class="stat-label">window for a vitals estimate: 270 samples zero-padded to a 512-point FFT, magnitude and phase, at most once every 2&nbsp;s per link</div>
             </div>
           </div>
           <p style="color:var(--text-secondary); font-size:0.84rem; line-height:1.65; margin-top:24px; padding-top:20px; border-top:1px solid var(--aether-border);">
             Status: running on our four-node lab mesh since 2026-09-21; CSI on the QCN9074 radios that can
-            capture CFR, RSSI on all of them. First observation: the closest pair flips readily and the longer
+            capture CFR, RSSI on all of them; vitals and fall candidates in ac-client r40 with the controller
+            views merged 2026-09-22. First observation on motion: the closest pair flips readily and the longer
             links are quiet &mdash; whether that link is over-sensitive or the office is busy needs a controlled
-            walk test, which is next.
+            walk test, which is next. A vitals estimate needs a still subject inside the link&rsquo;s own path,
+            which a mesh link between two rooms may never have.
           </p>
         </div>
       </div>
