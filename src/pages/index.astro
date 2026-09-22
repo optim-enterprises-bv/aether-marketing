@@ -358,7 +358,7 @@ import Layout from '../layouts/Layout.astro';
         <div class="cc-role">AI / ML Engine</div>
         <div class="cc-desc">The fire-bringer. Prometheus ingests fleet-wide telemetry to run deterministic RF optimization and, over time, federated reinforcement learning — without centralizing subscriber data. It also predicts device failure before it strands a subscriber, senses interference and rogue APs, and closes the loop: decided remediations apply as config changes through the normal operate path, every one audited and reversible.</div>
         <div class="cc-pills">
-          <span class="pill">RF Optimizer</span><span class="pill">Federated RL</span><span class="pill">Failure Prediction</span><span class="pill">Auto-Remediation</span><span class="pill">Rogue AP Detection</span><span class="pill">Interference Sensing</span><span class="pill">Motion Detection</span><span class="pill">Anomaly Detection</span><span class="pill">ML inference</span>
+          <span class="pill">RF Optimizer</span><span class="pill">Federated RL</span><span class="pill">Failure Prediction</span><span class="pill">Auto-Remediation</span><span class="pill">Rogue AP Detection</span><span class="pill">Interference Sensing</span><span class="pill">Motion Sensing (on-device)</span><span class="pill">Anomaly Detection</span><span class="pill">ML inference</span>
         </div>
       </div>
       <div class="component-card cc-argus">
@@ -580,6 +580,102 @@ import Layout from '../layouts/Layout.astro';
             Status: the ingest-to-alert path runs in production and is proven end to end against the
             firmware&rsquo;s real wire format. Field nodes are not yet deployed on a mountain &mdash; when they
             are, we will say where.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WI-FI SENSING ══════════════════════════════════════════ -->
+<section id="sensing">
+  <div class="page">
+    <div class="tag tag-violet">Wi-Fi Sensing</div>
+    <h2>Every access point<br><span class="gradient-text">is already a sensor.</span></h2>
+    <p style="margin-top:20px; color:var(--text-secondary); max-width:720px; font-size:1rem; line-height:1.7;">
+      A person walking between two radios changes the multipath between them, and the link&rsquo;s signal
+      moves several dB from sample to sample. A still room does not do that. Aether now reads presence
+      from the links every managed device already maintains &mdash; mesh backhaul and associated clients &mdash;
+      with no extra radio, no extra traffic and no camera. It ships in the device agent, and it is off
+      until the household turns it on. Motion, then falls, breathing and heart rate as candidates &mdash;
+      each with a confidence, none of them a medical device.
+    </p>
+    <div class="tech-grid" style="margin-top:48px;">
+      <div class="tech-card" style="border-top-color:#22d3ee">
+        <div class="tech-label" style="color:#22d3ee">Shipped &middot; every chipset</div>
+        <div class="tech-name">Motion from RSSI variance</div>
+        <div class="tech-desc">One detector per mesh peer and per client, sampled every 500&nbsp;ms on the device. It learns the empty room&rsquo;s ambient, rejects outliers, applies hysteresis and a dwell, and reports only the transitions: Learning, Idle, Motion, or Saturated when a peer is too close to sense.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#8b5cf6">
+        <div class="tech-label" style="color:#8b5cf6">Shipped &middot; CFR-capable radios</div>
+        <div class="tech-name">Channel state (CSI)</div>
+        <div class="tech-desc">Where the radio can capture the channel frequency response, the same links yield the complex response of every receive chain on 256 subcarriers &mdash; about a thousand numbers where RSSI has one. It sees a hand cross a room that RSSI variance cannot. Reported beside RSSI, never merged with it.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#10b981">
+        <div class="tech-label" style="color:#10b981">Consent</div>
+        <div class="tech-name">Off by default, on the device</div>
+        <div class="tech-desc">Presence in a home is personal data. Nothing switches sensing on but a setting written on the device itself; when it is off the sampler is never spawned, so the device never computes it. The cloud can read the switch and cannot flip it.</div>
+      </div>
+      <div class="tech-card" style="border-top-color:#f59e0b">
+        <div class="tech-label" style="color:#f59e0b">Discipline</div>
+        <div class="tech-name">Silent means silent</div>
+        <div class="tech-desc">A stalled CSI capture frozen at its last value never outranks a live RSSI reading. A device that stops reporting has no state, not a stale one. The dashboard, the topology map and the 24-hour strip all follow that rule.</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:56px; border-color:rgba(139,92,246,0.35); background:linear-gradient(135deg, rgba(139,92,246,0.05), rgba(34,211,238,0.05));">
+      <div class="grid-2col-wide" style="margin-top:0;">
+        <div>
+          <div class="tag tag-violet" style="margin-bottom:20px;">What the operator sees</div>
+          <h3 style="font-size:1.75rem; letter-spacing:-0.03em; margin:0 0 18px;">
+            From the channel <span class="gradient-text">to the dashboard</span>
+          </h3>
+          <p style="color:var(--text-secondary); font-size:0.98rem; line-height:1.75;">
+            Devices report the sensing tree over TR-369 / USP as ValueChange notifications, so the controller
+            stores it through the same path as every other parameter. Aether shows a chip row per device with
+            RSSI and CSI side by side, marks motion on the topology map per link and per direction, keeps a
+            24-hour strip of transitions with the source recorded, and exposes an events API filtered by sensor.
+          </p>
+          <p style="color:var(--text-secondary); font-size:0.98rem; line-height:1.75; margin-top:16px;">
+            On the same channel, over half a minute of a link that is not moving, the agent now estimates a
+            breathing rate and a heart rate and raises a fall candidate: a large transient that ends in
+            nobody getting up. Breathing is read from CSI magnitude; heart rate from carrier phase, because a
+            chest wall moves millimetres and at 5&nbsp;GHz that is about six degrees of phase and almost nothing
+            of power. Each estimate ships with its confidence, and every surface that renders them says what
+            they are: experimental candidates, not a medical measurement. Nothing on the controller alerts,
+            escalates or records them as a clinical observation.
+          </p>
+          <div style="display:flex; gap:14px; flex-wrap:wrap; margin-top:28px;">
+            <a href="/early-access" class="btn btn-primary">See it on a lab mesh</a>
+            <a href="/#components" class="btn btn-outline">The components</a>
+          </div>
+        </div>
+        <div>
+          <div class="card-grid-2" style="gap:20px;">
+            <div>
+              <div class="stat-num" style="font-size:2.1rem;">500&nbsp;ms</div>
+              <div class="stat-label">RSSI sample period per link, on the device, transitions only over the wire</div>
+            </div>
+            <div>
+              <div class="stat-num" style="font-size:2.1rem;">256</div>
+              <div class="stat-label">subcarriers per receive chain in each CSI sounding on a QCN9074 radio</div>
+            </div>
+            <div>
+              <div class="stat-num" style="font-size:2.1rem;">&minus;22&nbsp;dB</div>
+              <div class="stat-label">CSI motion energy of an empty room, steady within 0.6&nbsp;dB across a 97-record capture &mdash; measured</div>
+            </div>
+            <div>
+              <div class="stat-num" style="font-size:2.1rem;">30&nbsp;s</div>
+              <div class="stat-label">window for a vitals estimate: 270 samples zero-padded to a 512-point FFT, magnitude and phase, at most once every 2&nbsp;s per link</div>
+            </div>
+          </div>
+          <p style="color:var(--text-secondary); font-size:0.84rem; line-height:1.65; margin-top:24px; padding-top:20px; border-top:1px solid var(--aether-border);">
+            Status: running on our four-node lab mesh since 2026-09-21; CSI on the QCN9074 radios that can
+            capture CFR, RSSI on all of them; vitals and fall candidates in ac-client r40 with the controller
+            views merged 2026-09-22. First observation on motion: the closest pair flips readily and the longer
+            links are quiet &mdash; whether that link is over-sensitive or the office is busy needs a controlled
+            walk test, which is next. A vitals estimate needs a still subject inside the link&rsquo;s own path,
+            which a mesh link between two rooms may never have.
           </p>
         </div>
       </div>
